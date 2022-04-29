@@ -1,0 +1,56 @@
+$spaceSizes: 2, 4, 8, 12, 16, 24, 36;
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.mr-auto {
+  margin-right: auto;
+}
+
+@each $size in $spaceSizes {
+  // Margin
+  .mtb-#{$size} {
+    margin-top: #{$size}px;
+    margin-bottom: #{$size}px;
+  }
+
+  .mb-#{$size} {
+    margin-bottom: #{$size}px;
+  }
+
+  .ml-#{$size} {
+    margin-left: #{$size}px;
+  }
+
+  .mr-#{$size} {
+    margin-right: #{$size}px;
+  }
+
+  .mt-#{$size} {
+    margin-top: #{$size}px;
+  }
+
+  // Padding
+
+  .ptb-#{$size} {
+    padding-top: #{$size}px;
+    padding-bottom: #{$size}px;
+  }
+
+  .pb-#{$size} {
+    padding-bottom: #{$size}px;
+  }
+
+  .pl-#{$size} {
+    padding-left: #{$size}px;
+  }
+
+  .pr-#{$size} {
+    padding-right: #{$size}px;
+  }
+
+  .pt-#{$size} {
+    padding-top: #{$size}px;
+  }
+}

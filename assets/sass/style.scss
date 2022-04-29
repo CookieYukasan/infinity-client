@@ -1,0 +1,30 @@
+@use 'sass:map';
+@import './sass-utils/variables';
+@import './sass-utils/helpers';
+@import './base/typography';
+@import './base/spacing';
+@import './pages/home';
+
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: normal;
+  font-family: 'Inter', sans-serif;
+}
+
+a {
+  color: map.get($colorsInHex, 'black');
+  text-decoration: none;
+  transition: ease 0.3s;
+}
+
+a:hover,
+a:active {
+  color: map.get($colorsInHex, 'purple');
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
