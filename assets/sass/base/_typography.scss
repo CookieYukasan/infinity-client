@@ -1,3 +1,16 @@
+@use 'sass:map';
+
+a {
+  color: map.get($colorsInHex, 'black');
+  text-decoration: none;
+  transition: ease 0.3s;
+}
+
+a:hover,
+a:active {
+  color: map.get($colorsInHex, 'purple');
+}
+
 @each $size in $fontSizes {
   .font-#{$size} {
     font-size: #{$size}px;

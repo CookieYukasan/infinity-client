@@ -5,7 +5,6 @@
 @import './base/border-radius';
 @import './base/spacing';
 @import './components/button';
-@import './pages/home';
 
 * {
   padding: 0;
@@ -16,21 +15,27 @@
   font-family: 'Inter', sans-serif;
 }
 
-a {
-  color: map.get($colorsInHex, 'black');
-  text-decoration: none;
-  transition: ease 0.3s;
-}
-
-a:hover,
-a:active {
-  color: map.get($colorsInHex, 'purple');
-}
-
 .cursor-pointer {
   cursor: pointer;
 }
 
-button {
-  cursor: pointer;
+// Scrollbar
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  -webkit-transition: background-color 0.2s linear, width 0.2s ease-in-out;
+  transition: background-color 0.2s linear, width 0.2s ease-in-out;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: map.get($colorsInHex, 'grey');
+  border-radius: 6px;
+  -webkit-transition: background-color 0.2s linear, width 0.2s ease-in-out;
+  transition: background-color 0.2s linear, width 0.2s ease-in-out;
 }

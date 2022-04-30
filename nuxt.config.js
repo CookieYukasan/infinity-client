@@ -73,7 +73,7 @@ export default {
   publicRuntimeConfig: {
     isDev: process.env.NODE_ENV !== 'production',
     discordInviteLink:
-      process.env.DISCORD_INVITE_LINK || 'https://google.com.br',
+      process.env.DISCORD_INVITE_LINK || 'https://discord.gg/T2BRpfxmSc',
   },
 
   // proxy: {

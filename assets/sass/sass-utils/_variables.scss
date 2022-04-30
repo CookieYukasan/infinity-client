@@ -1,5 +1,17 @@
 $classPrefix: 'infinity-';
-$fontSizes: 8, 12, 14, 16, 24, 36, 70;
+$fontSizes: 8, 12, 14, 16, 24, 36, 46, 48, 70;
+:root {
+  --black: #000000;
+  --white: #ffffff;
+  --purple: #595cff;
+  --light-purple: #8c8eff;
+  --dark-purple: #383be4;
+  --snow: #f9f9fb;
+  --pale-grey: #f0f0f5;
+  --light-grey: #e6e6eb;
+  --grey: #afb1bd;
+  --dark-grey: #82828b;
+}
 $colorsInHex: (
   'black': #000000,
   'white': #ffffff,
@@ -12,9 +24,5 @@ $colorsInHex: (
   'grey': #afb1bd,
   'dark-grey': #82828b,
 );
-
-:root {
-  --purple: #595cff;
-}
 $borderRadiusSizes: 2, 4, 8, 10;
 $marginAndPaddingSizes: 2, 4, 8, 12, 16, 24, 36, 80;

@@ -133,11 +133,33 @@
         </div>
       </section>
       <section ref="services" class="mt-80">
-        <h1 class="text-center font-bold font-70 mt-80">ABA DE SERVICOS</h1>
-        <h1 class="text-center font-bold font-70 mt-80">ABA DE SERVICOS</h1>
-        <h1 class="text-center font-bold font-70 mt-80">ABA DE SERVICOS</h1>
-        <h1 class="text-center font-bold font-70 mt-80">ABA DE SERVICOS</h1>
-        <h1 class="text-center font-bold font-70 mt-80">ABA DE SERVICOS</h1>
+        <h1 class="text-center font-bold font-36">Conheça nossos serviços</h1>
+        <p class="text-center font-dark-grey font-14 mb-24">
+          Nós oferecemos vários tipos de boost's, conheça um pouco sobre cada
+          uma delas e escolhe qual se encaixa mais no seu perfil:
+        </p>
+        <div
+          class="infinity-service-grid row row-cols-4 d-flex justify-content-center"
+        >
+          <div
+            v-for="(item, index) in servicesItems"
+            :key="item.label"
+            class="infinity-service-card d-flex flex-column align-items-center justify-content-center position-relative col"
+          >
+            <span class="font-bold font-14 position-absolute"
+              >0{{ index + 1 }}</span
+            >
+            <i class="fas fa-dice font-70"></i>
+            <p class="font-bold font-16 mt-16">{{ item.label }}</p>
+          </div>
+        </div>
+      </section>
+      <section ref="avaluations" class="mt-80 text-center">
+        <h1 class="font-bold font-36 mt-80">ABA DE AVALIACOES</h1>
+        <h1 class="font-bold font-36 mt-80">ABA DE AVALIACOES</h1>
+        <h1 class="font-bold font-36 mt-80">ABA DE AVALIACOES</h1>
+        <h1 class="font-bold font-36 mt-80">ABA DE AVALIACOES</h1>
+        <h1 class="font-bold font-36 mt-80">ABA DE AVALIACOES</h1>
       </section>
     </main>
   </div>
@@ -147,6 +169,32 @@
 export default {
   data() {
     return {
+      servicesItems: [
+        {
+          icon: 'fas fa-dice',
+          label: 'Boost de EXP',
+        },
+        {
+          icon: 'fas fa-dice',
+          label: 'Boost de EXP',
+        },
+        {
+          icon: 'fas fa-dice',
+          label: 'Boost de EXP',
+        },
+        {
+          icon: 'fas fa-dice',
+          label: 'Boost de EXP',
+        },
+        {
+          icon: 'fas fa-dice',
+          label: 'Boost de EXP',
+        },
+        {
+          icon: 'fas fa-dice',
+          label: 'Boost de EXP',
+        },
+      ],
       headerMenuItems: [
         {
           label: 'Inicio',
@@ -254,27 +302,31 @@ export default {
 }
 </script>
 
-<style scoped>
-.infinity-desktop-header a:not(.active-tab) {
-  color: #a5a9b0;
-}
+<style lang="scss">
+.infinity-desktop-header {
+  a {
+    &:not(.active-tab) {
+      color: #a5a9b0;
+    }
 
-.infinity-desktop-header a:not(.active-tab):hover,
-.infinity-desktop-header a:not(.active-tab):active {
-  color: var(--purple);
-}
+    &:not(.active-tab):hover,
+    &:not(.active-tab):active {
+      color: var(--purple);
+    }
 
-.infinity-desktop-header a.active-tab::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 40%;
-  width: 8px;
-  height: 8px;
-  background-color: #595cff;
-  border-radius: 50%;
-  margin-bottom: -15px;
-  animation: bloop 500ms ease-in-out;
+    &.active-tab::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 40%;
+      width: 8px;
+      height: 8px;
+      background-color: #595cff;
+      border-radius: 50%;
+      margin-bottom: -15px;
+      animation: bloop 500ms ease-in-out;
+    }
+  }
 }
 
 @keyframes bloop {
@@ -288,5 +340,21 @@ export default {
 
 .animated-text {
   border-right: 4px solid var(--purple);
+}
+
+.infinity-service-grid {
+  gap: 25px;
+}
+
+.infinity-service-card {
+  border: 2px solid var(--purple);
+  height: 250px;
+  box-shadow: 0px 3px 52px rgba(90, 92, 102, 0.06);
+  border-radius: 8px;
+
+  span {
+    left: 15px;
+    top: 15px;
+  }
 }
 </style>
