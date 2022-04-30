@@ -2,7 +2,9 @@
 @import './sass-utils/variables';
 @import './sass-utils/helpers';
 @import './base/typography';
+@import './base/border-radius';
 @import './base/spacing';
+@import './components/button';
 @import './pages/home';
 
 * {
@@ -26,5 +28,9 @@ a:active {
 }
 
 .cursor-pointer {
+  cursor: pointer;
+}
+
+button {
   cursor: pointer;
 }
