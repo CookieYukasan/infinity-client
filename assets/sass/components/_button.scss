@@ -1,0 +1,14 @@
+@use 'sass:map';
+
+.btn-#{$classPrefix}primary {
+  color: map.get($colorsInHex, 'white');
+  background-color: map.get($colorsInHex, 'purple');
+  border: 1px solid map.get($colorsInHex, 'purple') !important;
+}
+
+.btn-#{$classPrefix}primary:hover,
+.btn-#{$classPrefix}outline:hover {
+  color: map.get($colorsInHex, 'white');
+  background-color: map.get($colorsInHex, 'light-purple');
+  border: 1px solid map.get($colorsInHex, 'light-purple') !important;
+}

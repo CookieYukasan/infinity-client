@@ -1,5 +1,3 @@
-$spaceSizes: 2, 4, 8, 12, 16, 24, 36;
-
 .ml-auto {
   margin-left: auto;
 }
@@ -8,8 +6,13 @@ $spaceSizes: 2, 4, 8, 12, 16, 24, 36;
   margin-right: auto;
 }
 
-@each $size in $spaceSizes {
+@each $size in $marginAndPaddingSizes {
   // Margin
+
+  .m-#{$size} {
+    margin: #{$size}px;
+  }
+
   .mtb-#{$size} {
     margin-top: #{$size}px;
     margin-bottom: #{$size}px;
@@ -32,6 +35,10 @@ $spaceSizes: 2, 4, 8, 12, 16, 24, 36;
   }
 
   // Padding
+
+  .p-#{$size} {
+    padding: #{$size}px !important;
+  }
 
   .ptb-#{$size} {
     padding-top: #{$size}px;

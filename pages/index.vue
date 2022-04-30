@@ -1,63 +1,42 @@
 <template>
   <div>
-    <div ref="header" class="container-fluid sticky-top bg-light-purple">
-      <header class="infinity-desktop-header" v-if="$device.isDesktop">
+    <div ref="header" class="container-fluid sticky-top bg-white">
+      <header
+        class="infinity-desktop-header pt-16 pb-16"
+        v-if="$device.isDesktop"
+      >
         <div class="container">
           <div class="row">
-            <!-- <div class="col-12 position-relative h-106">
-              <div class="position-absolute left-0">
-                <NuxtLink to="/">
-                  <img
-                    height="55px"
-                    class="mtb-16"
-                    width="100%"
-                    src="/img/web/logo.png"
-                    alt="Elo Infinity"
-                  />
-                </NuxtLink>
-              </div>
-              <div
-                class="d-flex justify-content-center align-items-center ptb-24 h-100"
-              >
-                <div v-for="(item, index) of headerMenuItems" :key="index">
-                  <a
-                    class="font-12 font-bold cursor-pointer font-black"
-                    :class="{
-                      'mr-16': index < headerMenuItems.length - 1,
-                    }"
-                    @click="scrollToId(item.id)"
-                    >{{ item.label }}</a
-                  >
-                </div>
-              </div>
-            </div> -->
             <div
-              class="col-12 d-flex justify-content-center align-items-center"
+              class="col-12 d-flex justify-content-between align-items-center"
             >
-              <div
-                v-for="(item, index) in headerMenuItems"
-                :key="item.id"
-                class="infinity-link d-flex justify-content-center align-items-center"
-              >
-                <NuxtLink v-if="headerMenuItems.length / 2 === index" to="/">
-                  <img
-                    height="60px"
-                    class="mb-16 mt-8 mr-16"
-                    src="/img/web/logo.png"
-                    alt="Elo Infinity"
-                  />
-                </NuxtLink>
-                <div class="bloop-animation">
+              <NuxtLink to="/">
+                <img
+                  height="45px"
+                  class="mr-16"
+                  src="/img/web/check-logo.png"
+                  alt="Elo Infinity"
+                />
+              </NuxtLink>
+              <div class="d-flex justify-content-center align-items-center">
+                <div
+                  v-for="(item, index) in headerMenuItems"
+                  :key="item.id"
+                  class="infinity-link d-flex justify-content-center align-items-center"
+                >
                   <a
-                    class="font-14 font-bold cursor-pointer font-white"
+                    class="position-relative font-16 font-500 cursor-pointer"
                     :class="{
                       'mr-16': index < headerMenuItems.length - 1,
+                      'active-tab font-bold font-black':
+                        index === activeTabIndex,
                     }"
                     @click="scrollToId(item.id)"
                     >{{ item.label }}</a
                   >
                 </div>
               </div>
+              <Button :btnLoading="false">Contratar</Button>
             </div>
           </div>
         </div>
@@ -67,7 +46,7 @@
           <img
             height="45px"
             width="100%"
-            src="/img/web/logo.png"
+            src="/img/web/check-logo.png"
             alt="Elo Infinity"
           />
         </NuxtLink>
@@ -118,6 +97,43 @@
         ></div>
       </header>
     </div>
+    <main class="container">
+      <section ref="top" class="mt-80">
+        <div class="d-flex justify-content-around align-items-center">
+          <div
+            class="d-flex justify-content-center align-items-center flex-column"
+          >
+            <h1 class="font-bold font-70">Elo Job Infinity</h1>
+            <p class="font-light-gray font-24">
+              Com a Infinity você tem
+              <strong class="animated-text position-relative font-purple">
+                {{ animatedTextValue }}
+              </strong>
+            </p>
+            <div class="d-flex align-items-center justify-content-center mt-16">
+              <Button btnClass="btn-infinity-primary br-10 p-16 ptb-12 mr-16">
+                <i class="fab fa-discord mr-4"></i>
+                Nosso Discord</Button
+              >
+              <Button>Central do Cliente</Button>
+            </div>
+          </div>
+          <img
+            src="/img/web/rocket-illustration.svg"
+            width="500px"
+            height="500px"
+            alt="Rocket Illustration"
+          />
+        </div>
+      </section>
+      <section ref="services" class="mt-80">
+        <h1 class="text-center font-bold font-70 mt-80">ABA DE SERVICOS</h1>
+        <h1 class="text-center font-bold font-70 mt-80">ABA DE SERVICOS</h1>
+        <h1 class="text-center font-bold font-70 mt-80">ABA DE SERVICOS</h1>
+        <h1 class="text-center font-bold font-70 mt-80">ABA DE SERVICOS</h1>
+        <h1 class="text-center font-bold font-70 mt-80">ABA DE SERVICOS</h1>
+      </section>
+    </main>
   </div>
 </template>
 
@@ -127,37 +143,40 @@ export default {
     return {
       headerMenuItems: [
         {
-          label: 'INÍCIO',
+          label: 'Inicio',
           id: 'top',
         },
         {
-          label: 'CONHEÇA A INFINITY',
-          id: 'meet-infinity',
+          label: 'Serviços',
+          id: 'services',
         },
         {
-          label: 'NOSSOS SERVIÇOS',
-          id: 'be-your-boss',
+          label: 'Avaliações',
+          id: 'avaluations',
         },
         {
-          label: 'CONTATO',
-          id: 'be-free',
+          label: 'Sobre',
+          id: 'about',
+        },
+        {
+          label: 'Contato',
+          id: 'contact',
         },
       ],
-      textArray: [
-        'dinheiro',
-        'alcance',
+      animatedTextArr: [
+        'rápidez',
+        'privacidade',
         'segurança',
-        'fãs',
-        'mimos',
-        'seguidores',
+        'suporte',
+        'qualidade',
       ],
       animatedTextValue: '',
       speedForward: 100,
-      speedWait: 1000,
+      speedWait: 10,
       speedBackspace: 100,
-      remainingTime: 172800,
       displayOffCanvas: false,
       bootstrapInstance: null,
+      activeTabIndex: 0,
     }
   },
   methods: {
@@ -166,7 +185,7 @@ export default {
         this.animatedTextValue = text.substring(0, i--)
         setTimeout(() => this.delWriter(text, i, cb), this.speedBackspace)
       } else if (typeof cb == 'function') {
-        setTimeout(cb, 5)
+        setTimeout(cb, 100)
       }
     },
     typeWriter(text, i, cb) {
@@ -178,10 +197,10 @@ export default {
       }
     },
     startTypeWriter(i) {
-      if (typeof this.textArray[i] == 'undefined') {
+      if (typeof this.animatedTextArr[i] == 'undefined') {
         setTimeout(() => this.startTypeWriter(0), this.speedWait)
-      } else if (i < this.textArray[i].length + 1) {
-        this.typeWriter(this.textArray[i], 0, () => {
+      } else if (i < this.animatedTextArr[i].length + 1) {
+        this.typeWriter(this.animatedTextArr[i], 0, () => {
           this.startTypeWriter(i + 1)
         })
       }
@@ -190,15 +209,21 @@ export default {
       this.displayOffCanvas = false
     },
     scrollToId(id) {
-      if (this.$device.isMobile) {
-        this.closeOffCanvas()
-      }
+      if (this.$device.isMobile) this.closeOffCanvas()
+
+      this.activeTabIndex = this.headerMenuItems.findIndex(
+        (item) => item.id === id
+      )
+
+      if (id === 'top') return window.scrollTo(0, 0)
 
       const element = this.$refs[id]
       window.scrollTo(0, element.offsetTop - this.$refs.header.clientHeight)
     },
   },
   mounted() {
+    this.startTypeWriter(0)
+
     if (this.$device.isMobile) {
       this.$nextTick(() => {
         this.bootstrapInstance = new bootstrap.Offcanvas(
@@ -222,3 +247,40 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.infinity-desktop-header a:not(.active-tab) {
+  color: #a5a9b0;
+}
+
+.infinity-desktop-header a:not(.active-tab):hover,
+.infinity-desktop-header a:not(.active-tab):active {
+  color: var(--purple);
+}
+
+.infinity-desktop-header a.active-tab::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 40%;
+  width: 8px;
+  height: 8px;
+  background-color: #595cff;
+  border-radius: 50%;
+  margin-bottom: -15px;
+  animation: bloop 500ms ease-in-out;
+}
+
+@keyframes bloop {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animated-text {
+  border-right: 4px solid var(--purple);
+}
+</style>
