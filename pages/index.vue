@@ -111,10 +111,16 @@
               </strong>
             </p>
             <div class="d-flex align-items-center justify-content-center mt-16">
-              <Button btnClass="btn-infinity-primary br-10 p-16 ptb-12 mr-16">
-                <i class="fab fa-discord mr-4"></i>
-                Nosso Discord</Button
+              <a
+                :href="$config.discordInviteLink"
+                target="_blank"
+                class="mr-16"
               >
+                <Button btnClass="btn-infinity-primary br-10 p-16 ptb-12">
+                  <i class="fab fa-discord mr-4"></i>
+                  Nosso Discord</Button
+                >
+              </a>
               <Button>Central do Cliente</Button>
             </div>
           </div>
