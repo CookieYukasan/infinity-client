@@ -134,7 +134,7 @@
       </section>
       <section ref="services" class="mt-80">
         <h1 class="text-center font-bold font-36">Conheça nossos serviços</h1>
-        <p class="text-center font-dark-grey font-14 mb-24">
+        <p class="text-center font-dark-grey font-16 mb-36 mt-8 w-50 mx-auto">
           Nós oferecemos vários tipos de boost's, conheça um pouco sobre cada
           uma delas e escolhe qual se encaixa mais no seu perfil:
         </p>
@@ -144,13 +144,14 @@
           <div
             v-for="(item, index) in servicesItems"
             :key="item.label"
-            class="infinity-service-card d-flex flex-column align-items-center justify-content-center position-relative col"
+            class="infinity-service-card p-36 d-flex flex-column align-items-center justify-content-center position-relative col"
           >
             <span class="font-bold font-14 position-absolute"
               >0{{ index + 1 }}</span
             >
-            <i class="fas fa-dice font-70"></i>
+            <i class="font-70" :class="item.icon"></i>
             <p class="font-bold font-16 mt-16">{{ item.label }}</p>
+            <p class="font-14 mt-4 text-center" v-html="item.description"></p>
           </div>
         </div>
       </section>
@@ -174,28 +175,40 @@ export default {
     return {
       servicesItems: [
         {
-          icon: 'fas fa-dice',
-          label: 'Boost de EXP',
+          icon: 'fas fa-rocket',
+          label: 'ELO BOOST',
+          description:
+            'Um <strong>jogador profissional</strong> irá garantir o elo desejado jogando <strong>em sua conta</strong>.',
         },
         {
-          icon: 'fas fa-dice',
-          label: 'Boost de EXP',
+          icon: 'fas fa-brain',
+          label: 'DUO BOOST',
+          description:
+            'Você irá jogar <strong>duo</strong> com um <strong>jogador profissional</strong>, até chegar no elo desejado',
         },
         {
-          icon: 'fas fa-dice',
-          label: 'Boost de EXP',
+          icon: 'fas fa-bus',
+          label: 'MD10',
+          description:
+            'Iremos <strong>garantir o melhor desempenho</strong> possível na sua <strong>classificatória</strong>',
         },
         {
-          icon: 'fas fa-dice',
-          label: 'Boost de EXP',
+          icon: 'fas fa-burn',
+          label: 'COACHING',
+          description:
+            '<strong>Aprenda as melhores técnicas</strong> para subir de elo com <strong>jogadores de alto nível</strong>',
         },
         {
-          icon: 'fas fa-dice',
-          label: 'Boost de EXP',
+          icon: 'fas fa-bug',
+          label: 'Lorem ipsum',
+          description:
+            'Lorem, <strong>ipsum dolor sit</strong> amet consectetur adipisicing elit. <strong>Quisquam, quidem</strong>',
         },
         {
-          icon: 'fas fa-dice',
-          label: 'Boost de EXP',
+          icon: 'fas fa-building',
+          label: 'Lorem ipsum',
+          description:
+            'Lorem, <strong>ipsum dolor sit</strong> amet consectetur adipisicing elit. <strong>Quisquam, quidem</strong>',
         },
       ],
       headerMenuItems: [
@@ -370,7 +383,6 @@ export default {
 
 .infinity-service-card {
   border: 2px solid var(--purple);
-  height: 250px;
   box-shadow: 0px 3px 52px rgba(90, 92, 102, 0.06);
   border-radius: 8px;
 
