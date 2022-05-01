@@ -154,7 +154,10 @@
           </div>
         </div>
       </section>
-      <section ref="avaluations" class="mt-80 text-center">
+      <section ref="evaluations" class="mt-80 text-center">
+        <h1 class="font-bold font-36 mt-80">ABA DE AVALIACOES</h1>
+        <h1 class="font-bold font-36 mt-80">ABA DE AVALIACOES</h1>
+        <h1 class="font-bold font-36 mt-80">ABA DE AVALIACOES</h1>
         <h1 class="font-bold font-36 mt-80">ABA DE AVALIACOES</h1>
         <h1 class="font-bold font-36 mt-80">ABA DE AVALIACOES</h1>
         <h1 class="font-bold font-36 mt-80">ABA DE AVALIACOES</h1>
@@ -206,7 +209,7 @@ export default {
         },
         {
           label: 'Avaliações',
-          id: 'avaluations',
+          id: 'evaluations',
         },
         {
           label: 'Sobre',
@@ -274,9 +277,25 @@ export default {
       const element = this.$refs[id]
       window.scrollTo(0, element.offsetTop - this.$refs.header.clientHeight)
     },
+    onScroll() {
+      const scrollTop = window.scrollY
+      const headerHeight = this.$refs.header.clientHeight
+
+      this.headerMenuItems.forEach((item, index) => {
+        const element = this.$refs[item.id]
+        const elementTopHeight = element.offsetTop + element.clientHeight
+        const elementTop = elementTopHeight / 2 - headerHeight
+
+        if (scrollTop >= elementTop) {
+          this.activeTabIndex = index
+        }
+      })
+    },
   },
   mounted() {
     this.startTypeWriter(0)
+
+    document.addEventListener('scroll', this.onScroll)
 
     if (this.$device.isMobile) {
       this.$nextTick(() => {
@@ -285,6 +304,9 @@ export default {
         )
       })
     }
+  },
+  beforeDestroy() {
+    document.removeEventListener('scroll', this.onScroll)
   },
   head() {
     return {
