@@ -206,7 +206,7 @@ export default {
         },
         {
           icon: 'fas fa-building',
-          label: 'Lorem ipsum',
+          label: 'Lorem ipsum 2',
           description:
             'Lorem, <strong>ipsum dolor sit</strong> amet consectetur adipisicing elit. <strong>Quisquam, quidem</strong>',
         },
@@ -296,6 +296,7 @@ export default {
 
       this.headerMenuItems.forEach((item, index) => {
         const element = this.$refs[item.id]
+        if (!element) return // @todo remove this code after all elements are created
         const elementTopHeight = element.offsetTop + element.clientHeight
         const elementTop = elementTopHeight / 2 - headerHeight
 
@@ -308,18 +309,17 @@ export default {
   mounted() {
     this.startTypeWriter(0)
 
-    document.addEventListener('scroll', this.onScroll)
-
-    if (this.$device.isMobile) {
+    if (this.$device.isMobile)
       this.$nextTick(() => {
         this.bootstrapInstance = new bootstrap.Offcanvas(
           this.$refs.offcanvasRight
         )
       })
-    }
+    else document.addEventListener('scroll', this.onScroll)
   },
   beforeDestroy() {
-    document.removeEventListener('scroll', this.onScroll)
+    if (this.$device.isDesktop)
+      document.removeEventListener('scroll', this.onScroll)
   },
   head() {
     return {
