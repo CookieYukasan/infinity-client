@@ -69,7 +69,7 @@
             aria-labelledby="offcanvasRightLabel"
           >
             <div class="offcanvas-header">
-              <h5 id="offcanvasRightLabel">Elo Infinity</h5>
+              <h5 id="offcanvasRightLabel">Elo Job Infinity</h5>
               <button
                 type="button"
                 class="btn-close text-reset"
@@ -82,7 +82,8 @@
                 <a
                   v-for="item in headerMenuItems"
                   :key="item.id"
-                  class="mt-2 font-bold font-14"
+                  class="mt-4 font-bold font-16"
+                  @click="scrollToId(item.id)"
                 >
                   {{ item.label }}
                 </a>
@@ -90,11 +91,7 @@
             </div>
           </div>
         </div>
-        <div
-          v-if="displayOffCanvas"
-          class="offcanvas-outside-zone"
-          @click="closeOffCanvas"
-        ></div>
+        <div class="offcanvas-outside-zone"></div>
       </header>
     </div>
     <main class="container">
@@ -275,7 +272,6 @@ export default {
       speedForward: 100,
       speedWait: 10,
       speedBackspace: 100,
-      displayOffCanvas: false,
       bootstrapInstance: null,
       activeTabIndex: 0,
     }
@@ -307,7 +303,7 @@ export default {
       }
     },
     closeOffCanvas() {
-      this.displayOffCanvas = false
+      this.bootstrapInstance.hide()
     },
     scrollToId(id) {
       if (this.$device.isMobile) this.closeOffCanvas()
