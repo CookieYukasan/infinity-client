@@ -34,6 +34,11 @@
     margin-top: #{$size}px !important;
   }
 
+  .mrl-#{$size} {
+    margin-right: #{$size}px !important;
+    margin-left: #{$size}px !important;
+  }
+
   // Padding
 
   .p-#{$size} {

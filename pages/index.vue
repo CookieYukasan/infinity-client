@@ -52,7 +52,7 @@
         </NuxtLink>
         <div class="d-block ml-auto">
           <button
-            class="btn font-white"
+            class="btn font-black"
             type="button"
             data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasRight"
@@ -99,18 +99,37 @@
     </div>
     <main class="container">
       <section ref="top" class="mt-80">
-        <div class="d-flex justify-content-around align-items-center">
+        <div
+          class="d-flex justify-content-around align-items-center"
+          :class="{
+            'flex-column': $device.isMobile,
+          }"
+        >
           <div
             class="d-flex justify-content-center align-items-center flex-column"
           >
-            <h1 class="font-bold font-70">Elo Job Infinity</h1>
-            <p class="font-light-gray font-24">
+            <h1
+              class="font-bold"
+              :class="$device.isMobile ? 'font-36' : 'font-70'"
+            >
+              Elo Job Infinity
+            </h1>
+            <p
+              class="font-light-gray"
+              :class="$device.isMobile ? 'font-14' : 'font-24'"
+            >
               Com a Infinity você tem
               <strong class="animated-text position-relative font-purple">
                 {{ animatedTextValue }}
               </strong>
             </p>
-            <div class="d-flex align-items-center justify-content-center mt-16">
+            <div
+              class="d-flex align-items-center justify-content-center"
+              :class="{
+                'mt-24': $device.isMobile,
+                'mt-16': $device.isDesktop,
+              }"
+            >
               <a
                 :href="$config.discordInviteLink"
                 target="_blank"
@@ -126,20 +145,32 @@
           </div>
           <img
             src="/img/web/rocket-illustration.svg"
-            width="500px"
-            height="500px"
+            :class="{
+              'mt-24': $device.isMobile,
+            }"
+            :width="$device.isMobile ? '300px' : '500px'"
+            :height="$device.isMobile ? '300px' : '500px'"
             alt="Rocket Illustration"
           />
         </div>
       </section>
       <section ref="services" class="mt-80">
         <h1 class="text-center font-bold font-36">Conheça nossos serviços</h1>
-        <p class="text-center font-dark-grey font-16 mb-36 mt-8 w-50 mx-auto">
+        <p
+          class="text-center font-dark-grey font-16 mb-36 mt-8 mx-auto"
+          :class="{
+            'w-50': $device.isDesktop,
+          }"
+        >
           Nós oferecemos vários tipos de boost's, conheça um pouco sobre cada
           uma delas e escolhe qual se encaixa mais no seu perfil:
         </p>
         <div
-          class="infinity-service-grid row row-cols-4 d-flex justify-content-center"
+          class="infinity-service-grid row d-flex justify-content-center"
+          :class="{
+            'row-cols-4': $device.isDesktop,
+            'row-cols-1 mrl-16': $device.isMobile,
+          }"
         >
           <div
             v-for="(item, index) in servicesItems"
