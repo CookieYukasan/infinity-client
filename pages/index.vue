@@ -95,7 +95,7 @@
       </header>
     </div>
     <main class="container">
-      <section ref="top" class="mt-80">
+      <section ref="top" class="mt-100">
         <div
           class="d-flex justify-content-around align-items-center"
           :class="{
@@ -151,7 +151,7 @@
           />
         </div>
       </section>
-      <section ref="services" class="mt-80">
+      <section ref="services" class="mt-100">
         <h1 class="text-center font-bold font-36">Conheça nossos serviços</h1>
         <p
           class="text-center font-dark-grey font-16 mb-36 mt-8 mx-auto"
@@ -183,7 +183,7 @@
           </div>
         </div>
       </section>
-      <section ref="evaluations" class="mt-80 text-center">
+      <section ref="evaluations" class="mt-100 text-center">
         <h1 class="font-bold font-36 mt-80">ABA DE AVALIACOES</h1>
         <h1 class="font-bold font-36 mt-80">ABA DE AVALIACOES</h1>
         <h1 class="font-bold font-36 mt-80">ABA DE AVALIACOES</h1>
@@ -194,6 +194,216 @@
         <h1 class="font-bold font-36 mt-80">ABA DE AVALIACOES</h1>
       </section>
     </main>
+    <div class="bg-black text-white mt-100">
+      <div class="container">
+        <section ref="faq">
+          <div class="row">
+            <div class="col-12">
+              <h1 class="font-40 font-bold text-center mtb-36">
+                Perguntas frequentes
+              </h1>
+              <div class="accordion accordion-flush" id="faq">
+                <div
+                  class="accordion-item bg-unset border-unset"
+                  v-for="(item, index) in faqItems"
+                  :key="index"
+                >
+                  <h2 class="accordion-header" id="questionOne">
+                    <button
+                      aria-label="Abrir pergunta"
+                      class="accordion-button bg-black b-0 collapsed font-bold font-white"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      :data-bs-target="`#faq-collapseOne-${index}`"
+                      aria-expanded="false"
+                      aria-controls="faq-collapseOne"
+                    >
+                      <i class="font-14 mr-8 fas fa-chevron-right"></i>
+                      {{ item.question }}
+                    </button>
+                  </h2>
+                  <div
+                    :id="`faq-collapseOne-${index}`"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="questionOne"
+                    data-bs-parent="#faq"
+                  >
+                    <p class="mb-24" v-html="item.answer"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <footer>
+          <div class="row mt-32">
+            <div
+              class="col-lg-6 col-sm-12"
+              :class="{ 'text-center': $device.isMobile }"
+            >
+              <img
+                :style="{ height: '75px' }"
+                src="/img/web/logo.png"
+                alt="Migxs"
+              />
+              <p class="font-14 mtb-32">
+                League of Legends é uma marca registrada da Riot Games, Inc.<br />
+                Nós não somos de nenhuma forma afiliados, associados ou
+                endossados pela Riot Games, Inc. <br />
+                Todos os direitos autoriais, marcas, imagens e marcas de serviço
+                pertencem a seus respectivos proprietários.
+              </p>
+              <div
+                class="d-flex"
+                :class="{ 'justify-content-center mb-32': $device.isMobile }"
+              >
+                <a
+                  :aria-label="social.name"
+                  class="pr-24"
+                  v-for="(social, index) of socialNetworks"
+                  :key="index"
+                  :href="social.link"
+                  target="_blank"
+                >
+                  <i
+                    class="font-36 font-white"
+                    :class="social.icon"
+                    :alt="social.name"
+                  ></i>
+                </a>
+              </div>
+            </div>
+            <div
+              class="col-lg-6 col-sm-12"
+              :class="$device.isDesktop ? 'text-end' : 'text-center'"
+            >
+              <h2 class="migxs-white font-20 font-bold">COMPRA 100% SEGURA</h2>
+              <div
+                class="d-flex mt-16"
+                :class="
+                  $device.isDesktop
+                    ? 'justify-content-end'
+                    : 'justify-content-center'
+                "
+              >
+                <img
+                  :class="index < creditCardsBrands.length - 1 ? 'mr-16' : ''"
+                  v-for="(brand, index) of creditCardsBrands"
+                  :key="index"
+                  :src="`/img/web/payment-methods/${brand.icon}.png`"
+                  :alt="brand.name"
+                />
+              </div>
+              <img
+                class="mt-16"
+                src="/img/web/payment-methods/pix.png"
+                alt="PIX"
+              />
+            </div>
+          </div>
+          <div class="row pb-32">
+            <div class="col-12">
+              <hr class="font-grey mtb-32" />
+              <NuxtLink
+                class="font-14 font-white font-bold text-uppercase mr-32"
+                to="/"
+                alt="Elo Job Infinity"
+                >© {{ $dayjs().year() }} Elo Job Infinity</NuxtLink
+              >
+              <a
+                :aria-label="menu.name"
+                class="font-14 font-bold text-uppercase font-white"
+                :class="index < footerMenuItems.length - 1 ? 'mr-32' : ''"
+                v-for="(menu, index) of footerMenuItems"
+                :key="index"
+                :href="menu.link"
+                target="_blank"
+                :alt="menu.name"
+                >{{ menu.name }}</a
+              >
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <!-- <footer>
+      <div class="row">
+        <div
+          class="col-lg-6 col-sm-12"
+          :class="{ 'text-center': $device.isMobile }"
+        >
+          <img class="h-74" src="/img/web/white-logo-vector.svg" alt="Migxs" />
+          <p class="font-14 mtb-32">
+            Nós cuidamos de tudo, 24 horas por dia.<br />
+            Venha ser migxs, estamos esperando por você!
+          </p>
+          <div
+            class="d-flex"
+            :class="{ 'justify-content-center mb-32': $device.isMobile }"
+          >
+            <a
+              :aria-label="social.name"
+              class="pr-24"
+              v-for="(social, index) of socialNetworks"
+              :key="index"
+              :href="social.link"
+              target="_blank"
+            >
+              <i
+                class="migxs-fa-medium migxs-white"
+                :class="social.icon"
+                :alt="social.name"
+              ></i>
+            </a>
+          </div>
+        </div>
+        <div
+          class="col-lg-6 col-sm-12"
+          :class="$device.isDesktop ? 'text-end' : 'text-center'"
+        >
+          <h2 class="font-white font-20 font-bold">COMPRA 100% SEGURA</h2>
+          <div
+            class="d-flex mt-16"
+            :class="
+              $device.isDesktop
+                ? 'justify-content-end'
+                : 'justify-content-center'
+            "
+          >
+            <img
+              :class="index < creditCardsBrands.length - 1 ? 'mr-16' : ''"
+              v-for="(brand, index) of creditCardsBrands"
+              :key="index"
+              :src="`/img/web/payment-methods/${brand.icon}.png`"
+              :alt="brand.name"
+            />
+          </div>
+          <img class="mt-16" src="/img/web/payment-methods/pix.png" alt="PIX" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <hr class="font-black mtb-32" />
+          <NuxtLink
+            class="font-14 font-bold text-uppercase mr-32"
+            to="/"
+            alt="Elo Job Infinity"
+            >© {{ $dayjs().year() }} Elo Job Infinity</NuxtLink
+          >
+          <a
+            :aria-label="menu.name"
+            class="font-14 font-bold text-uppercase"
+            :class="index < footerMenuItems.length - 1 ? 'mr-32' : ''"
+            v-for="(menu, index) of footerMenuItems"
+            :key="index"
+            :href="menu.link"
+            target="_blank"
+            :alt="menu.name"
+            >{{ menu.name }}</a
+          >
+        </div>
+      </div>
+    </footer> -->
   </div>
 </template>
 
@@ -201,6 +411,77 @@
 export default {
   data() {
     return {
+      faqItems: [
+        {
+          question: 'A Elo Job Infinity é segura/confiável?',
+          answer:
+            'Com toda certeza. Só possuímos avaliações positivas sobre os nossos serviços, você poderá conferi-las em “feedbacks” no nosso servidor do <a class="font-purple" href="https://discord.com/invite/vg8S6gbMVf" target="_blank">Discord</a>',
+        },
+        {
+          question: 'Qual o diferencial da Elo Job Infinity?',
+          answer:
+            'Quando os colaboradores são apaixonados pelo que fazem e vestem a camisa do negócio, eles conseguem levar esse diferencial para o trabalho. A Elo Infinity coloca os clientes sempre em primeiro lugar, pois priorizamos tanto a sua <strong>satisfação</strong> quanto a sua <strong>segurança</strong>. Fazemos o melhor para agregar mais qualidade ao serviço com o objetivo de tornar sua experiência de fato INFINITY.',
+        },
+        {
+          question: 'Como sei que minha conta não será roubada?',
+          answer:
+            'A seletiva de BOOSTERS é rígida; buscamos profissionais confiáveis para garantir não apenas qualidade e agilidade, mas também a privacidade e segurança necessária para execução dos serviços. No entanto, também orientamos que você verifique o e-mail da sua conta no site do jogo e utilize uma senha temporária antes de informar os dados de acesso.',
+        },
+        {
+          question: 'Quando meu serviço irá iniciar?',
+          answer:
+            'Após você contratar o serviço e o pagamento ser aprovado, daremos início ao serviço em alguns instantes. Você será notificado assim que iniciar e poderá acompanhar todo o progresso.',
+        },
+      ],
+      socialNetworks: [
+        {
+          name: 'twitter',
+          icon: 'fab fa-twitter',
+          link: 'https://twitter.com/elojobinfinity',
+        },
+        {
+          name: 'discord',
+          icon: 'fab fa-discord',
+          link: 'https://discord.com/invite/vg8S6gbMVf',
+        },
+        {
+          name: 'instagram',
+          icon: 'fab fa-instagram',
+          link: 'https://www.instagram.com/elojobinfinity/',
+        },
+      ],
+      creditCardsBrands: [
+        {
+          name: 'American Express',
+          icon: 'amex',
+        },
+        {
+          name: 'Visa',
+          icon: 'visa',
+        },
+        {
+          name: 'Elo',
+          icon: 'elo-white',
+        },
+        {
+          name: 'Mastercard',
+          icon: 'mastercard',
+        },
+      ],
+      footerMenuItems: [
+        {
+          name: 'Ajuda',
+          link: 'https://discord.com/invite/vg8S6gbMVf',
+        },
+        {
+          name: 'Política de Privacidade',
+          link: '/privacy-policy',
+        },
+        {
+          name: 'Termos de Uso',
+          link: '/terms-of-use',
+        },
+      ],
       servicesItems: [
         {
           icon: 'fas fa-rocket',
@@ -417,5 +698,29 @@ export default {
     left: 15px;
     top: 15px;
   }
+}
+
+.accordion-collapse {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+.accordion-button::after {
+  width: 0px;
+  height: 0px;
+}
+
+.accordion-button {
+  padding: 24px 0;
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.125);
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: var(--black) !important;
+  color: var(--primary);
+  box-shadow: none;
+}
+
+.accordion-button:not(.collapsed) i {
+  transform: rotate(90deg);
 }
 </style>

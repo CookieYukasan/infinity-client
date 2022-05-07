@@ -58,8 +58,16 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/device',
+    '@nuxtjs/dayjs',
     // '@nuxtjs/proxy',
   ],
+
+  dayjs: {
+    locales: ['pt-br'],
+    defaultLocale: 'pt-br',
+    defaultTimeZone: 'America/Sao_Paulo',
+    plugins: ['utc', 'timezone'],
+  },
 
   device: {
     refreshOnResize: true,
