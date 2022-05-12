@@ -7,7 +7,7 @@ const redirectUserAfterLogin = ($router) => {
     return $router.go(redirectUserTo)
   }
 
-  $router.go('/')
+  $router.go('/dashboard')
 }
 
 export const state = () => ({

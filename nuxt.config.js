@@ -66,6 +66,10 @@ export default {
     // '@nuxtjs/proxy',
   ],
 
+  router: {
+    middleware: ['getCurrentUser'],
+  },
+
   dayjs: {
     locales: ['pt-br'],
     defaultLocale: 'pt-br',
@@ -93,13 +97,13 @@ export default {
     },
   },
 
-  // proxy: {
-  //   '/api/': {
-  //     target: process.env.BACKEND_URL || 'http://localhost:5000',
-  //     pathRewrite: { '^/api/': '' },
-  //     changeOrigin: true,
-  //   },
-  // },
+  proxy: {
+    '/api/': {
+      target: process.env.BACKEND_URL || 'http://localhost:5000',
+      pathRewrite: { '^/api/': '' },
+      changeOrigin: true,
+    },
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

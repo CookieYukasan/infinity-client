@@ -48,7 +48,6 @@
         <Button
           btnClass="btn-infinity-primary br-6 p-16 ptb-12 mtb-32 w-100"
           :onClick="handleLogin"
-          :btnLoading="loading.login"
           btnType="submit"
           :btnDisabled="
             (!!$config.hcaptcha.disabled ? false : !captcha.isFilled) ||
@@ -56,12 +55,12 @@
             $v.user.password.$invalid
           "
         >
-          Entrar
+          Cadastrar
         </Button>
         <span
-          >Não tem conta?
-          <NuxtLink to="/register" class="font-purple font-bold"
-            >Cadastre-se</NuxtLink
+          >Já tem uma conta?
+          <NuxtLink to="/login" class="font-purple font-bold"
+            >Entre agora</NuxtLink
           ></span
         >
       </form>
@@ -107,7 +106,7 @@ export default {
       this.loading.login = true
 
       try {
-        await this.$store.dispatch('auth/login', {
+        await this.$store.dispatch('auth/register', {
           ...this.user,
           token: this.captcha.token,
           device: Bowser.parse(window.navigator.userAgent),
@@ -128,7 +127,7 @@ export default {
   },
   head() {
     return {
-      title: `Elo Job Infinity - Login`,
+      title: `Elo Job Infinity - Cadastro`,
       meta: [
         { hid: 'robots', name: 'robots', content: 'index, follow' },
         {
@@ -137,7 +136,7 @@ export default {
         },
         {
           property: 'og:title',
-          content: 'Elo Job Infinity - Login',
+          content: 'Elo Job Infinity - Cadastro',
         },
         {
           property: 'og:description',
