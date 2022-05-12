@@ -1,6 +1,11 @@
 <template>
   <div>
-    <button :type="btnType" :class="btnClass">
+    <button
+      @click="!btnDisabled && !btnLoading ? onClick : () => {}"
+      :type="btnType"
+      :class="btnClass"
+      :disabled="btnDisabled"
+    >
       <slot v-if="!btnLoading" />
       <div v-else class="spinner-border text-primary" role="status"></div>
     </button>
@@ -10,6 +15,10 @@
 <script>
 export default {
   props: {
+    onClick: {
+      type: Function,
+      default: () => {},
+    },
     btnType: {
       type: String,
       default: 'button',
@@ -18,9 +27,13 @@ export default {
       type: Boolean,
       default: false,
     },
+    btnDisabled: {
+      type: Boolean,
+      default: false,
+    },
     btnClass: {
       type: String,
-      default: 'btn-infinity-primary br-10 p-16 ptb-12',
+      default: 'btn-infinity-primary br-6 p-16 ptb-12',
     },
   },
 }

@@ -5,6 +5,11 @@ button {
   transition: ease 0.3s;
 }
 
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
 .btn-#{$classPrefix}primary {
   color: var(--white);
   background-color: var(--purple);

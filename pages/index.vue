@@ -11,12 +11,13 @@
               class="col-12 d-flex justify-content-between align-items-center"
             >
               <NuxtLink to="/">
-                <img
+                <!-- <img
                   height="45px"
                   class="mr-16"
                   src="/img/web/check-logo.png"
                   alt="Elo Infinity"
-                />
+                /> -->
+                <Logo height="45px" color="black" />
               </NuxtLink>
               <div class="d-flex justify-content-center align-items-center">
                 <div
@@ -132,12 +133,14 @@
                 target="_blank"
                 class="mr-16"
               >
-                <Button btnClass="btn-infinity-primary br-10 p-16 ptb-12">
+                <Button btnClass="btn-infinity-primary br-6 p-16 ptb-12">
                   <i class="fab fa-discord mr-4"></i>
                   Nosso Discord</Button
                 >
               </a>
-              <Button>Central do Cliente</Button>
+              <NuxtLink to="/login">
+                <Button><i class="fas fa-user mr-4"></i> Cadastre-se</Button>
+              </NuxtLink>
             </div>
           </div>
           <img
@@ -241,11 +244,7 @@
               class="col-lg-6 col-sm-12"
               :class="{ 'text-center': $device.isMobile }"
             >
-              <img
-                :style="{ height: '75px' }"
-                src="/img/web/logo.png"
-                alt="Migxs"
-              />
+              <Logo height="75px" alt="Elo Job Infinity" />
               <p class="font-14 mtb-32">
                 League of Legends é uma marca registrada da Riot Games, Inc.<br />
                 Nós não somos de nenhuma forma afiliados, associados ou
@@ -326,84 +325,6 @@
         </footer>
       </div>
     </div>
-    <!-- <footer>
-      <div class="row">
-        <div
-          class="col-lg-6 col-sm-12"
-          :class="{ 'text-center': $device.isMobile }"
-        >
-          <img class="h-74" src="/img/web/white-logo-vector.svg" alt="Migxs" />
-          <p class="font-14 mtb-32">
-            Nós cuidamos de tudo, 24 horas por dia.<br />
-            Venha ser migxs, estamos esperando por você!
-          </p>
-          <div
-            class="d-flex"
-            :class="{ 'justify-content-center mb-32': $device.isMobile }"
-          >
-            <a
-              :aria-label="social.name"
-              class="pr-24"
-              v-for="(social, index) of socialNetworks"
-              :key="index"
-              :href="social.link"
-              target="_blank"
-            >
-              <i
-                class="migxs-fa-medium migxs-white"
-                :class="social.icon"
-                :alt="social.name"
-              ></i>
-            </a>
-          </div>
-        </div>
-        <div
-          class="col-lg-6 col-sm-12"
-          :class="$device.isDesktop ? 'text-end' : 'text-center'"
-        >
-          <h2 class="font-white font-20 font-bold">COMPRA 100% SEGURA</h2>
-          <div
-            class="d-flex mt-16"
-            :class="
-              $device.isDesktop
-                ? 'justify-content-end'
-                : 'justify-content-center'
-            "
-          >
-            <img
-              :class="index < creditCardsBrands.length - 1 ? 'mr-16' : ''"
-              v-for="(brand, index) of creditCardsBrands"
-              :key="index"
-              :src="`/img/web/payment-methods/${brand.icon}.png`"
-              :alt="brand.name"
-            />
-          </div>
-          <img class="mt-16" src="/img/web/payment-methods/pix.png" alt="PIX" />
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <hr class="font-black mtb-32" />
-          <NuxtLink
-            class="font-14 font-bold text-uppercase mr-32"
-            to="/"
-            alt="Elo Job Infinity"
-            >© {{ $dayjs().year() }} Elo Job Infinity</NuxtLink
-          >
-          <a
-            :aria-label="menu.name"
-            class="font-14 font-bold text-uppercase"
-            :class="index < footerMenuItems.length - 1 ? 'mr-32' : ''"
-            v-for="(menu, index) of footerMenuItems"
-            :key="index"
-            :href="menu.link"
-            target="_blank"
-            :alt="menu.name"
-            >{{ menu.name }}</a
-          >
-        </div>
-      </div>
-    </footer> -->
   </div>
 </template>
 

@@ -45,7 +45,11 @@ export default {
   css: ['~/assets/sass/style.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    { src: '~/plugins/hcaptcha.js' },
+    { src: '~/plugins/sentry-capture-exception.js' },
+    { src: '~/plugins/vuelidate.js' },
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -82,6 +86,11 @@ export default {
     isDev: process.env.NODE_ENV !== 'production',
     discordInviteLink:
       process.env.DISCORD_INVITE_LINK || 'https://discord.gg/T2BRpfxmSc',
+    hcaptcha: {
+      disabled: process.env.NODE_ENV !== 'production',
+      siteKey:
+        process.env.HCAPTCHA_SITE_KEY || 'ec317b25-78ba-48bd-b479-9180acc7d4fd',
+    },
   },
 
   // proxy: {
