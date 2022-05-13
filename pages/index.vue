@@ -138,8 +138,18 @@
                   Nosso Discord</Button
                 >
               </a>
-              <NuxtLink to="/login">
-                <Button><i class="fas fa-user mr-4"></i> Cadastre-se</Button>
+              <NuxtLink
+                :to="loggedUser ? '/dashboard' : '/register'"
+                class="btn-infinity-primary br-6 p-16 ptb-12"
+              >
+                <i
+                  class="mr-4"
+                  :class="{
+                    'fas fa-user': loggedUser,
+                    'fas fa-user': !loggedUser,
+                  }"
+                ></i>
+                {{ loggedUser ? 'Painel' : 'Cadastre-se' }}
               </NuxtLink>
             </div>
           </div>
@@ -533,6 +543,11 @@ export default {
           this.activeTabIndex = index
         }
       })
+    },
+  },
+  computed: {
+    loggedUser() {
+      return this.$store.state.auth.user
     },
   },
   mounted() {
