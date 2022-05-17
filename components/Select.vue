@@ -8,17 +8,14 @@
         :selected="
           defaultValue && defaultValue === option.value ? 'selected' : ''
         "
+        :class="{
+          'ml-8': option.icon && option.iconType,
+        }"
       >
         <!-- <span v-if="option.icon && option.iconType" :class="option.iconType">{{
           option.icon
         }}</span> -->
-        <p
-          :class="{
-            'ml-8': option.icon && option.iconType,
-          }"
-        >
-          {{ option.text }}
-        </p>
+        {{ option.text }}
       </option>
     </select>
   </div>
