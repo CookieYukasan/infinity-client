@@ -9,9 +9,9 @@
           defaultValue && defaultValue === option.value ? 'selected' : ''
         "
       >
-        <span v-if="option.icon && option.iconType" :class="option.iconType">{{
+        <!-- <span v-if="option.icon && option.iconType" :class="option.iconType">{{
           option.icon
-        }}</span>
+        }}</span> -->
         <p
           :class="{
             'ml-8': option.icon && option.iconType,
