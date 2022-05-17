@@ -190,6 +190,7 @@ export default {
         'Ezreal',
         'KaiSa',
       ]
+      console.log('handleChangeUserName')
       try {
         await this.$store.dispatch('auth/updateProfileInformation', {
           ...this.$store.state.auth.user,
