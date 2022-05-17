@@ -1,5 +1,5 @@
 $classPrefix: 'infinity-';
-$fontSizes: 8, 12, 14, 16, 24, 36, 46, 48, 70;
+$fontSizes: 12, 14, 16, 20, 24, 32;
 :root {
   --black: #000000;
   --white: #ffffff;
@@ -11,7 +11,17 @@ $fontSizes: 8, 12, 14, 16, 24, 36, 46, 48, 70;
   --light-grey: #e6e6eb;
   --grey: #afb1bd;
   --dark-grey: #82828b;
+
+  --primary: #6f4ef3;
+  --green: #05a660;
+  --red: #ff3b3b;
+  --grey-100: #a5b4cb;
+  --grey-200: #7d8da6;
+  --grey-300: #dfe5f1;
+  --yellow: #fab035;
+  --blue: #377dff;
 }
+
 $colorsInHex: (
   'black': #000000,
   'white': #ffffff,
@@ -23,6 +33,15 @@ $colorsInHex: (
   'light-grey': #e6e6eb,
   'grey': #afb1bd,
   'dark-grey': #82828b,
+
+  'primary': #6f4ef3,
+  'green': #05a660,
+  'red': #ff3b3b,
+  'grey-100': #a5b4cb,
+  'grey-200': #7d8da6,
+  'grey-300': #dfe5f1,
+  'yellow': #fab035,
+  'blue': #377dff,
 );
-$borderRadiusSizes: 2, 4, 6;
-$marginAndPaddingSizes: 2, 4, 8, 12, 16, 24, 32, 36, 80, 100;
+$borderRadiusSizes: 6;
+$marginAndPaddingSizes: 4, 8, 16, 24, 32, 40;

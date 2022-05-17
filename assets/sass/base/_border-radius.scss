@@ -1,5 +1,0 @@
-@each $size in $borderRadiusSizes {
-  .br-#{$size} {
-    border-radius: #{$size}px;
-  }
-}

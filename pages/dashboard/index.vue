@@ -1,21 +1,17 @@
 <template>
-  <div>
-    <h1 class="font-bold font-24" @click="handleLogout">uepa</h1>
-  </div>
+  <h1>hello world, {{ loggedUser.userName }}</h1>
 </template>
 
 <script>
 export default {
-  methods: {
-    handleLogout() {
-      this.$store.dispatch('auth/logout')
-    },
-  },
   computed: {
     loggedUser() {
       return this.$store.state.auth.user
     },
   },
-  middleware: ['authenticateUser'],
+  middleware: ['authenticateBooster'],
+  layout: 'dashboard/booster',
 }
 </script>
+
+<style scoped></style>

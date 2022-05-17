@@ -17,7 +17,7 @@
                   src="/img/web/check-logo.png"
                   alt="Elo Infinity"
                 /> -->
-                <Logo height="45px" color="black" />
+                <Logo height="45px" type="black" />
               </NuxtLink>
               <div class="d-flex justify-content-center align-items-center">
                 <div

@@ -19,3 +19,13 @@
 .bg-unset {
   background-color: unset !important;
 }
+
+/**
+ * Background Colors
+ **/
+
+@each $colorName, $colorHex in $colorsInHex {
+  .infinity-bg-#{$colorName} {
+    background-color: #{$colorHex};
+  }
+}

@@ -8,7 +8,7 @@
     >
       <div>
         <NuxtLink to="/">
-          <Logo :width="$device.isDesktop ? '450px' : '300px'" color="black" />
+          <Logo :width="$device.isDesktop ? '450px' : '300px'" type="black" />
         </NuxtLink>
         <p class="font-16 text-center mt-32">
           Levamos você ao <strong class="font-purple">infinito</strong> e

@@ -2,7 +2,7 @@
 @import './sass-utils/variables';
 @import './sass-utils/helpers';
 @import './base/typography';
-@import './base/border-radius';
+@import './base/border';
 @import './base/spacing';
 @import './components/button';
 @import './components/input';
@@ -13,7 +13,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: normal;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 
 p,

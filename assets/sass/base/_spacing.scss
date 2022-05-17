@@ -65,4 +65,9 @@
   .pt-#{$size} {
     padding-top: #{$size}px !important;
   }
+
+  .prl-#{$size} {
+    padding-right: #{$size}px !important;
+    padding-left: #{$size}px !important;
+  }
 }
