@@ -77,11 +77,15 @@
         />
         <div class="d-flex align-items-center justify-content-center">
           <h1 class="font-bold font-20 mr-8">{{ loggedUser.userName }}</h1>
-          <span class="material-icons-two-tone font-24 cursor-pointer"
+          <span
+            @click="handleChangeUserName"
+            class="material-icons-two-tone font-24 cursor-pointer"
             >edit</span
           >
         </div>
-        <p class="font-primary font-bold font-14 mt-8 mb-16">Booster - Jinx</p>
+        <p class="font-primary font-bold font-14 mt-8 mb-16">
+          Booster - {{ loggedUser.userName }}
+        </p>
         <div>
           <p class="font-16 font-bold font-grey-200">Services Completed</p>
           <p class="font-32 font-bold mt-8">32</p>
@@ -162,6 +166,39 @@ export default {
     },
   },
   methods: {
+    async handleChangeUserName() {
+      const userNames = [
+        'Jinx',
+        'Ahri',
+        'Lux',
+        'Zed',
+        'Katarina',
+        'Lissandra',
+        'Fizz',
+        'Riven',
+        'Sona',
+        'Soraka',
+        'Nami',
+        'Janna',
+        'Nautilus',
+        'Lulu',
+        'Kalista',
+        'Karthus',
+        'Kassadin',
+        'Quinn',
+        'Leblanc',
+        'Ezreal',
+        'KaiSa',
+      ]
+      try {
+        await this.$store.dispatch('auth/updateProfileInformation', {
+          ...this.$store.state.auth.user,
+          userName: userNames[Math.floor(Math.random() * userNames.length)],
+        })
+      } catch (error) {
+        console.log(error)
+      }
+    },
     checkActive(href) {
       return this.$route.path === href
     },
