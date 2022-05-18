@@ -90,7 +90,7 @@
           <p class="font-16 font-bold font-grey-200">Services Completed</p>
           <p class="font-32 font-bold mt-8">32</p>
         </div>
-        <div class="border-grey-300 ptb-16 br-6 prl-32 mb-32 mt-16">
+        <div class="border-grey-300 ptb-16 br-6 prl-32 mtb-16">
           <p class="font-14 font-bold font-grey-200">Available services</p>
           <p class="font-16 font-bold mt-8">158</p>
           <Button
@@ -98,27 +98,16 @@
             >See List</Button
           >
         </div>
-        <div class="d-flex justify-content-between align-items-center">
-          <h1 class="font-bold font-16">service in progress</h1>
-          <NuxtLink to="/see-all" class="font-primary font-bold font-16"
-            >See All</NuxtLink
+        <div class="border-grey-300 ptb-16 br-6 prl-32">
+          <img
+            src="/img/web/discord-logo.svg"
+            alt="Discord Logo"
+            width="170px"
+          />
+          <Button
+            btnClass="w-100 btn-infinity-primary br-6 ptb-8 font-bold font-14 mt-16"
+            >Enter</Button
           >
-        </div>
-        <hr class="infinity-menu-divider mtb-16" />
-      </div>
-      <div class="d-flex align-items-center">
-        <img
-          src="https://64.media.tumblr.com/39d26a3e5180a472907bb25908fa151f/e25c65a797af665b-2c/s640x960/58afe6e0c65b9df32600efdf6e6c5b2add2104f6.jpg"
-          alt="Customer Avatar"
-          class="br-6"
-          height="40px"
-          width="40px"
-        />
-        <div class="ml-8">
-          <h1 class="font-14 font-bold">cookinho</h1>
-          <p class="font-12 font-semibold mt-4">
-            <span class="font-red">5 days</span> left to complete.
-          </p>
         </div>
       </div>
     </div>
