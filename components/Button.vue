@@ -33,7 +33,7 @@ export default {
     },
     btnClass: {
       type: String,
-      default: 'btn-infinity-primary br-6 p-16 ptb-12',
+      default: 'btn-infinity-primary br-6 ptb-8 w-100',
     },
   },
 }
