@@ -83,6 +83,24 @@
           See all
         </NuxtLink>
       </div>
+      <div class="d-flex align-items-center">
+        <div
+          v-for="(service, index) in servicesPriorityArr"
+          :key="service"
+          class="d-flex align-items-center mt-8"
+          :class="index !== 0 ? 'ml-16' : ''"
+        >
+          <div
+            class="service-priority-color br-6"
+            :class="{
+              'bg-red': service.includes('High'),
+              'bg-yellow': service.includes('Medium'),
+              'bg-blue': service.includes('Low'),
+            }"
+          ></div>
+          <p class="font-16 ml-8 font-black-200" v-text="service"></p>
+        </div>
+      </div>
       <table class="table infinity-table mt-24">
         <thead>
           <tr>
@@ -148,6 +166,7 @@ export default {
     return {
       hasNewMessages: true,
       showBalance: false,
+      servicesPriorityArr: ['High priority', 'Medium priority', 'Low priority'],
       servicesInProgress: [
         {
           _id: 1,

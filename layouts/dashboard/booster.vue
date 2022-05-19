@@ -114,22 +114,6 @@
               >
             </div>
           </div>
-          <div class="mt-24">
-            <h1 class="font-bold font-black-200 font-16">Service priority</h1>
-            <div
-              v-for="service in servicesPriorityArr"
-              :key="service.hexColor"
-              class="d-flex align-items-center mt-8"
-            >
-              <div
-                class="service-priority-color br-6"
-                :style="{
-                  backgroundColor: service.hexColor,
-                }"
-              ></div>
-              <p class="font-16 ml-8 font-black-200" v-text="service.label"></p>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -141,20 +125,6 @@ export default {
   data() {
     return {
       isOnline: true,
-      servicesPriorityArr: [
-        {
-          label: 'High priority',
-          hexColor: '#FF3B3B',
-        },
-        {
-          label: 'Medium priority',
-          hexColor: '#FAB035',
-        },
-        {
-          label: 'Low priority',
-          hexColor: '#377DFF',
-        },
-      ],
       statusOptions: [
         {
           icon: 'work',
