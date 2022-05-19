@@ -230,6 +230,17 @@ export default {
   border-bottom: 1px solid var(--grey-300);
 }
 
+tbody,
+td,
+tfoot,
+th,
+thead,
+tr {
+  border-color: transparent;
+  border-style: none;
+  border-width: 0;
+}
+
 .infinity-table {
   border-collapse: inherit;
 }
