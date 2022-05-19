@@ -21,6 +21,7 @@ $fontSizes: 12, 14, 16, 20, 24, 32, 48;
   --yellow: #fab035;
   --blue: #377dff;
   --black-200: #1f2235;
+  --purple-300: #a99cf6;
 }
 
 $colorsInHex: (
@@ -44,6 +45,7 @@ $colorsInHex: (
   'yellow': var(--yellow),
   'blue': var(--blue),
   'black-200': var(--black-200),
+  'purple-300': var(--purple-300),
 );
 $borderRadiusSizes: 6;
 $marginAndPaddingSizes: 0, 4, 8, 16, 24, 32, 40;

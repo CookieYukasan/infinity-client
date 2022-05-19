@@ -1,11 +1,11 @@
 <template>
-  <div class="pt-24 prl-16">
-    <div class="row fix-bootstrap-padding">
-      <div class="col-3 br-6 border-grey-300 p-16">
+  <div class="pt-24 prl-32">
+    <div class="row gx-0">
+      <div class="col-4 br-6 border-grey-300 p-16">
         <div>
           <p class="font-16 font-semibold font-grey-200">Show balance</p>
           <span v-if="showBalance" class="font-bold font-20 mt-4"
-            >R$ 3.132,23</span
+            >R$ {{ formatCurrency(3123.23) }}</span
           >
           <div
             v-if="!showBalance"
@@ -17,7 +17,7 @@
             Pending balance
           </p>
           <span v-if="showBalance" class="font-bold font-14 mt-4"
-            >R$ 73,19</span
+            >R$ {{ formatCurrency(73.19) }}</span
           >
           <div
             v-if="!showBalance"
@@ -59,7 +59,7 @@
         </p>
       </div>
     </div>
-    <div class="mt-24">
+    <div v-if="hasNewMessages" class="mt-24">
       <h1 class="font-black-200 font-bold font-20">Notification</h1>
       <div class="d-flex align-items-center mt-16">
         <span class="material-icons-outlined font-primary font-48 mr-8"
@@ -102,7 +102,8 @@
       <table class="table table-borderless infinity-table">
         <thead>
           <tr>
-            <th>Customers</th>
+            <th>Priority</th>
+            <th>Customer</th>
             <th>Estimated time</th>
             <th>Desired classification</th>
             <th>Amount receivable</th>
@@ -111,23 +112,19 @@
         <tbody>
           <tr v-for="service in servicesInProgress" :key="service._id">
             <td>
-              <div class="d-flex align-items-center">
-                <img
-                  :src="service.customer.avatar"
-                  alt="Customer Avatar"
-                  height="50px"
-                  width="50px"
-                  class="service-table-customer-avatar br-6 mr-8"
-                  :class="{
-                    'high-priority': service.priority === 'high',
-                    'medium-priority': service.priority === 'medium',
-                    'low-priority': service.priority === 'low',
-                  }"
-                />
-                <p class="font-14 font-semibold font-black-200">
-                  {{ service.customer && service.customer.userName }}
-                </p>
-              </div>
+              <div
+                class="service-priority-color br-6"
+                :class="{
+                  'high-priority': service.priority === 'high',
+                  'medium-priority': service.priority === 'medium',
+                  'low-priority': service.priority === 'low',
+                }"
+              ></div>
+            </td>
+            <td>
+              <p class="font-14 font-semibold font-black-200">
+                {{ service.customer && service.customer.userName }}
+              </p>
             </td>
             <td class="d-flex align-items-center">
               <span class="material-icons-outlined font-red font-16"
@@ -137,17 +134,15 @@
                 {{ service.estimatedTime }}
               </p>
             </td>
-            <td>
-              <p class="font-semibold font-black-200 font-16">
-                {{ service.desiredClassification }}
-              </p>
+            <td class="font-semibold font-black-200 font-16">
+              {{ service.desiredClassification }}
             </td>
             <td class="d-flex align-items-center">
               <span class="material-icons-outlined font-green font-16"
                 >savings</span
               >
               <p class="ml-8 font-semibold font-black-200 font-16">
-                {{ service.amountReceivable }}
+                R$ {{ formatCurrency(service.amountReceivable) }}
               </p>
             </td>
           </tr>
@@ -161,6 +156,7 @@
 export default {
   data() {
     return {
+      hasNewMessages: true,
       showBalance: false,
       servicesInProgress: [
         {
@@ -173,7 +169,7 @@ export default {
           },
           estimatedTime: '03 days',
           desiredClassification: 'Bronze 3 to Diamond 1',
-          amountReceivable: 'R$ 588,90',
+          amountReceivable: 588.9,
           priority: 'high',
         },
         {
@@ -186,7 +182,7 @@ export default {
           },
           estimatedTime: '02 days',
           desiredClassification: 'Bronze 3 to Diamond 1',
-          amountReceivable: 'R$ 188,90',
+          amountReceivable: 188.9,
           priority: 'low',
         },
         {
@@ -199,7 +195,7 @@ export default {
           },
           estimatedTime: '03 days',
           desiredClassification: 'Bronze 3 to Diamond 1',
-          amountReceivable: 'R$ 2.316,00',
+          amountReceivable: 2316,
           priority: 'medium',
         },
         {
@@ -212,7 +208,7 @@ export default {
           },
           estimatedTime: '04 days',
           desiredClassification: 'Bronze 3 to Diamond 1',
-          amountReceivable: 'R$ 68,12',
+          amountReceivable: 68.12,
           priority: 'medium',
         },
       ],
@@ -257,20 +253,16 @@ export default {
   height: 26px;
 }
 
-.fix-bootstrap-padding {
-  padding: 0 12px;
+.low-priority {
+  background-color: var(--blue);
 }
 
-.service-table-customer-avatar.low-priority {
-  border: 2px solid var(--blue);
+.high-priority {
+  background-color: var(--red);
 }
 
-.service-table-customer-avatar.high-priority {
-  border: 2px solid var(--red);
-}
-
-.service-table-customer-avatar.medium-priority {
-  border: 2px solid var(--yellow);
+.medium-priority {
+  background-color: var(--yellow);
 }
 
 /* TABLE CSS */

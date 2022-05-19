@@ -1,8 +1,8 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-2 pl-16 infinity-left-menu vh-100 position-relative">
-        <div class="position-fixed">
+      <div class="col-2 px-0">
+        <div class="position-fixed vh-100 infinity-left-menu prl-16">
           <NuxtLink to="/" class="font-bold text-white">
             <Logo
               height="18px"
@@ -68,30 +68,29 @@
           </NuxtLink>
         </div>
       </div>
-      <div class="col-8">
+      <div class="col-8 px-0">
         <Nuxt />
       </div>
-      <div
-        class="col-2 infinity-right-menu pl-24 position-relative text-center"
-      >
-        <div class="position-fixed">
-          <img
-            src="https://64.media.tumblr.com/8660bcc310f52cb615225018fd52d7d1/tumblr_pmev92mMlk1vtm1pjo1_400.pnj"
-            alt="User Avatar"
-            class="rounded-circle mt-40 mb-16"
-            width="90px"
-            height="90px"
-          />
-          <div class="d-flex align-items-center justify-content-center">
-            <h1 class="font-bold font-20 mr-8">{{ loggedUser.userName }}</h1>
-            <span
-              @click="handleChangeUserName"
-              class="material-icons-two-tone font-24 cursor-pointer"
-              >edit</span
-            >
+      <div class="col-2 px-0">
+        <div
+          class="position-fixed prl-16 text-center infinity-right-menu vh-100"
+        >
+          <div
+            class="booster-avatar mx-auto mt-40 mb-16"
+            :style="{ width: '90px', height: '90px' }"
+          >
+            <div class="spin-gradient rounded-circle spin"></div>
+            <img
+              :src="getUserAvatar"
+              :alt="`${capitalize(loggedUser.userName)}'s Avatar`"
+              class="rounded-circle w-100 h-100"
+            />
           </div>
+          <h1 class="font-bold font-20 mr-8">
+            {{ capitalize(loggedUser.userName) }}
+          </h1>
           <p class="font-primary font-bold font-14 mt-8 mb-16">
-            Booster - {{ loggedUser.userName }}
+            Booster - {{ capitalize(loggedUser.userName) }}
           </p>
           <div>
             <p class="font-16 font-bold font-grey-200">Services Completed</p>
@@ -150,42 +149,12 @@ export default {
     loggedUser() {
       return this.$store.state.auth.user
     },
+    getUserAvatar() {
+      const userName = this.capitalize(this.loggedUser.userName)
+      return `http://ddragon.leagueoflegends.com/cdn/12.9.1/img/champion/${userName}.png`
+    },
   },
   methods: {
-    async handleChangeUserName() {
-      const userNames = [
-        'Jinx',
-        'Ahri',
-        'Lux',
-        'Zed',
-        'Katarina',
-        'Lissandra',
-        'Fizz',
-        'Riven',
-        'Sona',
-        'Soraka',
-        'Nami',
-        'Janna',
-        'Nautilus',
-        'Lulu',
-        'Kalista',
-        'Karthus',
-        'Kassadin',
-        'Quinn',
-        'Leblanc',
-        'Ezreal',
-        'KaiSa',
-      ]
-      console.log('handleChangeUserName')
-      try {
-        await this.$store.dispatch('auth/updateProfileInformation', {
-          ...this.$store.state.auth.user,
-          userName: userNames[Math.floor(Math.random() * userNames.length)],
-        })
-      } catch (error) {
-        console.log(error)
-      }
-    },
     checkActive(href) {
       return this.$route.path === href
     },
@@ -200,6 +169,11 @@ export default {
 </script>
 
 <style scoped>
+.infinity-left-menu,
+.infinity-right-menu {
+  width: inherit;
+}
+
 .infinity-left-menu {
   border-right: 1px solid var(--grey-300);
 }
@@ -211,5 +185,35 @@ export default {
 
 .infinity-right-menu {
   border-left: 1px solid var(--grey-300);
+}
+
+.booster-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spin-gradient {
+  height: 98px;
+  width: 98px;
+  background: linear-gradient(180deg, var(--purple-300) 80%, var(--primary));
+  position: absolute;
+  z-index: -1;
+}
+
+.spin {
+  animation-duration: 1s;
+  animation-name: spin;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 </style>

@@ -53,6 +53,7 @@ export default {
     { src: '~/plugins/hcaptcha.js' },
     { src: '~/plugins/sentry-capture-exception.js' },
     { src: '~/plugins/vuelidate.js' },
+    { src: '~/plugins/infinity-plugins.js' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
