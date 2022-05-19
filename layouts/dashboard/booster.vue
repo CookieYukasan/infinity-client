@@ -12,97 +12,123 @@
               wrapperClass="d-flex align-items-center justify-content-center"
             />
           </NuxtLink>
-          <div class="d-flex align-items-center">
-            <img src="/img/web/lol/poro.png" alt="Poro Image" />
-            <div class="ml-8">
-              <h1 class="font-bold font-16">Want to go online?</h1>
-              <span
-                class="font-bold font-14"
-                :class="{
-                  'font-green': isOnline,
-                  'font-red': !isOnline,
-                }"
-                >{{
-                  isOnline ? `I'm going to start work` : 'Maybe later'
-                }}</span
-              >
+          <div>
+            <div class="d-flex align-items-center">
+              <img src="/img/web/lol/poro.png" alt="Poro Image" />
+              <div class="ml-8">
+                <h1 class="font-bold font-16">Want to go online?</h1>
+                <span
+                  class="font-bold font-14"
+                  :class="{
+                    'font-green': isOnline,
+                    'font-red': !isOnline,
+                  }"
+                  >{{
+                    isOnline ? `I'm going to start work` : 'Maybe later'
+                  }}</span
+                >
+              </div>
             </div>
+            <Select
+              name="status"
+              id="status"
+              :options="statusOptions"
+              selectClass="font-bold prl-16 ptb-8 mt-16 br-6 border-grey-300 w-100"
+              :defaultValue="isOnline ? 'online' : 'offline'"
+              @onChange="handleChangeStatus"
+            />
           </div>
-          <Select
-            name="status"
-            id="status"
-            :options="statusOptions"
-            selectClass="font-bold prl-16 ptb-8 mt-16 br-6 border-grey-300 w-100"
-            :defaultValue="isOnline ? 'online' : 'offline'"
-            @onChange="handleChangeStatus"
-          />
           <hr class="infinity-divider mtb-32" />
-          <h1 class="font-16 font-bold mb-16">Menu</h1>
-          <NuxtLink
-            v-for="(item, index) in sidebarItems"
-            :key="index"
-            class="d-flex align-items-center mt-8 p-16 br-6"
-            :class="{
-              'infinity-bg-primary font-white infinity-active-tab': checkActive(
-                item.href
-              ),
-            }"
-            :to="item.href"
-          >
-            <span
-              class="font-24"
+          <div>
+            <h1 class="font-16 font-bold mb-16">Menu</h1>
+            <NuxtLink
+              v-for="(item, index) in sidebarItems"
+              :key="index"
+              class="d-flex align-items-center mt-8 p-16 br-6"
               :class="{
-                [item.iconType]: item.iconType,
-                'font-white': checkActive(item.href),
+                'infinity-bg-primary font-white infinity-active-tab':
+                  checkActive(item.href),
               }"
-              >{{ item.iconName }}</span
+              :to="item.href"
             >
-            <p
-              class="ml-8 font-16 font-bold"
-              :class="{
-                'font-white': checkActive(item.href),
-              }"
+              <span
+                class="font-24"
+                :class="{
+                  [item.iconType]: item.iconType,
+                  'font-white': checkActive(item.href),
+                }"
+                >{{ item.iconName }}</span
+              >
+              <p
+                class="ml-8 font-16 font-bold"
+                :class="{
+                  'font-white': checkActive(item.href),
+                }"
+              >
+                {{ item.label }}
+              </p>
+            </NuxtLink>
+            <Button
+              :onClick="handleLogout"
+              btnClass="d-flex align-items-center p-16 br-6 infinity-bg-primary font-white infinity-active-tab border-0 position-absolute bottom-0 mb-16"
             >
-              {{ item.label }}
-            </p>
-          </NuxtLink>
+              <span class="font-24 material-icons-outlined">logout</span>
+              <p class="ml-8 font-16 font-bold">Logout</p>
+            </Button>
+          </div>
         </div>
       </div>
       <div class="col-8 px-0">
         <Nuxt />
       </div>
       <div class="col-2 px-0">
-        <div
-          class="position-fixed prl-16 text-center infinity-right-menu vh-100"
-        >
-          <div
-            class="booster-avatar mx-auto mt-40 mb-16"
-            :style="{ width: '90px', height: '90px' }"
-          >
-            <div class="spin-gradient rounded-circle spin"></div>
-            <img
-              :src="getUserAvatar"
-              :alt="`${capitalize(loggedUser.userName)}'s Avatar`"
-              class="rounded-circle w-100 h-100"
-            />
-          </div>
-          <h1 class="font-bold font-20 mr-8">
-            {{ capitalize(loggedUser.userName) }}
-          </h1>
-          <p class="font-primary font-bold font-14 mt-8 mb-16">
-            Booster - {{ capitalize(loggedUser.userName) }}
-          </p>
-          <div>
-            <p class="font-16 font-bold font-grey-200">Services Completed</p>
-            <p class="font-32 font-bold mt-8">32</p>
-          </div>
-          <div class="border-grey-300 ptb-16 br-6 prl-32 mtb-16">
-            <p class="font-14 font-bold font-grey-200">Available services</p>
-            <p class="font-16 font-bold mt-8">158</p>
-            <Button
-              btnClass="w-100 btn-infinity-primary br-6 ptb-8 font-bold font-14 mt-8"
-              >See List</Button
+        <div class="position-fixed prl-16 infinity-right-menu vh-100">
+          <div class="text-center">
+            <div
+              class="booster-avatar mx-auto mt-40 mb-16"
+              :style="{ width: '90px', height: '90px' }"
             >
+              <div class="spin-gradient rounded-circle spin"></div>
+              <img
+                :src="getUserAvatar"
+                :alt="`${capitalize(loggedUser.userName)}'s Avatar`"
+                class="rounded-circle w-100 h-100"
+              />
+            </div>
+            <h1 class="font-bold font-20 mr-8">
+              {{ capitalize(loggedUser.userName) }}
+            </h1>
+            <p class="font-primary font-bold font-14 mt-8 mb-16">
+              Booster - {{ capitalize(loggedUser.userName) }}
+            </p>
+            <div>
+              <p class="font-16 font-bold font-grey-200">Services Completed</p>
+              <p class="font-32 font-bold mt-8">32</p>
+            </div>
+            <div class="border-grey-300 ptb-16 br-6 prl-32 mtb-16">
+              <p class="font-14 font-bold font-grey-200">Available services</p>
+              <p class="font-16 font-bold mt-8">158</p>
+              <Button
+                btnClass="w-100 btn-infinity-primary br-6 ptb-8 font-bold font-14 mt-8"
+                >See List</Button
+              >
+            </div>
+          </div>
+          <div class="mt-24">
+            <h1 class="font-bold font-black-200 font-16">Priority colors</h1>
+            <div
+              v-for="service in servicesPriorityArr"
+              :key="service.hexColor"
+              class="d-flex align-items-center mt-8"
+            >
+              <div
+                class="service-priority-color br-6"
+                :style="{
+                  backgroundColor: service.hexColor,
+                }"
+              ></div>
+              <p class="font-16 ml-8 font-black-200" v-text="service.label"></p>
+            </div>
           </div>
         </div>
       </div>
@@ -115,6 +141,20 @@ export default {
   data() {
     return {
       isOnline: true,
+      servicesPriorityArr: [
+        {
+          label: 'High priority',
+          hexColor: '#FF3B3B',
+        },
+        {
+          label: 'Medium priority',
+          hexColor: '#FAB035',
+        },
+        {
+          label: 'Low priority',
+          hexColor: '#377DFF',
+        },
+      ],
       statusOptions: [
         {
           icon: 'work',

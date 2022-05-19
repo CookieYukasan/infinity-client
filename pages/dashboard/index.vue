@@ -1,7 +1,7 @@
 <template>
   <div class="pt-24 prl-32">
     <div class="row gx-0">
-      <div class="col-4 br-6 border-grey-300 p-16">
+      <div class="col-3 br-6 border-grey-300 p-16">
         <div>
           <p class="font-16 font-semibold font-grey-200">Show balance</p>
           <span v-if="showBalance" class="font-bold font-20 mt-4"
@@ -83,30 +83,14 @@
           See all
         </NuxtLink>
       </div>
-      <div class="mtb-16 d-flex align-items-center">
-        <div
-          v-for="(service, index) in servicesPriorityArr"
-          :key="service.hexColor"
-          class="d-flex align-items-center"
-          :class="index !== 0 ? 'ml-16' : ''"
-        >
-          <div
-            class="service-priority-color br-6"
-            :style="{
-              backgroundColor: service.hexColor,
-            }"
-          ></div>
-          <p class="font-16 ml-8 font-black-200" v-text="service.label"></p>
-        </div>
-      </div>
-      <table class="table table-borderless infinity-table">
+      <table class="table infinity-table mt-24">
         <thead>
           <tr>
-            <th>Priority</th>
-            <th>Customer</th>
-            <th>Estimated time</th>
-            <th>Desired classification</th>
-            <th>Amount receivable</th>
+            <th class="border-grey-300">Priority</th>
+            <th class="border-grey-300">Customer</th>
+            <th class="border-grey-300">Estimated time</th>
+            <th class="border-grey-300">Desired classification</th>
+            <th class="border-grey-300">Amount receivable</th>
           </tr>
         </thead>
         <tbody>
@@ -115,9 +99,9 @@
               <div
                 class="service-priority-color br-6"
                 :class="{
-                  'high-priority': service.priority === 'high',
-                  'medium-priority': service.priority === 'medium',
-                  'low-priority': service.priority === 'low',
+                  'infinity-bg-red': service.priority === 'high',
+                  'infinity-bg-yellow': service.priority === 'medium',
+                  'infinity-bg-blue': service.priority === 'low',
                 }"
               ></div>
             </td>
@@ -127,7 +111,13 @@
               </p>
             </td>
             <td class="d-flex align-items-center">
-              <span class="material-icons-outlined font-red font-16"
+              <span
+                class="material-icons-outlined font-16"
+                :class="{
+                  'font-red': service.priority === 'high',
+                  'font-yellow': service.priority === 'medium',
+                  'font-blue': service.priority === 'low',
+                }"
                 >timer</span
               >
               <p class="ml-8 font-semibold font-black-200 font-16">
@@ -212,20 +202,6 @@ export default {
           priority: 'medium',
         },
       ],
-      servicesPriorityArr: [
-        {
-          label: 'High priority',
-          hexColor: '#FF3B3B',
-        },
-        {
-          label: 'Medium priority',
-          hexColor: '#FAB035',
-        },
-        {
-          label: 'Low priority',
-          hexColor: '#377DFF',
-        },
-      ],
     }
   },
   methods: {
@@ -248,31 +224,30 @@ export default {
   height: 20.5px;
 }
 
-.service-priority-color {
-  width: 26px;
-  height: 26px;
-}
-
-.low-priority {
-  background-color: var(--blue);
-}
-
-.high-priority {
-  background-color: var(--red);
-}
-
-.medium-priority {
-  background-color: var(--yellow);
-}
-
 /* TABLE CSS */
 
-.infinity-table tr th {
-  border: 1px solid var(--grey-300);
+.table > :not(:last-child) > :last-child > * {
+  border-bottom: 1px solid var(--grey-300);
 }
 
-.infinity-table tr th:nth-child(1) {
-  border-bottom-left-radius: 16px;
-  border-top-left-radius: 16px;
+.infinity-table {
+  border-collapse: inherit;
+}
+
+.infinity-table th:first-child {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-left: 1px solid var(--grey-300);
+}
+
+.infinity-table th:last-child {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-right: 1px solid var(--grey-300);
+}
+
+.infinity-table th {
+  border-left: none;
+  border-right: none;
 }
 </style>

@@ -16,6 +16,11 @@ if (!Vue.__infinity_mixin__) {
         let val = (value / 1).toFixed(2).replace('.', ',')
         return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
       },
+      truncateText(string, length) {
+        if (!string) return ''
+        if (string.length <= length) return string
+        return string.substring(0, length) + '...'
+      },
     },
   })
 }

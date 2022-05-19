@@ -1,15 +1,17 @@
 <template>
-  <div>
-    <button
-      @click="!btnDisabled && !btnLoading ? onClick : () => {}"
-      :type="btnType"
-      :class="btnClass"
-      :disabled="btnDisabled"
-    >
-      <slot v-if="!btnLoading" />
-      <div v-else class="spinner-border text-primary" role="status"></div>
-    </button>
-  </div>
+  <button
+    @click="!btnDisabled && !btnLoading ? onClick : () => {}"
+    :type="btnType"
+    :class="[
+      'br-6',
+      btnClass,
+      btnDisabled || btnLoading ? 'cursor-pointer-disabled' : '',
+    ]"
+    :disabled="btnDisabled || btnLoading"
+  >
+    <slot v-if="!btnLoading" />
+    <div v-else class="spinner-border text-primary" role="status"></div>
+  </button>
 </template>
 
 <script>
