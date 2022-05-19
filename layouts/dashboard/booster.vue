@@ -115,7 +115,7 @@
             </div>
           </div>
           <div class="mt-24">
-            <h1 class="font-bold font-black-200 font-16">Priority colors</h1>
+            <h1 class="font-bold font-black-200 font-16">Service priority</h1>
             <div
               v-for="service in servicesPriorityArr"
               :key="service.hexColor"
