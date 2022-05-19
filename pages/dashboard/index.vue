@@ -86,11 +86,11 @@
       <table class="table infinity-table mt-24">
         <thead>
           <tr>
-            <th class="border-grey-300">Priority</th>
-            <th class="border-grey-300">Customer</th>
-            <th class="border-grey-300">Estimated time</th>
-            <th class="border-grey-300">Desired classification</th>
-            <th class="border-grey-300">Amount receivable</th>
+            <th>Priority</th>
+            <th>Customer</th>
+            <th>Estimated time</th>
+            <th>Desired classification</th>
+            <th>Amount receivable</th>
           </tr>
         </thead>
         <tbody>
@@ -245,6 +245,10 @@ tr {
   border-collapse: inherit;
 }
 
+.infinity-table td {
+  padding: 16px 10px 0;
+}
+
 .infinity-table th:first-child {
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
@@ -258,6 +262,7 @@ tr {
 }
 
 .infinity-table th {
+  border-top: 1px solid var(--grey-300);
   border-left: none;
   border-right: none;
 }
