@@ -1,11 +1,12 @@
-@use 'sass:map';
 @import './sass-utils/variables';
+@import './sass-utils/functions';
 @import './sass-utils/helpers';
 @import './base/typography';
 @import './base/border';
 @import './base/spacing';
 @import './components/button';
 @import './components/input';
+@import './base/icons';
 
 * {
   padding: 0;
@@ -25,10 +26,6 @@ h4,
 h5,
 h6 {
   margin-bottom: 0;
-}
-
-body {
-  font-weight: 500;
 }
 
 .cursor-pointer {

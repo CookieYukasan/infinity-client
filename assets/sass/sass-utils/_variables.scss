@@ -1,51 +1,29 @@
 $classPrefix: 'infinity-';
 $fontSizes: 12, 14, 16, 20, 24, 32, 48;
-:root {
-  --black: #000000;
-  --white: #ffffff;
-  --purple: #595cff;
-  --light-purple: #8c8eff;
-  --dark-purple: #383be4;
-  --snow: #f9f9fb;
-  --pale-grey: #f0f0f5;
-  --light-grey: #e6e6eb;
-  --grey: #afb1bd;
-  --dark-grey: #82828b;
-
-  --primary: #6f4ef3;
-  --green: #05a660;
-  --red: #ff3b3b;
-  --grey-100: #a5b4cb;
-  --grey-200: #7d8da6;
-  --grey-300: #dfe5f1;
-  --yellow: #fab035;
-  --blue: #377dff;
-  --black-200: #1f2235;
-  --purple-300: #a99cf6;
-}
 
 $colorsInHex: (
-  'black': #000000,
-  'white': #ffffff,
-  'purple': #595cff,
-  'light-purple': #8c8eff,
-  'dark-purple': #383be4,
-  'snow': #f9f9fb,
-  'pale-grey': #f0f0f5,
-  'light-grey': #e6e6eb,
-  'grey': #afb1bd,
-  'dark-grey': #82828b,
+  'blue-primary': #2958ff,
+  'blue': #377dff,
 
-  'primary': var(--primary),
-  'green': var(--green),
-  'red': var(--red),
-  'grey-100': var(--grey-100),
-  'grey-200': var(--grey-200),
-  'grey-300': var(--grey-300),
-  'yellow': var(--yellow),
-  'blue': var(--blue),
-  'black-200': var(--black-200),
-  'purple-300': var(--purple-300),
+  'white': #ffffff,
+  'green': #05a660,
+  'red': #ff3b3b,
+  'yellow': #fab035,
+
+  'grey-100': #88add2,
+  'grey-200': #4f5b76,
+  'grey-300': #a5b4cb,
+
+  'black-100': #0a1017,
+  'black-200': #1f2235,
+  'black-300': #24293d,
 );
+
+:root {
+  @each $key, $value in $colorsInHex {
+    --#{$key}: #{$value};
+  }
+}
+
 $borderRadiusSizes: 6;
-$marginAndPaddingSizes: 0, 4, 8, 16, 24, 32, 40;
+$marginAndPaddingSizes: 0, 4, 8, 16, 24, 32, 40, 48, 75;

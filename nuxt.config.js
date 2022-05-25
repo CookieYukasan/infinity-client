@@ -68,7 +68,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/device',
     '@nuxtjs/dayjs',
-    // '@nuxtjs/proxy',
+    '@nuxtjs/proxy',
   ],
 
   router: {
