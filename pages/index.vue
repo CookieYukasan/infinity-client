@@ -1,91 +1,114 @@
 <template>
-  <div class="landing-page-gradient">
-    <div class="container-md">
-      <header
-        v-if="$device.isDesktop"
-        class="pt-24 d-flex justify-content-between align-items-center"
-      >
-        <Logo width="200px" height="24px" type="white" />
-        <div
-          class="d-flex align-items-center justify-content-center position-relative"
+  <div class="circle-mask">
+    <div class="landing-page-gradient">
+      <div class="container-md">
+        <header
+          v-if="$device.isDesktop"
+          class="pt-24 d-flex justify-content-between align-items-center"
         >
-          <NuxtLink
-            v-for="(item, index) in navItems"
-            :key="index"
-            :class="{
-              'mr-24': index !== navItems.length - 1,
-            }"
-            :to="item.url || '#'"
-            class="font-16 font-bold header-link"
-            @mouseenter.native="onMouseEnterServiceDropdown(index)"
-          >
-            {{ item.text }}
+          <NuxtLink to="/">
+            <Logo width="200px" height="24px" type="white" />
           </NuxtLink>
           <div
-            v-show="displayServicesDropdown"
-            @mouseleave="disableServiceDropdown"
-            class="services-dropdown p-24 br-6 infinity-bg-white position-absolute"
+            class="d-flex align-items-center justify-content-center position-relative"
           >
-            <p class="font-grey-200 font-16 font-bold mb-24">Serviços</p>
-            <div class="services-grid">
-              <NuxtLink
-                v-for="(service, index) in servicesItems"
-                :key="index"
-                :to="service.url"
-                class="font-grey-200 d-flex align-items-center"
-              >
-                <span class="material-icons font-grey-100 mr-4">{{
-                  service.iconName
-                }}</span>
-                {{ service.text }}
-              </NuxtLink>
-            </div>
-            <p class="font-grey-200 font-16 font-bold mtb-24">
-              Outros serviços
-            </p>
-            <div class="services-grid">
-              <NuxtLink
-                v-for="(service, index) in otherServicesItems"
-                :key="index"
-                :to="service.url"
-                class="font-grey-200 d-flex align-items-center"
-              >
-                <span class="material-icons font-grey-100 mr-4">{{
-                  service.iconName
-                }}</span>
-                {{ service.text }}
-              </NuxtLink>
+            <NuxtLink
+              v-for="(item, index) in navItems"
+              :key="index"
+              :class="{
+                'mr-24': index !== navItems.length - 1,
+              }"
+              :to="item.url || '#'"
+              class="font-16 font-bold header-link"
+              @mouseenter.native="onMouseEnterServiceDropdown(index)"
+            >
+              {{ item.text }}
+            </NuxtLink>
+            <div
+              v-show="displayServicesDropdown"
+              @mouseleave="disableServiceDropdown"
+              class="services-dropdown p-24 br-6 infinity-bg-white position-absolute"
+            >
+              <p class="font-grey-200 font-16 font-bold mb-24">Serviços</p>
+              <div class="services-grid">
+                <NuxtLink
+                  v-for="(service, index) in servicesItems"
+                  :key="index"
+                  :to="service.url"
+                  class="font-grey-200 d-flex align-items-center"
+                >
+                  <span class="material-icons font-grey-100 mr-4">{{
+                    service.iconName
+                  }}</span>
+                  {{ service.text }}
+                </NuxtLink>
+              </div>
+              <p class="font-grey-200 font-16 font-bold mtb-24">
+                Outros serviços
+              </p>
+              <div class="services-grid">
+                <NuxtLink
+                  v-for="(service, index) in otherServicesItems"
+                  :key="index"
+                  :to="service.url"
+                  class="font-grey-200 d-flex align-items-center"
+                >
+                  <span class="material-icons font-grey-100 mr-4">{{
+                    service.iconName
+                  }}</span>
+                  {{ service.text }}
+                </NuxtLink>
+              </div>
             </div>
           </div>
-        </div>
-        <Button
-          btnClass="btn-infinity-primary br-6 ptb-8 prl-8 pr-16 d-flex align-items-center"
-        >
-          <i class="material-icons-two-tone mr-4 icon-white">person</i>
-          Área do cliente
-        </Button>
-      </header>
-      <section class="hero mt-75">
-        <div class="d-flex align-items-center justify-content-between">
-          <p class="font-48 fw-900">
-            Na elo infinity tem:<br />
-            <span class="font-bold animated-text"
-              >- {{ animatedTextOptions.textValue }}</span
-            ><br />
-            <span class="font-20 fw-normal"
-              >Entregamos o seu serviço na velocidade da nave espacial.</span
+          <Button
+            btnClass="btn-infinity-primary br-6 ptb-8 prl-8 pr-16 d-flex align-items-center"
+          >
+            <i class="material-icons-two-tone mr-4 icon-white">person</i>
+            Área do cliente
+          </Button>
+        </header>
+        <section class="hero mt-75">
+          <div class="d-flex align-items-center justify-content-between">
+            <p class="font-48 fw-900">
+              Na elo infinity tem:<br />
+              <span class="font-bold animated-text"
+                >- {{ animatedTextOptions.textValue }}</span
+              ><br />
+              <span class="font-20 fw-normal"
+                >Entregamos o seu serviço na velocidade da nave espacial.</span
+              >
+            </p>
+            <img
+              class="poro-hero"
+              src="/img/web/landing-page/poro.png"
+              width="524px"
+              alt="Poro Illustration"
+            />
+          </div>
+        </section>
+        <section class="service-cards-wrapper justify-content-center mb-48">
+          <div
+            v-for="(item, index) in servicesCardItems"
+            :key="index"
+            class="service-card infinity-bg-grey-400 br-6 p-24 text-center"
+          >
+            <img
+              :src="`/img/web/landing-page/services-card-icons/${
+                index + 1
+              }.png`"
+              :alt="`${item.title} Icon`"
+              width="201px"
+            />
+            <h1 class="font-28 font-bold mtb-24">{{ item.title }}</h1>
+            <p class="font-16 mb-24" v-html="item.description"></p>
+            <Button
+              btnClass="br-6 btn-infinity-primary br-6 ptb-16 w-75 font-bold"
+              >Contratar</Button
             >
-          </p>
-
-          <img
-            class="poro-hero"
-            src="/img/web/landing-page/poro.png"
-            width="524px"
-            alt="Poro Illustration"
-          />
-        </div>
-        <h1 class="text-highlighted">ELOJOB</h1>
-      </section>
+          </div>
+        </section>
+      </div>
     </div>
   </div>
 </template>
@@ -145,6 +168,26 @@ export default {
         {
           text: 'Trabalhe conosco',
           url: '/work-with-us',
+        },
+      ],
+      servicesCardItems: [
+        {
+          title: 'Elo Boost',
+          url: '/services/elojob',
+          description:
+            'Um jogador profissional irá <strong>garantir o elo desejado<strong> jogando em sua conta.',
+        },
+        {
+          title: 'Duo Boost',
+          url: '/services/duoboost',
+          description:
+            'Você irá <strong>jogar duo com um jogador profissional</strong>, até chegar no elo desejado.',
+        },
+        {
+          title: 'MD10',
+          url: '/services/md10',
+          description:
+            '<strong>Iremos garantir o melhor desempenho</strong> possível na sua classificatória.',
         },
       ],
       animatedTextOptions: {
@@ -242,15 +285,14 @@ section.hero {
   );
 }
 
-.poro-hero {
-  transform: rotateY(180deg);
+.circle-mask {
+  background-image: url('/img/web/landing-page/bg-hero.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
-section.hero .text-highlighted {
-  font-size: 350px;
-  color: transparent;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: var(--white);
+.poro-hero {
+  transform: rotateY(180deg);
 }
 
 .services-dropdown {
@@ -282,5 +324,20 @@ section.hero .text-highlighted {
 .services-grid a:hover span {
   color: var(--blue-primary) !important;
   font-weight: bold;
+}
+
+.service-cards-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 310px);
+  grid-template-rows: 1fr;
+  gap: 32px;
+}
+
+.service-card img {
+  margin-top: -120px;
+}
+
+.service-card strong {
+  color: var(--yellow);
 }
 </style>
