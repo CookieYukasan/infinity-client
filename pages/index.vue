@@ -267,9 +267,14 @@ export default {
       if (itemIndex === 1) return this.enableServiceDropdown()
       if (itemIndex !== 1) return this.disableServiceDropdown()
     },
+    onScroll() {
+      if (this.displayServicesDropdown) this.disableServiceDropdown()
+    },
   },
   mounted() {
     this.startTypeWriter(0)
+
+    window.addEventListener('scroll', this.onScroll)
   },
   head() {
     return {
