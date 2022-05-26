@@ -76,7 +76,7 @@
                 >- {{ animatedTextOptions.textValue }}</span
               ><br />
               <span class="font-20 fw-normal"
-                >Entregamos o seu serviço na velocidade da nave espacial.</span
+                >Levamos você ao infinito e além ✨</span
               >
             </p>
             <img
@@ -175,19 +175,19 @@ export default {
           title: 'Elo Boost',
           url: '/services/elojob',
           description:
-            'Um jogador profissional irá <strong>garantir o elo desejado<strong> jogando em sua conta.',
+            'Um jogador profissional irá <strong class="font-yellow">garantir o elo desejado</strong> jogando em sua conta.',
         },
         {
           title: 'Duo Boost',
           url: '/services/duoboost',
           description:
-            'Você irá <strong>jogar duo com um jogador profissional</strong>, até chegar no elo desejado.',
+            'Você irá <strong class="font-yellow">jogar duo com um jogador profissional</strong>, até chegar no elo desejado.',
         },
         {
           title: 'MD10',
           url: '/services/md10',
           description:
-            '<strong>Iremos garantir o melhor desempenho</strong> possível na sua classificatória.',
+            '<strong class="font-yellow">Iremos garantir o melhor desempenho</strong> possível na sua classificatória.',
         },
       ],
       animatedTextOptions: {
@@ -331,13 +331,10 @@ section.hero {
   grid-template-columns: repeat(3, 310px);
   grid-template-rows: 1fr;
   gap: 32px;
+  margin-top: -120px;
 }
 
 .service-card img {
   margin-top: -120px;
-}
-
-.service-card strong {
-  color: var(--yellow);
 }
 </style>
