@@ -108,6 +108,35 @@
           >
         </div>
       </section>
+      <section class="who-we-are position-relative d-flex">
+        <img
+          src="/img/web/landing-page/jinx-illustration.png"
+          alt="Jinx Illustration"
+        />
+        <div class="information position-relative">
+          <img
+            class="position-absolute boom"
+            src="/img/web/landing-page/boom-text.png"
+            alt="Boom Text"
+          />
+          <img
+            class="position-absolute monkey"
+            src="/img/web/landing-page/monkey-illustration.png"
+            alt="Money Illustration"
+          />
+          <h1 class="font-40 font-bold fw-900 mb-40">Quem somos?</h1>
+          <p class="font-16 text-center">
+            Mesmo nova no mercado de boosting, a
+            <strong class="font-yellow">Elo Infinity</strong> só possui
+            <strong class="font-yellow">referências positivas</strong> sobre os
+            serviços de Elojob, Duo boost e Coaching. Nossa premissa é
+            proporcionar aos clientes um
+            <strong class="font-yellow">serviço de qualidade</strong>,
+            <strong class="font-yellow">seguro e acessível</strong>, além de
+            oferecermos suporte 24h.
+          </p>
+        </div>
+      </section>
     </div>
   </div>
 </template>
@@ -332,5 +361,32 @@ header a.header-link:active {
 
 .service-card img {
   margin-top: -120px;
+}
+
+section.who-we-are h1 {
+  margin-left: -100px;
+}
+
+section.who-we-are p {
+  width: 82%;
+  margin-left: -150px;
+}
+
+section.who-we-are .information img.boom {
+  top: -25px;
+  left: -150px;
+  width: 400px;
+  z-index: -1;
+}
+
+section.who-we-are .information img.monkey {
+  bottom: 120px;
+  right: 180px;
+  width: 350px;
+  z-index: -1;
+}
+
+section.who-we-are .information {
+  margin-top: 100px;
 }
 </style>
