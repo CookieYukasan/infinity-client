@@ -317,7 +317,19 @@ header a.header-link:active {
 }
 
 .poro-hero {
-  transform: rotateY(180deg);
+  animation: gravity-animation 2s ease-in-out infinite;
+}
+
+@keyframes gravity-animation {
+  0% {
+    transform: rotateY(180deg) translateY(-10px);
+  }
+  50% {
+    transform: rotateY(180deg) translateY(10px);
+  }
+  100% {
+    transform: rotateY(180deg) translateY(-10px);
+  }
 }
 
 .services-dropdown {
