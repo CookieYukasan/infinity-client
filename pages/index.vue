@@ -70,7 +70,7 @@
           Área do cliente
         </Button>
       </header>
-      <section class="hero mt-75">
+      <section class="hero mt-100">
         <div class="d-flex align-items-center justify-content-between">
           <p class="font-48 fw-900">
             Na elo infinity tem:<br />
@@ -108,7 +108,7 @@
           >
         </div>
       </section>
-      <section class="who-we-are position-relative d-flex">
+      <section class="who-we-are position-relative d-flex mb-100">
         <img
           src="/img/web/landing-page/jinx-illustration.png"
           alt="Jinx Illustration"
@@ -125,16 +125,63 @@
             alt="Money Illustration"
           />
           <h1 class="font-40 font-bold fw-900 mb-40">Quem somos?</h1>
-          <p class="font-16 text-center">
-            Mesmo nova no mercado de boosting, a
-            <strong class="font-yellow">Elo Infinity</strong> só possui
-            <strong class="font-yellow">referências positivas</strong> sobre os
-            serviços de Elojob, Duo boost e Coaching. Nossa premissa é
-            proporcionar aos clientes um
-            <strong class="font-yellow">serviço de qualidade</strong>,
-            <strong class="font-yellow">seguro e acessível</strong>, além de
-            oferecermos suporte 24h.
+          <p class="font-16 text-center w-75">
+            A Elo Infinity tem experiência com inúmeros serviços de Elo Boost,
+            Duo Boost e Coach
+            <strong class="font-yellow">concluídos de forma rápida</strong> e
+            <strong class="font-yellow">efetiva</strong> e sempre com um padrão
+            de alta satisfação dos nossos clientes. Além disso, vem se tornando
+            <strong class="font-yellow">destaque no mercado</strong> de boosting
+            devido ao <strong class="font-yellow">grande diferencial</strong> no
+            atendimento e suporte ao cliente, assim como a excelência na entrega
+            dos serviços. Nossa premissa é oferecer um
+            <strong class="font-yellow">serviço de qualidade</strong>
+            pelo
+            <strong class="font-yellow">preço mais barato</strong> do mercado.
           </p>
+        </div>
+      </section>
+      <section class="mb-48 position-relative">
+        <img
+          class="ammunition position-absolute"
+          src="/img/web/landing-page/ammunition.png"
+          alt="Ammunition Illustration"
+        />
+        <h1 class="text-center fw-900 font-40">
+          Por que escolher a Elo Job Infinity?
+        </h1>
+        <p class="w-75 font-16 text-center mx-auto mt-24">
+          A Elo Infinity tem o cliente como prioridade e isso também reflete na
+          escolha da nossa equipe;
+          <strong class="font-yellow"
+            >trabalhamos somente com jogadores de nível Grão Mestre e
+            Desafiante</strong
+          >
+          para que o seu pedido seja entregue com
+          <strong class="font-yellow">segurança</strong>,
+          <strong class="font-yellow">eficiência</strong> e
+          <strong class="font-yellow">maestria</strong>. Além disso,
+          <strong class="font-yellow">oferecemos um excelente suporte</strong>
+          ao cliente através do WhatsApp e servidor do Discord. Você irá
+          contratar um serviço de qualidade por um preço barato e ainda poderá
+          <strong class="font-yellow">personaliza-lo do seu jeito</strong>,
+          escolhendo a posição do flash, horários de acesso à conta, quais rotas
+          e campeões serão usados, chat offline e muito mais!
+        </p>
+        <div class="row text-center mt-32">
+          <div
+            v-for="(item, index) in companyValuesItems"
+            :key="index"
+            class="col-4 value-company-card"
+          >
+            <img
+              :src="`/img/web/landing-page/values-cards-icons/${index + 1}.png`"
+              alt="Illustration"
+            />
+            <h1 class="fw-900 font-28">{{ item.title }}</h1>
+            <hr class="infinity-divider mtb-16" />
+            <p class="font-16" v-html="item.description"></p>
+          </div>
         </div>
       </section>
     </div>
@@ -147,6 +194,23 @@ export default {
     return {
       isAboveServicesDropdown: false,
       displayServicesDropdown: false,
+      companyValuesItems: [
+        {
+          title: 'Valores mais acessíveis',
+          description:
+            'A Elo Infinity possui os <strong class="font-yellow">melhores valores do mercado</strong>.',
+        },
+        {
+          title: 'Jogadores qualificados',
+          description:
+            '<strong class="font-yellow">Possuimos os melhores jogadores!</strong> Nossa equipe é composta somente por jogadores de alto nível (Mestre, Grão-Mestre e Challenger).',
+        },
+        {
+          title: 'Privacidade e segurança',
+          description:
+            '<strong class="font-yellow">Garantimos a segurança pelos meios de pagamento.</strong> Os boosters são treinados para fazer o serviço sem levantar suspeitas.',
+        },
+      ],
       otherServicesItems: [
         {
           text: 'Coaching',
@@ -385,7 +449,6 @@ section.who-we-are h1 {
 }
 
 section.who-we-are p {
-  width: 82%;
   margin-left: -150px;
 }
 
@@ -405,5 +468,21 @@ section.who-we-are .information img.monkey {
 
 section.who-we-are .information {
   margin-top: 100px;
+}
+
+img.ammunition {
+  top: -8rem;
+  left: 11.8rem;
+  z-index: -1;
+}
+
+.infinity-divider {
+  background-color: var(--grey-400);
+  height: 1px;
+  border: 0;
+}
+
+.value-company-card:nth-child(2) {
+  margin-top: 5rem;
 }
 </style>
