@@ -178,7 +178,7 @@
               :src="`/img/web/landing-page/values-cards-icons/${index + 1}.png`"
               alt="Illustration"
             />
-            <h1 class="fw-900 font-28">{{ item.title }}</h1>
+            <h1 class="fw-900 font-28 mt-16">{{ item.title }}</h1>
             <hr class="infinity-divider mtb-16" />
             <p class="font-16" v-html="item.description"></p>
           </div>
