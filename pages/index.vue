@@ -367,11 +367,11 @@
         <p class="font-14 mt-24">
           Copyright <strong class="font-yellow">© Elo Job Infinity</strong>
           {{ $dayjs().format('YYYY') }} –
-          <NuxtLink class="font-yellow font-bold" to="/privacy"
+          <NuxtLink class="font-yellow font-bold" to="/privacy-policy"
             >Privacidade</NuxtLink
           >
           –
-          <NuxtLink class="font-yellow font-bold" to="/privacy"
+          <NuxtLink class="font-yellow font-bold" to="/terms-of-use"
             >Termos de Uso</NuxtLink
           >
         </p>
