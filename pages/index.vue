@@ -184,6 +184,56 @@
           </div>
         </div>
       </section>
+      <section class="feedbacks mt-100">
+        <h1 class="fw-900 font-40 text-center">
+          O que os clientes dizem sobre a Elo Infinity?
+        </h1>
+        <p class="font-16 text-center mt-24 mb-32">
+          Para nós, a satisfação do
+          <strong class="font-bold font-yellow"
+            >cliente vem sempre em primeiro lugar.</strong
+          >
+        </p>
+        <div class="d-flex justify-content-center">
+          <img
+            src="/img/web/landing-page/jinx-illustration-2.png"
+            alt="Jinx Illustration"
+            class="jinx col-3"
+          />
+          <div class="col-9">
+            <div class="gx-4 row">
+              <div
+                v-for="(item, index) in feedbackItems"
+                :key="index"
+                class="feedback-card col-md-6 mb-16"
+              >
+                <div
+                  class="infinity-bg-grey-400 w-100 h-100 p-16 br-6 d-flex flex-column align-items-center position-relative"
+                >
+                  <p
+                    class="service-label font-14 position-absolute font-yellow"
+                  >
+                    <strong class="font-white">Serviço:</strong>
+                    {{ item.serviceName }}
+                  </p>
+                  <p class="date-label font-bold font-14 position-absolute">
+                    {{ item.date }}
+                  </p>
+                  <img
+                    :src="item.userImage"
+                    alt="User Avatar"
+                    width="96px"
+                    height="96px"
+                    class="user-avatar rounded-circle"
+                  />
+                  <h1 class="fw-900 font-20 mt-16 mb-8">{{ item.userName }}</h1>
+                  <p class="font-14 text-center">{{ item.text }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   </div>
 </template>
@@ -192,8 +242,41 @@
 export default {
   data() {
     return {
-      isAboveServicesDropdown: false,
       displayServicesDropdown: false,
+      feedbackItems: [
+        {
+          serviceName: 'Elo Boost',
+          userName: 'Vitória',
+          userImage:
+            'https://i.pinimg.com/originals/36/6e/ee/366eee2a30d455de1bc0af52f3cc4415.jpg',
+          text: 'Karma é um ótimo booster, realizou o serviço em apenas 2 dias, serviço top, job incomparável com qualquer outra empresa, agradeço a Yuumi também pelo apoio, amo você amor.',
+          date: '05/31/2022',
+        },
+        {
+          serviceName: 'Duo Boost',
+          userName: 'Lufa',
+          userImage:
+            'https://i.pinimg.com/originals/36/6e/ee/366eee2a30d455de1bc0af52f3cc4415.jpg',
+          text: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi',
+          date: '05/31/2022',
+        },
+        {
+          serviceName: 'Elo Boost',
+          userName: 'Lufa',
+          userImage:
+            'https://i.pinimg.com/originals/36/6e/ee/366eee2a30d455de1bc0af52f3cc4415.jpg',
+          text: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi',
+          date: '05/31/2022',
+        },
+        {
+          serviceName: 'MD10',
+          userName: 'Lufa',
+          userImage:
+            'https://i.pinimg.com/originals/36/6e/ee/366eee2a30d455de1bc0af52f3cc4415.jpg',
+          text: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi',
+          date: '05/31/2022',
+        },
+      ],
       companyValuesItems: [
         {
           title: 'Valores mais acessíveis',
@@ -471,8 +554,8 @@ section.who-we-are .information {
 }
 
 img.ammunition {
-  top: -8rem;
-  left: 11.8rem;
+  top: -128px;
+  left: 176px;
   z-index: -1;
 }
 
@@ -483,6 +566,40 @@ img.ammunition {
 }
 
 .value-company-card:nth-child(2) {
-  margin-top: 5rem;
+  margin-top: 80px;
+}
+
+section.feedbacks img.jinx {
+  align-self: baseline;
+  width: 500px;
+  height: 500px;
+  margin-top: 60px;
+  margin-right: -110px;
+}
+
+.feedback-card img.user-avatar {
+  margin-top: -60px;
+}
+
+.feedback-card:nth-child(1),
+.feedback-card:nth-child(2) {
+  margin-top: 40px;
+}
+
+.feedback-card {
+  margin-top: 80px;
+  margin-bottom: 160px;
+  z-index: -1;
+  width: 50%;
+}
+
+.feedback-card .service-label {
+  top: 16px;
+  left: 22px;
+}
+
+.feedback-card .date-label {
+  top: 16px;
+  right: 22px;
 }
 </style>
