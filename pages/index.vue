@@ -181,7 +181,10 @@
         <h1 class="text-center fw-900 font-40">
           Por que escolher a Elo Job Infinity?
         </h1>
-        <p class="w-75 font-16 text-center mx-auto mt-24">
+        <p
+          class="font-16 text-center mx-auto mt-24"
+          :class="$device.isDesktop ? 'w-75' : ''"
+        >
           A Elo Infinity tem o cliente como prioridade e isso também reflete na
           escolha da nossa equipe;
           <strong class="font-yellow"
