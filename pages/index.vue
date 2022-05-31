@@ -70,6 +70,29 @@
           Área do cliente
         </Button>
       </header>
+      <header
+        v-if="$device.isMobile"
+        class="pt-24 d-flex flex-column justify-content-between align-items-center"
+      >
+        <NuxtLink to="/" class="mb-16">
+          <Logo width="150px" height="24px" />
+        </NuxtLink>
+        <div
+          class="d-flex align-items-center justify-content-center position-relative"
+        >
+          <NuxtLink
+            v-for="(item, index) in navItems"
+            :key="index"
+            :class="{
+              'mr-16': index !== navItems.length - 1,
+            }"
+            :to="item.url || '#'"
+            class="font-16 font-bold"
+          >
+            {{ item.text }}
+          </NuxtLink>
+        </div>
+      </header>
       <section class="hero mt-100">
         <div
           class="d-flex align-items-center justify-content-between"
