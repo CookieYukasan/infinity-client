@@ -242,208 +242,6 @@
           mais frequentes:
         </p>
         <div class="accordion accordion-flush" id="faq">
-          <!-- <div class="accordion-item mb-24 br-6">
-            <h2 class="accordion-header" id="headingOne">
-              <button
-                class="accordion-button collapsed br-6"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#headingOne"
-                aria-expanded="false"
-                aria-controls="headingOne"
-              >
-                A Elo Job Infinity é segura/confiável?
-              </button>
-            </h2>
-            <div
-              id="headingOne"
-              class="accordion-collapse collapse"
-              aria-labelledby="headingOne"
-              data-bs-parent="#faqAccordion"
-            >
-              <div class="accordion-body">
-                Sem dúvidas. Somos destaque em boosting no Brasil, com inúmeros
-                serviços finalizados e vasta experiência em Elo Boost, Duo Boost
-                e Coaching para League of Legends. Por sermos extremamente
-                rígidos, trabalhamos com uma equipe de alto nível para
-                proporcionar maior satisfação ao cliente, que é a nossa maior
-                preocupação. A ELO INFINITY é uma empresa completa e
-                estruturada, você encontra agilidade, qualidade, valor acessível
-                e suporte em um só lugar.
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item mb-24 br-6">
-            <h2 class="accordion-header" id="headingTwo">
-              <button
-                class="accordion-button collapsed br-6"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#headingTwo"
-                aria-expanded="false"
-                aria-controls="headingTwo"
-              >
-                Qual o diferencial da Elo Job Infinity?
-              </button>
-            </h2>
-            <div
-              id="headingTwo"
-              class="accordion-collapse collapse"
-              aria-labelledby="headingTwo"
-              data-bs-parent="#faqAccordion"
-            >
-              <div class="accordion-body">
-                Quando os colaboradores são apaixonados pelo que fazem e vestem
-                a camisa do negócio, eles conseguem levar esse diferencial para
-                o trabalho. A ELO INFINITY coloca os clientes sempre em primeiro
-                lugar, pois priorizamos tanto a sua satisfação quanto a sua
-                segurança. Fazemos o melhor para agregar mais qualidade ao
-                serviço com o objetivo de tornar sua experiência de fato
-                INFINITY.
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item mb-24 br-6">
-            <h2 class="accordion-header" id="headingThree">
-              <button
-                class="accordion-button collapsed br-6"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#headingThree"
-                aria-expanded="false"
-                aria-controls="headingThree"
-              >
-                Como sei que minha conta não será roubada?
-              </button>
-            </h2>
-            <div
-              id="headingThree"
-              class="accordion-collapse collapse"
-              aria-labelledby="headingThree"
-              data-bs-parent="#faqAccordion"
-            >
-              <div class="accordion-body">
-                Sabemos a importância e valor emocional que as contas
-                representam para nossos clientes, por isso a seletiva de
-                boosters é rígida; buscamos profissionais confiáveis para
-                garantir não apenas qualidade e agilidade, mas também a
-                privacidade necessária para execução do serviço. No entanto,
-                para maior segurança, também orientamos que você verifique o
-                e-mail da sua conta no site do jogo e utilize uma senha
-                temporária antes de informar os dados de acesso.
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item mb-24 br-6">
-            <h2 class="accordion-header" id="headingFour">
-              <button
-                class="accordion-button collapsed br-6"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#headingFour"
-                aria-expanded="false"
-                aria-controls="headingFour"
-              >
-                Como funciona o pagamento?
-              </button>
-            </h2>
-            <div
-              id="headingFour"
-              class="accordion-collapse collapse"
-              aria-labelledby="headingFour"
-              data-bs-parent="#faqAccordion"
-            >
-              <div class="accordion-body">
-                O pagamento deve ser realizado antes de disponibilizarmos seu
-                pedido a algum jogador da nossa equipe. Aceitamos: Boleto
-                bancário, Cartões de crédito, Depósito Bancário, Transferência
-                Online (PIX) e DOC/TED Eletrônico.
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item mb-24 br-6">
-            <h2 class="accordion-header" id="headingFive">
-              <button
-                class="accordion-button collapsed br-6"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#headingFive"
-                aria-expanded="false"
-                aria-controls="headingFive"
-              >
-                Quem ficará sabendo que eu comprei o serviço?
-              </button>
-            </h2>
-            <div
-              id="headingFive"
-              class="accordion-collapse collapse"
-              aria-labelledby="headingFive"
-              data-bs-parent="#faqAccordion"
-            >
-              <div class="accordion-body">
-                O sistema da ELO INFINITY foi desenvolvido para proporcionar o
-                máximo de segurança ao cliente. Somente o jogador que selecionar
-                seu pedido terá acesso às informações da conta.
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item mb-24 br-6">
-            <h2 class="accordion-header" id="headingSix">
-              <button
-                class="accordion-button collapsed br-6"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#headingSix"
-                aria-expanded="false"
-                aria-controls="headingSix"
-              >
-                Quando meu serviço irá iniciar?
-              </button>
-            </h2>
-            <div
-              id="headingSix"
-              class="accordion-collapse collapse"
-              aria-labelledby="headingSix"
-              data-bs-parent="#faqAccordion"
-            >
-              <div class="accordion-body">
-                Após você contratar o serviço e o pagamento ser aprovado,
-                daremos início ao serviço em alguns instantes. Você será
-                notificado assim que iniciar e poderá acompanhar todo o
-                progresso.
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item mb-24 br-6">
-            <h2 class="accordion-header" id="headingSeven">
-              <button
-                class="accordion-button collapsed br-6"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#headingSeven"
-                aria-expanded="false"
-                aria-controls="headingSeven"
-              >
-                Há risco de ser banido?
-              </button>
-            </h2>
-            <div
-              id="headingSeven"
-              class="accordion-collapse collapse"
-              aria-labelledby="headingSeven"
-              data-bs-parent="#faqAccordion"
-            >
-              <div class="accordion-body">
-                Existe sim chance de suspensão da conta para o serviço de Elo
-                Boost, já o Coaching e Duo Boost não são contra as regras da
-                empresa responsável pelo jogo. Porém, fique tranquilo(a), nós da
-                ELO INFINITY seguimos um rígido protocolo para que o risco de
-                suspensão da sua conta seja quase ZERO. O máximo que pode
-                acontecer é "block", o que pode ser resolvido com um simples
-                ticket informando os dados corretos da conta.
-              </div>
-            </div>
-          </div> -->
           <div
             class="accordion-item border-0 mb-24 infinity-bg-grey-400"
             v-for="(item, index) in faqItems"
@@ -472,6 +270,65 @@
           </div>
         </div>
       </section>
+      <footer class="mtb-40 d-flex flex-column align-items-center">
+        <Logo />
+        <p class="font-16 mt-32 mb-24 text-center">
+          League of Legends é uma marca registrada da Riot Games, Inc. Nós não
+          somos de nenhuma forma afiliados, associados ou endossados pela Riot
+          Games, Inc. Todos os direitos autoriais, marcas, imagens e marcas de
+          serviço pertencem a seus respectivos proprietários.
+        </p>
+        <p class="font-bold font-16 mb-16">Formas de pagamento</p>
+        <div class="d-flex align-items-center p-16 br-6">
+          <img
+            src="/img/web/payment-methods/mercado-pago.png"
+            alt="Mercado Pago"
+            width="99px"
+            height="26px"
+            class="mr-24"
+          />
+          <img
+            src="/img/web/payment-methods/pix.png"
+            alt="Pix"
+            width="99px"
+            height="35px"
+            class="mr-24"
+          />
+          <img
+            src="/img/web/payment-methods/picpay.png"
+            alt="PicPay"
+            width="99px"
+            height="35px"
+          />
+        </div>
+        <p class="font-14 mt-24">
+          Copyright <strong class="font-yellow">© Elo Job Infinity</strong>
+          {{ $dayjs().format('YYYY') }} –
+          <NuxtLink class="font-yellow font-bold" to="/privacy"
+            >Privacidade</NuxtLink
+          >
+          –
+          <NuxtLink class="font-yellow font-bold" to="/privacy"
+            >Termos de Uso</NuxtLink
+          >
+        </p>
+        <p class="font-14">
+          Designed by:
+          <a
+            class="font-yellow font-bold"
+            target="_blank"
+            href="https://www.linkedin.com/in/vitor-c-01b881223/"
+            >Vitor C.</a
+          >
+          & Developed by:
+          <a
+            class="font-yellow font-bold"
+            target="_blank"
+            href="https://www.linkedin.com/in/adson-martins-743ab01b5/"
+            >Adson M.</a
+          >
+        </p>
+      </footer>
     </div>
   </div>
 </template>
@@ -900,5 +757,13 @@ section.feedbacks img.jinx {
   color: var(--white);
   background-color: var(--grey-400);
   box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
+}
+
+.payment-methods {
+  border: 4px solid var(--grey-400);
+}
+
+.payment-methods img ~ img {
+  margin-top: 16px;
 }
 </style>
