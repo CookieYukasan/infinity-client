@@ -71,10 +71,15 @@
         </Button>
       </header>
       <section class="hero mt-100">
-        <div class="d-flex align-items-center justify-content-between">
-          <p class="font-48 fw-900">
+        <div
+          class="d-flex align-items-center justify-content-between"
+          :class="{
+            'flex-column': $device.isMobile,
+          }"
+        >
+          <p class="fw-900" :class="$device.isDesktop ? 'font-48' : 'font-28'">
             Na elo infinity tem:<br />
-            <span class="font-bold animated-text"
+            <span class="font-bold animated-text mx-auto"
               >- {{ animatedTextOptions.textValue }}</span
             ><br />
             <span class="font-20 fw-normal"
@@ -83,35 +88,52 @@
           </p>
           <img
             class="poro-hero"
+            :class="{
+              'mt-24 mx-auto': $device.isMobile,
+            }"
             src="/img/web/landing-page/poro.png"
-            width="524px"
+            :width="$device.isDesktop ? '524px' : '250px'"
             alt="Poro Illustration"
           />
         </div>
       </section>
-      <section class="service-cards-wrapper justify-content-center mb-48">
+      <section
+        class="service-cards row mb-48 justify-content-center"
+        :class="{
+          'flex-column gx-0': $device.isMobile,
+        }"
+      >
         <div
           v-for="(item, index) in servicesCardItems"
           :key="index"
-          class="service-card infinity-bg-grey-400 br-6 p-24 text-center"
+          class="service-card text-center"
+          :class="{
+            'col-3': $device.isDesktop,
+            'col-12': $device.isMobile,
+          }"
         >
-          <img
-            :src="`/img/web/landing-page/services-card-icons/${index + 1}.png`"
-            :alt="`${item.title} Icon`"
-            width="201px"
-          />
-          <h1 class="font-28 font-bold mtb-24">{{ item.title }}</h1>
-          <p class="font-16 mb-24" v-html="item.description"></p>
-          <Button
-            btnClass="br-6 btn-infinity-primary br-6 ptb-16 w-75 font-bold"
-            >Contratar</Button
-          >
+          <div class="col-12 infinity-bg-grey-400 br-6 p-24">
+            <img
+              :src="`/img/web/landing-page/services-card-icons/${
+                index + 1
+              }.png`"
+              :alt="`${item.title} Icon`"
+              width="201px"
+            />
+            <h1 class="font-28 font-bold mtb-24">{{ item.title }}</h1>
+            <p class="font-16 mb-24" v-html="item.description"></p>
+            <Button
+              btnClass="br-6 btn-infinity-primary br-6 ptb-16 w-75 font-bold"
+              >Contratar</Button
+            >
+          </div>
         </div>
       </section>
       <section class="who-we-are position-relative d-flex mb-100">
         <img
           src="/img/web/landing-page/jinx-illustration.png"
           alt="Jinx Illustration"
+          v-if="$device.isDesktop"
         />
         <div class="information position-relative">
           <img
@@ -123,9 +145,18 @@
             class="position-absolute monkey"
             src="/img/web/landing-page/monkey-illustration.png"
             alt="Money Illustration"
+            v-if="$device.isDesktop"
           />
-          <h1 class="font-40 font-bold fw-900 mb-40">Quem somos?</h1>
-          <p class="font-16 text-center w-75">
+          <h1
+            class="font-40 font-bold fw-900 mb-40"
+            :class="$device.isMobile ? 'text-center' : ''"
+          >
+            Quem somos?
+          </h1>
+          <p
+            class="font-16 text-center"
+            :class="$device.isDesktop ? 'w-75' : ''"
+          >
             A Elo Infinity tem experiência com inúmeros serviços de Elo Boost,
             Duo Boost e Coach
             <strong class="font-yellow">concluídos de forma rápida</strong> e
@@ -168,11 +199,15 @@
           escolhendo a posição do flash, horários de acesso à conta, quais rotas
           e campeões serão usados, chat offline e muito mais!
         </p>
-        <div class="row text-center mt-32">
+        <div
+          class="row text-center mt-32"
+          :class="$device.isMobile ? 'flex-column' : ''"
+        >
           <div
             v-for="(item, index) in companyValuesItems"
             :key="index"
             class="col-4 value-company-card"
+            :class="$device.isMobile ? 'col-12' : ''"
           >
             <img
               :src="`/img/web/landing-page/values-cards-icons/${index + 1}.png`"
@@ -184,7 +219,7 @@
           </div>
         </div>
       </section>
-      <section class="feedbacks mt-100">
+      <section class="feedbacks mt-100" v-if="$device.isDesktop">
         <h1 class="fw-900 font-40 text-center">
           O que os clientes dizem sobre a Elo Infinity?
         </h1>
@@ -613,13 +648,13 @@ header a.header-link:active {
 
 @keyframes gravity-animation {
   0% {
-    transform: rotateY(180deg) translateY(-10px);
+    transform: translateY(-10px);
   }
   50% {
-    transform: rotateY(180deg) translateY(10px);
+    transform: translateY(10px);
   }
   100% {
-    transform: rotateY(180deg) translateY(-10px);
+    transform: translateY(-10px);
   }
 }
 
@@ -654,11 +689,7 @@ header a.header-link:active {
   font-weight: bold;
 }
 
-.service-cards-wrapper {
-  display: grid;
-  grid-template-columns: repeat(3, 310px);
-  grid-template-rows: 1fr;
-  gap: 32px;
+section.service-cards {
   margin-top: 140px;
 }
 
@@ -666,30 +697,46 @@ header a.header-link:active {
   margin-top: -120px;
 }
 
-section.who-we-are h1 {
-  margin-left: -100px;
-}
-
-section.who-we-are p {
-  margin-left: -150px;
-}
-
-section.who-we-are .information img.boom {
-  top: -25px;
-  left: -150px;
-  width: 400px;
-  z-index: -1;
-}
-
-section.who-we-are .information img.monkey {
-  bottom: 120px;
-  right: 180px;
-  width: 350px;
-  z-index: -1;
-}
-
 section.who-we-are .information {
   margin-top: 100px;
+}
+
+@media only screen and (min-width: 768px) {
+  section.who-we-are h1 {
+    margin-left: -100px;
+  }
+
+  section.who-we-are p {
+    margin-left: -150px;
+  }
+
+  section.who-we-are .information img.boom {
+    top: -25px;
+    left: -150px;
+    width: 400px;
+    z-index: -1;
+  }
+
+  .value-company-card:nth-child(2) {
+    margin-top: 80px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .circle-mask {
+    background-size: contain;
+  }
+
+  section.service-cards .service-card:not(:nth-child(1)) {
+    margin-top: 130px;
+  }
+
+  section.who-we-are .information img.boom {
+    left: 35px;
+    top: -10px;
+    width: 300px;
+    z-index: -1;
+  }
 }
 
 img.ammunition {
@@ -702,10 +749,6 @@ img.ammunition {
   background-color: var(--grey-400);
   height: 1px;
   border: 0;
-}
-
-.value-company-card:nth-child(2) {
-  margin-top: 80px;
 }
 
 section.feedbacks img.jinx {
