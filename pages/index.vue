@@ -222,7 +222,7 @@
           </div>
         </div>
       </section>
-      <section class="feedbacks mt-100" v-if="$device.isDesktop">
+      <section class="feedbacks mt-100">
         <h1 class="fw-900 font-40 text-center">
           O que os clientes dizem sobre a Elo Infinity?
         </h1>
@@ -237,13 +237,15 @@
             src="/img/web/landing-page/jinx-illustration-2.png"
             alt="Jinx Illustration"
             class="jinx col-3"
+            v-if="$device.isDesktop"
           />
-          <div class="col-9">
-            <div class="gx-4 row">
+          <div :class="$device.isMobile ? 'col-12' : 'col-9'">
+            <div class="row" :class="$device.isDesktop ? 'gx-4' : 'gx-0'">
               <div
                 v-for="(item, index) in feedbackItems"
                 :key="index"
-                class="feedback-card col-md-6 mb-16"
+                class="feedback-card"
+                :class="$device.isDesktop ? 'col-6 mb-16' : 'col-12'"
               >
                 <div
                   class="infinity-bg-grey-400 w-100 h-100 p-16 br-6 d-flex flex-column align-items-center position-relative"
@@ -705,6 +707,13 @@ section.who-we-are .information {
 }
 
 @media only screen and (min-width: 768px) {
+  section.who-we-are .information img.monkey {
+    bottom: 120px;
+    right: 180px;
+    width: 350px;
+    z-index: -1;
+  }
+
   section.who-we-are h1 {
     margin-left: -100px;
   }
@@ -722,6 +731,11 @@ section.who-we-are .information {
 
   .value-company-card:nth-child(2) {
     margin-top: 80px;
+  }
+
+  .feedback-card {
+    z-index: -1;
+    width: 50%;
   }
 }
 
@@ -773,9 +787,7 @@ section.feedbacks img.jinx {
 
 .feedback-card {
   margin-top: 80px;
-  margin-bottom: 160px;
-  z-index: -1;
-  width: 50%;
+  margin-bottom: 30px;
 }
 
 .feedback-card .service-label {
