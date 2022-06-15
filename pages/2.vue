@@ -1,10 +1,12 @@
 <template>
   <div class="circle-mask">
-    <div class="landing-page-gradient top-0 w-100 position-absolute"></div>
+    <div
+      class="landing-page-gradient top-0 w-100 vh-100 position-absolute"
+    ></div>
     <div class="container-md">
       <header
         v-if="$device.isDesktop"
-        class="desktop-header pt-24 d-flex justify-content-between align-items-center"
+        class="pt-24 d-flex justify-content-between align-items-center"
       >
         <NuxtLink to="/">
           <Logo width="200px" height="24px" type="white" />
@@ -27,7 +29,7 @@
           <div
             v-show="displayServicesDropdown"
             @mouseleave="disableServiceDropdown"
-            class="services-dropdown p-24 br-8 infinity-bg-white position-absolute"
+            class="services-dropdown p-24 br-6 infinity-bg-white position-absolute"
           >
             <p class="font-grey-200 font-16 font-bold mb-24">Serviços</p>
             <div class="services-grid">
@@ -62,7 +64,7 @@
           </div>
         </div>
         <Button
-          btnClass="btn-infinity-primary br-8 ptb-8 prl-8 pr-16 d-flex align-items-center"
+          btnClass="btn-infinity-primary br-6 ptb-8 prl-8 pr-16 d-flex align-items-center"
         >
           <i class="material-icons-two-tone mr-4 icon-white">person</i>
           Área do cliente
@@ -91,19 +93,19 @@
           </NuxtLink>
         </div>
       </header>
-      <section class="hero mt-100 font-white">
+      <section class="hero mt-100">
         <div
           class="d-flex align-items-center justify-content-between"
           :class="{
             'flex-column': $device.isMobile,
           }"
         >
-          <p class="fw-bold" :class="$device.isDesktop ? 'font-48' : 'font-28'">
+          <p class="fw-900" :class="$device.isDesktop ? 'font-48' : 'font-28'">
             Na elo infinity tem:<br />
-            <span class="fw-500 animated-text mx-auto"
+            <span class="font-bold animated-text mx-auto"
               >- {{ animatedTextOptions.textValue }}</span
             ><br />
-            <span class="font-20 fw-regular"
+            <span class="font-20 fw-normal"
               >Levamos você ao infinito e além ✨</span
             >
           </p>
@@ -113,31 +115,283 @@
               'mt-24 mx-auto': $device.isMobile,
             }"
             src="/img/web/landing-page/poro.png"
-            :width="$device.isDesktop ? '424px' : '250px'"
+            :width="$device.isDesktop ? '524px' : '250px'"
             alt="Poro Illustration"
           />
         </div>
       </section>
-      <section class="row justify-content-center">
+      <section
+        class="service-cards row mb-48 justify-content-center"
+        :class="{
+          'flex-column gx-0': $device.isMobile,
+        }"
+      >
         <div
           v-for="(item, index) in servicesCardItems"
           :key="index"
-          class="services-item position-relative d-flex flex-column align-items-center col-3 infinity-bg-dark-white p-24 br-8"
+          class="service-card text-center"
           :class="{
-            'mr-16': index !== servicesCardItems.length - 1,
+            'col-3': $device.isDesktop,
+            'col-12': $device.isMobile,
           }"
         >
-          <img
-            :src="`/img/web/landing-page/services-cards-icons/${index}.svg`"
-            alt="Icon"
-          />
-          <h1 class="font-16 mt-16 mb-8 font-bold align-self-start">
-            {{ item.title }}
-          </h1>
-          <p class="font-14" v-html="item.description"></p>
-          <Button>Contratar</Button>
+          <div class="col-12 infinity-bg-grey-400 br-6 p-24">
+            <img
+              :src="`/img/web/landing-page/services-card-icons/${
+                index + 1
+              }.png`"
+              :alt="`${item.title} Icon`"
+              width="201px"
+            />
+            <h1 class="font-28 font-bold mtb-24">{{ item.title }}</h1>
+            <p class="font-16 mb-24" v-html="item.description"></p>
+            <Button
+              btnClass="br-6 btn-infinity-primary br-6 ptb-16 w-75 font-bold"
+              >Contratar</Button
+            >
+          </div>
         </div>
       </section>
+      <section class="who-we-are position-relative d-flex mb-100">
+        <img
+          src="/img/web/landing-page/jinx-illustration.png"
+          alt="Jinx Illustration"
+          v-if="$device.isDesktop"
+        />
+        <div class="information position-relative">
+          <img
+            class="position-absolute boom"
+            src="/img/web/landing-page/boom-text.png"
+            alt="Boom Text"
+          />
+          <img
+            class="position-absolute monkey"
+            src="/img/web/landing-page/monkey-illustration.png"
+            alt="Money Illustration"
+            v-if="$device.isDesktop"
+          />
+          <h1
+            class="font-40 font-bold fw-900 mb-40"
+            :class="$device.isMobile ? 'text-center' : ''"
+          >
+            Quem somos?
+          </h1>
+          <p
+            class="font-16 text-center"
+            :class="$device.isDesktop ? 'w-75' : ''"
+          >
+            A Elo Infinity tem experiência com inúmeros serviços de Elo Boost,
+            Duo Boost e Coach
+            <strong class="font-yellow">concluídos de forma rápida</strong> e
+            <strong class="font-yellow">efetiva</strong> e sempre com um padrão
+            de alta satisfação dos nossos clientes. Além disso, vem se tornando
+            <strong class="font-yellow">destaque no mercado</strong> de boosting
+            devido ao <strong class="font-yellow">grande diferencial</strong> no
+            atendimento e suporte ao cliente, assim como a excelência na entrega
+            dos serviços. Nossa premissa é oferecer um
+            <strong class="font-yellow">serviço de qualidade</strong>
+            pelo
+            <strong class="font-yellow">preço mais barato</strong> do mercado.
+          </p>
+        </div>
+      </section>
+      <section class="mb-48 position-relative">
+        <img
+          class="ammunition position-absolute"
+          src="/img/web/landing-page/ammunition.png"
+          alt="Ammunition Illustration"
+        />
+        <h1 class="text-center fw-900 font-40">
+          Por que escolher a Elo Job Infinity?
+        </h1>
+        <p
+          class="font-16 text-center mx-auto mt-24"
+          :class="$device.isDesktop ? 'w-75' : ''"
+        >
+          A Elo Infinity tem o cliente como prioridade e isso também reflete na
+          escolha da nossa equipe;
+          <strong class="font-yellow"
+            >trabalhamos somente com jogadores de nível Grão Mestre e
+            Desafiante</strong
+          >
+          para que o seu pedido seja entregue com
+          <strong class="font-yellow">segurança</strong>,
+          <strong class="font-yellow">eficiência</strong> e
+          <strong class="font-yellow">maestria</strong>. Além disso,
+          <strong class="font-yellow">oferecemos um excelente suporte</strong>
+          ao cliente através do WhatsApp e servidor do Discord. Você irá
+          contratar um serviço de qualidade por um preço barato e ainda poderá
+          <strong class="font-yellow">personaliza-lo do seu jeito</strong>,
+          escolhendo a posição do flash, horários de acesso à conta, quais rotas
+          e campeões serão usados, chat offline e muito mais!
+        </p>
+        <div
+          class="row text-center mt-32"
+          :class="$device.isMobile ? 'flex-column' : ''"
+        >
+          <div
+            v-for="(item, index) in companyValuesItems"
+            :key="index"
+            class="col-4 value-company-card"
+            :class="$device.isMobile ? 'col-12' : ''"
+          >
+            <img
+              :src="`/img/web/landing-page/values-cards-icons/${index + 1}.png`"
+              alt="Illustration"
+            />
+            <h1 class="fw-900 font-28 mt-16">{{ item.title }}</h1>
+            <hr class="infinity-divider mtb-16" />
+            <p class="font-16" v-html="item.description"></p>
+          </div>
+        </div>
+      </section>
+      <section class="feedbacks mt-100">
+        <h1 class="fw-900 font-40 text-center">
+          O que os clientes dizem sobre a Elo Infinity?
+        </h1>
+        <p class="font-16 text-center mt-24 mb-32">
+          Para nós, a satisfação do
+          <strong class="font-bold font-yellow"
+            >cliente vem sempre em primeiro lugar.</strong
+          >
+        </p>
+        <div class="d-flex justify-content-center">
+          <img
+            src="/img/web/landing-page/jinx-illustration-2.png"
+            alt="Jinx Illustration"
+            class="jinx col-3"
+            v-if="$device.isDesktop"
+          />
+          <div :class="$device.isMobile ? 'col-12' : 'col-9'">
+            <div class="row" :class="$device.isDesktop ? 'gx-4' : 'gx-0'">
+              <div
+                v-for="(item, index) in feedbackItems"
+                :key="index"
+                class="feedback-card"
+                :class="$device.isDesktop ? 'col-6 mb-16' : 'col-12'"
+              >
+                <div
+                  class="infinity-bg-grey-400 w-100 h-100 p-16 br-6 d-flex flex-column align-items-center position-relative"
+                >
+                  <p
+                    class="service-label font-14 position-absolute font-yellow"
+                  >
+                    <strong class="font-white">Serviço:</strong>
+                    {{ item.serviceName }}
+                  </p>
+                  <p class="date-label font-bold font-14 position-absolute">
+                    {{ item.date }}
+                  </p>
+                  <img
+                    :src="item.userImage"
+                    alt="User Avatar"
+                    width="96px"
+                    height="96px"
+                    class="user-avatar rounded-circle"
+                  />
+                  <h1 class="fw-900 font-20 mt-16 mb-8">{{ item.userName }}</h1>
+                  <p class="font-14 text-center">{{ item.text }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="faq mt-60">
+        <h1 class="fw-900 text-center font-40">Perguntas frequentes</h1>
+        <p class="font-16 text-center mt-24 mb-32">
+          Abaixo
+          <strong class="font-yellow">respondemos algumas das perguntas</strong>
+          mais frequentes:
+        </p>
+        <div class="accordion accordion-flush" id="faq">
+          <div
+            class="accordion-item border-0 mb-24 infinity-bg-grey-400"
+            v-for="(item, index) in faqItems"
+            :key="index"
+          >
+            <h2 class="accordion-header" :id="`question` + item.key">
+              <button
+                class="accordion-button collapsed infinity-bg-grey-400 font-white font-bold"
+                type="button"
+                data-bs-toggle="collapse"
+                :data-bs-target="`#heading` + item.key"
+                aria-expanded="false"
+                :aria-controls="`heading` + item.key"
+              >
+                {{ item.ask }}
+              </button>
+            </h2>
+            <div
+              :id="`heading` + item.key"
+              class="accordion-collapse collapse"
+              :aria-labelledby="`question` + item.key"
+              data-bs-parent="#faq"
+            >
+              <div class="accordion-body" v-html="item.answer"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer class="mtb-40 d-flex flex-column align-items-center">
+        <Logo />
+        <p class="font-16 mt-32 mb-24 text-center">
+          League of Legends é uma marca registrada da Riot Games, Inc. Nós não
+          somos de nenhuma forma afiliados, associados ou endossados pela Riot
+          Games, Inc. Todos os direitos autoriais, marcas, imagens e marcas de
+          serviço pertencem a seus respectivos proprietários.
+        </p>
+        <p class="font-bold font-16 mb-16">Formas de pagamento</p>
+        <div class="d-flex align-items-center p-16 br-6">
+          <img
+            src="/img/web/payment-methods/mercado-pago.png"
+            alt="Mercado Pago"
+            width="99px"
+            height="26px"
+            class="mr-24"
+          />
+          <img
+            src="/img/web/payment-methods/pix.png"
+            alt="Pix"
+            width="99px"
+            height="35px"
+            class="mr-24"
+          />
+          <img
+            src="/img/web/payment-methods/picpay.png"
+            alt="PicPay"
+            width="99px"
+            height="35px"
+          />
+        </div>
+        <p class="font-14 mt-24">
+          Copyright <strong class="font-yellow">© Elo Job Infinity</strong>
+          {{ $dayjs().format('YYYY') }} –
+          <NuxtLink class="font-yellow font-bold" to="/privacy-policy"
+            >Privacidade</NuxtLink
+          >
+          –
+          <NuxtLink class="font-yellow font-bold" to="/terms-of-use"
+            >Termos de Uso</NuxtLink
+          >
+        </p>
+        <p class="font-14">
+          Designed by:
+          <a
+            class="font-yellow font-bold"
+            target="_blank"
+            href="https://www.linkedin.com/in/vitor-c-01b881223/"
+            >Vitor C.</a
+          >
+          & Developed by:
+          <a
+            class="font-yellow font-bold"
+            target="_blank"
+            href="https://www.linkedin.com/in/adson-martins-743ab01b5/"
+            >Adson M.</a
+          >
+        </p>
+      </footer>
     </div>
   </div>
 </template>
@@ -387,69 +641,31 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-header.desktop-header {
-  .services-dropdown {
-    left: -35px;
-    top: 35px;
-    z-index: 99;
-    width: 550px;
-  }
-
-  .services-dropdown::after {
-    content: '';
-    background: transparent;
-    position: absolute;
-    top: -6px;
-    left: 120px;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 8px solid var(--white);
-  }
-
-  a.header-link:hover,
-  a.header-link:active {
-    color: var(--grey-300) !important;
-  }
-}
-
-.services-item {
-  margin-top: 120px;
-  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.15);
-  height: 295px;
-
-  img {
-    margin-top: -120px;
-  }
-
-  &:nth-child(3) img {
-    margin-top: -150px;
-  }
-
-  button {
-    margin-top: auto;
-  }
+<style scoped>
+header a.header-link:hover,
+header a.header-link:active {
+  color: var(--grey-300) !important;
 }
 
 .animated-text {
   border-right: 3px solid var(--blue-primary);
 }
 
+.fw-900 {
+  font-weight: 900;
+}
+
 .landing-page-gradient {
   z-index: -1;
-  height: 800px;
-  margin-top: -140px;
-  background: linear-gradient(
-    202.35deg,
-    #0d6fca 17.46%,
-    #26006f 54.57%,
-    #4b0384 89.07%
+  background: radial-gradient(
+    140% 140% at 50% 8%,
+    #2958ff 0%,
+    rgba(10, 16, 23, 0) 52%
   );
-  transform: skewY(-10deg);
 }
 
 .circle-mask {
-  background-image: url('/img/web/landing-page/stars-bg.svg');
+  background-image: url('/img/web/landing-page/bg-hero.svg');
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -468,5 +684,167 @@ header.desktop-header {
   100% {
     transform: translateY(-10px);
   }
+}
+
+.services-dropdown {
+  left: -35px;
+  top: 35px;
+  z-index: 99;
+  width: 550px;
+}
+
+.services-dropdown::after {
+  content: '';
+  background: transparent;
+  position: absolute;
+  top: -6px;
+  left: 120px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 8px solid var(--white);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.services-grid a:hover,
+.services-grid a:hover span {
+  color: var(--blue-primary) !important;
+  font-weight: bold;
+}
+
+section.service-cards {
+  margin-top: 140px;
+}
+
+.service-card img {
+  margin-top: -120px;
+}
+
+section.who-we-are .information {
+  margin-top: 100px;
+}
+
+@media only screen and (min-width: 768px) {
+  section.who-we-are .information img.monkey {
+    bottom: 120px;
+    right: 180px;
+    width: 350px;
+    z-index: -1;
+  }
+
+  section.who-we-are h1 {
+    margin-left: -100px;
+  }
+
+  section.who-we-are p {
+    margin-left: -150px;
+  }
+
+  section.who-we-are .information img.boom {
+    top: -25px;
+    left: -150px;
+    width: 400px;
+    z-index: -1;
+  }
+
+  .value-company-card:nth-child(2) {
+    margin-top: 80px;
+  }
+
+  .feedback-card {
+    z-index: -1;
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .circle-mask {
+    background-size: contain;
+  }
+
+  section.service-cards .service-card:not(:nth-child(1)) {
+    margin-top: 130px;
+  }
+
+  section.who-we-are .information img.boom {
+    left: 35px;
+    top: -10px;
+    width: 300px;
+    z-index: -1;
+  }
+}
+
+img.ammunition {
+  top: -128px;
+  left: 176px;
+  z-index: -1;
+}
+
+.infinity-divider {
+  background-color: var(--grey-400);
+  height: 1px;
+  border: 0;
+}
+
+section.feedbacks img.jinx {
+  align-self: baseline;
+  width: 500px;
+  height: 500px;
+  margin-top: 60px;
+  margin-right: -110px;
+}
+
+.feedback-card img.user-avatar {
+  margin-top: -60px;
+}
+
+.feedback-card:nth-child(1),
+.feedback-card:nth-child(2) {
+  margin-top: 40px;
+}
+
+.feedback-card {
+  margin-top: 80px;
+  margin-bottom: 30px;
+}
+
+.feedback-card .service-label {
+  top: 16px;
+  left: 22px;
+}
+
+.feedback-card .date-label {
+  top: 16px;
+  right: 22px;
+}
+
+.accordion-button::after {
+  font-family: 'Material Icons Two Tone';
+  content: 'add';
+  -webkit-font-feature-settings: 'liga';
+  background-image: none;
+}
+
+.accordion-button:not(.collapsed)::after {
+  content: 'remove';
+}
+
+.accordion-button:not(.collapsed) {
+  color: var(--white);
+  background-color: var(--grey-400);
+  box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
+}
+
+.payment-methods {
+  border: 4px solid var(--grey-400);
+}
+
+.payment-methods img ~ img {
+  margin-top: 16px;
 }
 </style>

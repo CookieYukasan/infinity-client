@@ -9,6 +9,12 @@ a:active {
   color: var(--blue-primary) !important;
 }
 
+@each $weightSize, $weightLabel in $fontWeights {
+  .fw-#{$weightLabel} {
+    font-weight: #{$weightSize};
+  }
+}
+
 @each $size in $fontSizes {
   .font-#{$size} {
     font-size: #{$size}px;
