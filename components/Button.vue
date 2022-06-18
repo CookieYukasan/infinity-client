@@ -1,9 +1,11 @@
 <template>
+  <!-- @click="!btnDisabled && !btnLoading ? onClick : () => {}" -->
+
   <button
-    @click="!btnDisabled && !btnLoading ? onClick : () => {}"
     :type="btnType"
+    @click="onClick"
     :class="[
-      'br-6',
+      'br-8',
       btnClass,
       btnDisabled || btnLoading ? 'cursor-pointer-disabled' : '',
     ]"
@@ -35,7 +37,7 @@ export default {
     },
     btnClass: {
       type: String,
-      default: 'btn-infinity-primary br-8 ptb-12 w-100',
+      default: 'btn-infinity-primary ptb-12 w-100',
     },
   },
 }

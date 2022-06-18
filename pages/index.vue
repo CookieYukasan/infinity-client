@@ -186,7 +186,7 @@
             <div class="mtb-80">
               <div class="mb-32 feedback-grid">
                 <div
-                  v-for="(item, index) in feedbackItems"
+                  v-for="(item, index) in activeFeedbackItems"
                   :key="index"
                   class="d-flex position-relative flex-column align-items-center infinity-bg-white feedback-item br-8 p-16"
                 >
@@ -220,8 +220,9 @@
               </div>
               <div class="d-flex justify-content-center align-items-center">
                 <Button
+                  :onClick="() => (feedbackPage = feedbackPage - 1)"
                   btnClass="d-flex align-items-center justify-content-center btn-infinity-primary br-8 ptb-12 mr-16 w-200"
-                  :btnDisabled="true"
+                  :btnDisabled="feedbackPage <= 0"
                 >
                   <span class="material-icons-two-tone font-white mr-8"
                     >arrow_back</span
@@ -229,6 +230,8 @@
                   Voltar</Button
                 >
                 <Button
+                  :onClick="() => (feedbackPage = feedbackPage + 1)"
+                  :btnDisabled="(feedbackPage + 1) * 4 >= feedbackItems.length"
                   btnClass="d-flex align-items-center justify-content-center btn-infinity-primary br-8 ptb-12 w-200"
                 >
                   Avançar
@@ -249,6 +252,7 @@
 export default {
   data() {
     return {
+      feedbackPage: null,
       whyChooseUsItems: [
         {
           title: 'Valores mais acessíveis',
@@ -315,7 +319,7 @@ export default {
       feedbackItems: [
         {
           serviceName: 'Elo Boost',
-          userName: 'Vitória',
+          userName: 'Feedback 1',
           userImage:
             'https://i.pinimg.com/originals/36/6e/ee/366eee2a30d455de1bc0af52f3cc4415.jpg',
           text: 'Karma é um ótimo booster, realizou o serviço em apenas 2 dias, serviço top, job incomparável com qualquer outra empresa, agradeço a Yuumi também pelo apoio, amo você amor.',
@@ -323,7 +327,7 @@ export default {
         },
         {
           serviceName: 'Duo Boost',
-          userName: 'Lufa',
+          userName: 'Feedback 2',
           userImage:
             'https://i.pinimg.com/originals/36/6e/ee/366eee2a30d455de1bc0af52f3cc4415.jpg',
           text: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi',
@@ -331,7 +335,7 @@ export default {
         },
         {
           serviceName: 'Elo Boost',
-          userName: 'Lufa',
+          userName: 'Feedback 3',
           userImage:
             'https://i.pinimg.com/originals/36/6e/ee/366eee2a30d455de1bc0af52f3cc4415.jpg',
           text: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi',
@@ -339,7 +343,39 @@ export default {
         },
         {
           serviceName: 'MD10',
-          userName: 'Lufa',
+          userName: 'Feedback 4',
+          userImage:
+            'https://i.pinimg.com/originals/36/6e/ee/366eee2a30d455de1bc0af52f3cc4415.jpg',
+          text: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi',
+          date: '05/31/2022',
+        },
+        {
+          serviceName: 'MD10',
+          userName: 'Feedback 5',
+          userImage:
+            'https://i.pinimg.com/originals/36/6e/ee/366eee2a30d455de1bc0af52f3cc4415.jpg',
+          text: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi',
+          date: '05/31/2022',
+        },
+        {
+          serviceName: 'MD10',
+          userName: 'Feedback 6',
+          userImage:
+            'https://i.pinimg.com/originals/36/6e/ee/366eee2a30d455de1bc0af52f3cc4415.jpg',
+          text: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi',
+          date: '05/31/2022',
+        },
+        {
+          serviceName: 'MD10',
+          userName: 'Feedback 7',
+          userImage:
+            'https://i.pinimg.com/originals/36/6e/ee/366eee2a30d455de1bc0af52f3cc4415.jpg',
+          text: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi',
+          date: '05/31/2022',
+        },
+        {
+          serviceName: 'MD10',
+          userName: 'Feedback 8',
           userImage:
             'https://i.pinimg.com/originals/36/6e/ee/366eee2a30d455de1bc0af52f3cc4415.jpg',
           text: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi',
@@ -423,8 +459,18 @@ export default {
       }
     },
   },
+  computed: {
+    activeFeedbackItems() {
+      return this.feedbackItems.slice(
+        this.feedbackPage * 4,
+        (this.feedbackPage + 1) * 4
+      )
+    },
+  },
   mounted() {
     this.startTypeWriter(0)
+
+    this.feedbackPage = 0
   },
   head() {
     return {
