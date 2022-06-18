@@ -161,7 +161,7 @@
               alt="Agent"
             />
           </section>
-          <section>
+          <section class="mb-80">
             <div class="d-flex justify-content-between">
               <div>
                 <p class="font-16 font-blue-primary font-medium">
@@ -183,7 +183,7 @@
                 height="220px"
               />
             </div>
-            <div class="mtb-80">
+            <div class="mt-80">
               <div class="mb-32 feedback-grid">
                 <div
                   v-for="(item, index) in activeFeedbackItems"
@@ -242,6 +242,49 @@
               </div>
             </div>
           </section>
+          <section class="mb-80">
+            <p class="font-16 font-blue-primary font-medium">
+              Tire suas duvidas!
+            </p>
+            <h1 class="font-48 mt-8 mb-16 font-blue-200 font-bold">
+              Perguntas frequentes
+            </h1>
+            <p class="font-16 font-grey-500 font-medium">
+              Abaixo respondemos algumas das perguntas mais frequentes:
+            </p>
+            <div class="accordion accordion-flush mt-32" id="faq">
+              <div
+                class="accordion-item border-0 mb-24 infinity-bg-white"
+                v-for="(item, index) in faqItems"
+                :key="index"
+              >
+                <h2 class="accordion-header" :id="`question` + item.key">
+                  <button
+                    class="accordion-button collapsed infinity-bg-white font-blue-200 font-bold"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    :data-bs-target="`#heading` + item.key"
+                    aria-expanded="false"
+                    :aria-controls="`heading` + item.key"
+                  >
+                    {{ item.ask }}
+                  </button>
+                </h2>
+                <div
+                  :id="`heading` + item.key"
+                  class="accordion-collapse collapse"
+                  :aria-labelledby="`question` + item.key"
+                  data-bs-parent="#faq"
+                >
+                  <div
+                    class="accordion-body infinity-bg-white font-grey-500"
+                    v-html="item.answer"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <Footer />
         </div>
       </div>
     </div>
@@ -599,9 +642,32 @@ export default {
 
   .feedback-item {
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.15);
+
     img {
       margin-top: -64px;
     }
   }
+}
+
+.accordion-button::after {
+  font-family: 'Material Icons Two Tone';
+  content: 'add';
+  -webkit-font-feature-settings: 'liga';
+  background-image: none;
+}
+
+.accordion-button:not(.collapsed)::after {
+  content: 'remove';
+}
+
+.accordion-button:not(.collapsed) {
+  color: var(--blue-200);
+  background-color: var(--white);
+}
+
+.accordion-button,
+.accordion-body,
+.accordion-button:not(.collapsed) {
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.15);
 }
 </style>
