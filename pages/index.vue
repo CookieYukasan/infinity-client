@@ -2,142 +2,222 @@
   <div class="circle-mask">
     <div class="landing-page-gradient top-0 w-100 position-absolute"></div>
     <div class="container-md">
-      <header
-        v-if="$device.isDesktop"
-        class="desktop-header pt-24 d-flex justify-content-between align-items-center"
-      >
-        <NuxtLink to="/">
-          <Logo width="200px" height="24px" type="white" />
-        </NuxtLink>
-        <div
-          class="d-flex align-items-center justify-content-center position-relative"
-        >
-          <NuxtLink
-            v-for="(item, index) in navItems"
-            :key="index"
-            :class="{
-              'mr-24': index !== navItems.length - 1,
-            }"
-            :to="item.url || '#'"
-            class="font-16 font-bold header-link"
-            @mouseenter.native="onMouseEnterServiceDropdown(index)"
-          >
-            {{ item.text }}
-          </NuxtLink>
-          <div
-            v-show="displayServicesDropdown"
-            @mouseleave="disableServiceDropdown"
-            class="services-dropdown p-24 br-8 infinity-bg-white position-absolute"
-          >
-            <p class="font-grey-200 font-16 font-bold mb-24">Serviços</p>
-            <div class="services-grid">
-              <NuxtLink
-                v-for="(service, index) in servicesItems"
-                :key="index"
-                :to="service.url"
-                class="font-grey-200 d-flex align-items-center"
-              >
-                <span class="material-icons font-grey-100 mr-4">{{
-                  service.iconName
-                }}</span>
-                {{ service.text }}
-              </NuxtLink>
-            </div>
-            <p class="font-grey-200 font-16 font-bold mtb-24">
-              Outros serviços
-            </p>
-            <div class="services-grid">
-              <NuxtLink
-                v-for="(service, index) in otherServicesItems"
-                :key="index"
-                :to="service.url"
-                class="font-grey-200 d-flex align-items-center"
-              >
-                <span class="material-icons font-grey-100 mr-4">{{
-                  service.iconName
-                }}</span>
-                {{ service.text }}
-              </NuxtLink>
-            </div>
-          </div>
-        </div>
-        <Button
-          btnClass="btn-infinity-primary br-8 ptb-8 prl-8 pr-16 d-flex align-items-center"
-        >
-          <i class="material-icons-two-tone mr-4 icon-white">person</i>
-          Área do cliente
-        </Button>
-      </header>
-      <header
-        v-if="$device.isMobile"
-        class="pt-24 d-flex flex-column justify-content-between align-items-center"
-      >
-        <NuxtLink to="/" class="mb-16">
-          <Logo width="150px" height="24px" />
-        </NuxtLink>
-        <div
-          class="d-flex align-items-center justify-content-center position-relative"
-        >
-          <NuxtLink
-            v-for="(item, index) in navItems"
-            :key="index"
-            :class="{
-              'mr-16': index !== navItems.length - 1,
-            }"
-            :to="item.url || '#'"
-            class="font-16 font-bold"
-          >
-            {{ item.text }}
-          </NuxtLink>
-        </div>
-      </header>
-      <section class="hero mt-100 font-white">
-        <div
-          class="d-flex align-items-center justify-content-between"
-          :class="{
-            'flex-column': $device.isMobile,
-          }"
-        >
-          <p class="fw-bold" :class="$device.isDesktop ? 'font-48' : 'font-28'">
-            Na elo infinity tem:<br />
-            <span class="fw-500 animated-text mx-auto"
-              >- {{ animatedTextOptions.textValue }}</span
-            ><br />
-            <span class="font-20 fw-regular"
-              >Levamos você ao infinito e além ✨</span
+      <div class="row justify-content-center">
+        <div class="col-10">
+          <Header />
+          <section class="hero mt-16 font-white">
+            <div
+              class="d-flex align-items-center justify-content-between"
+              :class="{
+                'flex-column': $device.isMobile,
+              }"
             >
-          </p>
-          <img
-            class="poro-hero"
-            :class="{
-              'mt-24 mx-auto': $device.isMobile,
-            }"
-            src="/img/web/landing-page/poro.png"
-            :width="$device.isDesktop ? '424px' : '250px'"
-            alt="Poro Illustration"
-          />
+              <p
+                class="fw-bold"
+                :class="$device.isDesktop ? 'font-48' : 'font-28'"
+              >
+                Na elo infinity tem:<br />
+                <span class="fw-500 animated-text mx-auto"
+                  >- {{ animatedTextOptions.textValue }}</span
+                ><br />
+                <span class="font-20 fw-regular"
+                  >Levamos você ao infinito e além ✨</span
+                >
+              </p>
+              <img
+                class="gravity-animation"
+                :class="{
+                  'mt-24 mx-auto': $device.isMobile,
+                }"
+                src="/img/web/landing-page/poro.png"
+                :width="$device.isDesktop ? '424px' : '250px'"
+                alt="Poro Illustration"
+              />
+            </div>
+          </section>
+          <section class="row mt-80 justify-content-center">
+            <div
+              v-for="(item, index) in servicesCardItems"
+              :key="index"
+              class="services-item position-relative d-flex flex-column align-items-center col infinity-bg-dark-white p-24 br-8"
+              :class="{
+                'mr-16': index !== servicesCardItems.length - 1,
+              }"
+            >
+              <img
+                :src="`/img/web/landing-page/services-cards-icons/${index}.svg`"
+                alt="Icon"
+              />
+              <h1 class="font-16 mt-16 mb-8 font-bold align-self-start">
+                {{ item.title }}
+              </h1>
+              <p class="font-14 font-grey-500" v-html="item.description"></p>
+              <NuxtLink
+                :to="item.url"
+                class="btn-infinity-primary br-8 ptb-12 w-100 text-center font-white"
+                >Contratar</NuxtLink
+              >
+            </div>
+          </section>
+          <section class="mtb-80">
+            <p class="font-16 font-blue-primary font-medium">
+              Um pouquinho sobre a Elo Infinity
+            </p>
+            <h1 class="font-48 mt-8 mb-16 font-blue-200 font-bold">
+              Quem somos?
+            </h1>
+            <p class="font-16 font-grey-500">
+              A Elo Infinity tem experiência com inúmeros serviços de
+              <strong class="font-blue-200"
+                >Elo Boost, Duo Boost e Coach concluídos de forma rápida e
+                efetiva</strong
+              >, sempre com um padrão de alta satisfação dos nossos clientes.
+              Além disso,
+              <strong class="font-blue-200"
+                >vem se tornando destaque no mercado de boosting</strong
+              >
+              devido ao grande diferencial no atendimento e suporte ao cliente,
+              assim como na excelência da entrega dos serviços. Nossa premissa é
+              oferecer um serviço de qualidade
+              <strong class="font-blue-200"
+                >pelo preço mais barato do mercado</strong
+              >.
+            </p>
+            <div class="about-cards-grid mt-32 d-flex justify-content-center">
+              <div class="about-img-card position-relative">
+                <img
+                  class="object-fit-cover br-8"
+                  src="/img/web/landing-page/about-card-1.png"
+                  alt="Card Image"
+                />
+              </div>
+              <div class="about-img-card position-relative">
+                <img
+                  class="object-fit-cover br-8 mrl-48"
+                  src="/img/web/landing-page/about-card-2.png"
+                  alt="Card Image"
+                />
+              </div>
+
+              <div class="about-img-card position-relative">
+                <img
+                  class="object-fit-cover br-8"
+                  src="/img/web/landing-page/about-card-3.png"
+                  alt="Card Image"
+                />
+              </div>
+            </div>
+          </section>
+          <section class="d-flex mb-80">
+            <div>
+              <p class="font-16 font-blue-primary font-medium">
+                Elo Infinity é a sua melhor escolha!
+              </p>
+              <h1 class="font-48 mt-8 mb-16 font-blue-200 font-bold">
+                Por que escolher a<br />
+                Elo Job Infinity?
+              </h1>
+              <p class="font-16 font-grey-500">
+                A Elo Infinity tem o cliente como prioridade e isso também
+                reflete na seleção da nossa equipe;
+                <strong class="font-blue-200"
+                  >trabalhamos somente com jogadores de nível Grão Mestre e
+                  Desafiante para que o seu pedido seja entregue com segurança,
+                  eficiência e maestria</strong
+                >. Além disso, oferecemos um
+                <strong class="font-blue-200">excelente suporte</strong> ao
+                cliente através do
+                <strong class="font-blue-200">WhatsApp</strong> e servidor do
+                <strong class="font-blue-200">Discord</strong>. Você irá
+                contratar um serviço de qualidade por um preço barato e ainda
+                poderá personaliza-lo do seu jeito escolhendo a posição do
+                flash, horários de acesso à conta, quais rotas e campeões serão
+                usados, chat offline e muito mais!
+              </p>
+              <div class="mt-32">
+                <div
+                  v-for="(item, index) in whyChooseUsItems"
+                  :key="index"
+                  class="d-flex mb-32"
+                >
+                  <span
+                    class="material-icons infinity-bg-blue-200 font-white p-12 font-32 rounded-circle align-self-baseline"
+                    >{{ item.icon }}</span
+                  >
+                  <div class="ml-16">
+                    <p class="font-20 font-bold font-blue-200">
+                      {{ item.title }}
+                    </p>
+                    <p class="font-16 font-grey-500">
+                      {{ item.description }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <img
+              class="align-self-center"
+              src="/img/web/landing-page/agent-illustration.png"
+              alt="Agent"
+            />
+          </section>
+          <section>
+            <div class="d-flex justify-content-between">
+              <div>
+                <p class="font-16 font-blue-primary font-medium">
+                  Veja os Feedback do nossos clientes:
+                </p>
+                <h1 class="font-48 mt-8 mb-16 font-blue-200 font-bold">
+                  O que os clientes dizem<br />
+                  sobre a Elo Infinity?
+                </h1>
+                <p class="font-16 font-grey-500 font-medium">
+                  Para nós, a satisfação do cliente vem sempre em primeiro
+                  lugar.
+                </p>
+              </div>
+              <img
+                src="/img/web/landing-page/astronaut-icon.svg"
+                alt="Autronaut Illustration"
+                width="220px"
+                height="220px"
+              />
+            </div>
+            <div class="feedback-grid mt-80">
+              <div
+                v-for="(item, index) in feedbackItems"
+                :key="index"
+                class="d-flex position-relative flex-column align-items-center infinity-bg-white feedback-item br-8 p-16"
+              >
+                <div class="position-absolute top-0 start-0 ml-16 mt-16">
+                  <span class="font-14 font-blue-200 font-medium"
+                    >Serviço:</span
+                  >
+                  <span class="font-14 font-blue-primary">{{
+                    item.serviceName
+                  }}</span>
+                </div>
+                <div class="position-absolute top-0 end-0 mr-16 mt-16">
+                  <span class="font-14 font-blue-200 font-medium">{{
+                    item.date
+                  }}</span>
+                </div>
+                <img
+                  class="rounded-circle"
+                  :src="item.userImage"
+                  alt="User Image"
+                  width="96px"
+                  height="96px"
+                />
+                <p class="font-bold font-blue-200 font-20 mt-16 mb-8">
+                  {{ item.userName }}
+                </p>
+                <p class="font-14 font-grey-500 text-center">{{ item.text }}</p>
+              </div>
+            </div>
+          </section>
         </div>
-      </section>
-      <section class="row justify-content-center">
-        <div
-          v-for="(item, index) in servicesCardItems"
-          :key="index"
-          class="services-item position-relative d-flex flex-column align-items-center col-3 infinity-bg-dark-white p-24 br-8"
-          :class="{
-            'mr-16': index !== servicesCardItems.length - 1,
-          }"
-        >
-          <img
-            :src="`/img/web/landing-page/services-cards-icons/${index}.svg`"
-            alt="Icon"
-          />
-          <h1 class="font-16 mt-16 mb-8 font-bold align-self-start">
-            {{ item.title }}
-          </h1>
-          <p class="font-14" v-html="item.description"></p>
-          <Button>Contratar</Button>
-        </div>
-      </section>
+      </div>
     </div>
   </div>
 </template>
@@ -146,7 +226,25 @@
 export default {
   data() {
     return {
-      displayServicesDropdown: false,
+      whyChooseUsItems: [
+        {
+          title: 'Valores mais acessíveis',
+          description: 'A Elo Infinity possui os melhores valores do mercado.',
+          icon: 'sell',
+        },
+        {
+          title: 'Jogadores qualificados',
+          description:
+            'Possuimos os melhores jogadores! Nossa equipe é composta somente por jogadores de alto nível (Grão-Mestre e Challenger).',
+          icon: 'videogame_asset',
+        },
+        {
+          title: 'Privacidade e segurança',
+          description:
+            'Garantimos a segurança pelos meios de pagamento. Os boosters são treinados para fazer o serviço sem levantar suspeitas.',
+          icon: 'lock',
+        },
+      ],
       faqItems: [
         {
           ask: 'A Elo Job Infinity é segura/confiável?',
@@ -242,75 +340,24 @@ export default {
             '<strong class="font-yellow">Garantimos a segurança pelos meios de pagamento.</strong> Os boosters são treinados para fazer o serviço sem levantar suspeitas.',
         },
       ],
-      otherServicesItems: [
-        {
-          text: 'Coaching',
-          url: '/services/coaching',
-          iconName: 'support_agent',
-        },
-        {
-          text: 'Manutenção de elo',
-          url: '/services/elo-maintenance',
-          iconName: 'engineering',
-        },
-      ],
-      servicesItems: [
-        {
-          text: 'Elojob',
-          url: '/services/elojob',
-          iconName: 'trending_up',
-        },
-        {
-          text: 'Duoboost',
-          url: '/services/duoboost',
-          iconName: 'group',
-        },
-        {
-          text: 'MD10',
-          url: '/services/md10',
-          iconName: 'help_center',
-        },
-        {
-          text: 'Vitórias',
-          url: '/services/wins',
-          iconName: 'workspace_premium',
-        },
-      ],
-      navItems: [
-        {
-          text: 'Inicio',
-          url: '/',
-        },
-        {
-          text: 'Serviços',
-        },
-        {
-          text: 'Contato',
-          url: '/contact',
-        },
-        {
-          text: 'Trabalhe conosco',
-          url: '/work-with-us',
-        },
-      ],
       servicesCardItems: [
         {
           title: 'Elo Boost',
           url: '/services/elojob',
           description:
-            'Um jogador profissional irá <strong class="font-yellow">garantir o elo desejado</strong> jogando em sua conta.',
+            'Um jogador profissional irá <strong class="font-blue-200">garantir o elo desejado</strong> jogando em sua conta.',
         },
         {
           title: 'Duo Boost',
           url: '/services/duoboost',
           description:
-            'Você irá <strong class="font-yellow">jogar duo com um jogador profissional</strong>, até chegar no elo desejado.',
+            'Você irá <strong class="font-blue-200">jogar duo com um jogador profissional</strong>, até chegar no elo desejado.',
         },
         {
           title: 'MD10',
           url: '/services/md10',
           description:
-            '<strong class="font-yellow">Iremos garantir o melhor desempenho</strong> possível na sua classificatória.',
+            '<strong class="font-blue-200">Iremos garantir o melhor desempenho</strong> possível na sua classificatória.',
         },
       ],
       animatedTextOptions: {
@@ -352,24 +399,9 @@ export default {
         })
       }
     },
-    enableServiceDropdown() {
-      this.displayServicesDropdown = true
-    },
-    disableServiceDropdown() {
-      this.displayServicesDropdown = false
-    },
-    onMouseEnterServiceDropdown(itemIndex) {
-      if (itemIndex === 1) return this.enableServiceDropdown()
-      if (itemIndex !== 1) return this.disableServiceDropdown()
-    },
-    onScroll() {
-      if (this.displayServicesDropdown) this.disableServiceDropdown()
-    },
   },
   mounted() {
     this.startTypeWriter(0)
-
-    window.addEventListener('scroll', this.onScroll)
   },
   head() {
     return {
@@ -388,31 +420,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-header.desktop-header {
-  .services-dropdown {
-    left: -35px;
-    top: 35px;
-    z-index: 99;
-    width: 550px;
-  }
-
-  .services-dropdown::after {
-    content: '';
-    background: transparent;
-    position: absolute;
-    top: -6px;
-    left: 120px;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 8px solid var(--white);
-  }
-
-  a.header-link:hover,
-  a.header-link:active {
-    color: var(--grey-300) !important;
-  }
-}
-
 .services-item {
   margin-top: 120px;
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.15);
@@ -426,7 +433,7 @@ header.desktop-header {
     margin-top: -150px;
   }
 
-  button {
+  a {
     margin-top: auto;
   }
 }
@@ -454,7 +461,7 @@ header.desktop-header {
   background-size: contain;
 }
 
-.poro-hero {
+.gravity-animation {
   animation: gravity-animation 2s ease-in-out infinite;
 }
 
@@ -467,6 +474,65 @@ header.desktop-header {
   }
   100% {
     transform: translateY(-10px);
+  }
+}
+
+.about-cards-grid {
+  .about-img-card:nth-child(1) {
+    transform: rotate(-3.5deg);
+    margin-top: 8px;
+
+    &::before {
+      margin-left: -15px;
+      left: 0;
+    }
+  }
+
+  .about-img-card:nth-child(3) {
+    transform: rotate(3.5deg);
+    margin-top: 8px;
+
+    &::before {
+      margin-right: -15px;
+      right: 0;
+    }
+  }
+
+  .about-img-card:nth-child(2)::before {
+    width: 318px !important;
+    left: 30px;
+  }
+
+  .about-img-card:nth-child(1)::before,
+  .about-img-card:nth-child(2)::before,
+  .about-img-card:nth-child(3)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    border-radius: 8px;
+    width: 280px;
+    height: 280px;
+    z-index: -1;
+    background: linear-gradient(
+      180deg,
+      #0d6fca 0%,
+      #26006f 51.82%,
+      #4b0384 100%
+    );
+  }
+}
+
+.feedback-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(416px, 1fr));
+  grid-gap: 16px;
+  row-gap: 90px;
+
+  .feedback-item {
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.15);
+    img {
+      margin-top: -64px;
+    }
   }
 }
 </style>

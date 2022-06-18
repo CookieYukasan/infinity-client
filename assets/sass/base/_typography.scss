@@ -6,7 +6,7 @@ a {
 
 a:hover,
 a:active {
-  color: var(--blue-primary) !important;
+  color: var(--blue-primary);
 }
 
 @each $weightSize, $weightLabel in $fontWeights {
