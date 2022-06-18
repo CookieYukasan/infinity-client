@@ -183,36 +183,59 @@
                 height="220px"
               />
             </div>
-            <div class="feedback-grid mt-80">
-              <div
-                v-for="(item, index) in feedbackItems"
-                :key="index"
-                class="d-flex position-relative flex-column align-items-center infinity-bg-white feedback-item br-8 p-16"
-              >
-                <div class="position-absolute top-0 start-0 ml-16 mt-16">
-                  <span class="font-14 font-blue-200 font-medium"
-                    >Serviço:</span
+            <div class="mtb-80">
+              <div class="mb-32 feedback-grid">
+                <div
+                  v-for="(item, index) in feedbackItems"
+                  :key="index"
+                  class="d-flex position-relative flex-column align-items-center infinity-bg-white feedback-item br-8 p-16"
+                >
+                  <div class="position-absolute top-0 start-0 ml-16 mt-16">
+                    <span class="font-14 font-blue-200 font-medium"
+                      >Serviço:</span
+                    >
+                    <span class="font-14 font-blue-primary">{{
+                      item.serviceName
+                    }}</span>
+                  </div>
+                  <div class="position-absolute top-0 end-0 mr-16 mt-16">
+                    <span class="font-14 font-blue-200 font-medium">{{
+                      item.date
+                    }}</span>
+                  </div>
+                  <img
+                    class="rounded-circle"
+                    :src="item.userImage"
+                    alt="User Image"
+                    width="96px"
+                    height="96px"
+                  />
+                  <p class="font-bold font-blue-200 font-20 mt-16 mb-8">
+                    {{ item.userName }}
+                  </p>
+                  <p class="font-14 font-grey-500 text-center">
+                    {{ item.text }}
+                  </p>
+                </div>
+              </div>
+              <div class="d-flex justify-content-center align-items-center">
+                <Button
+                  btnClass="d-flex align-items-center justify-content-center btn-infinity-primary br-8 ptb-12 mr-16 w-200"
+                  :btnDisabled="true"
+                >
+                  <span class="material-icons-two-tone font-white mr-8"
+                    >arrow_back</span
                   >
-                  <span class="font-14 font-blue-primary">{{
-                    item.serviceName
-                  }}</span>
-                </div>
-                <div class="position-absolute top-0 end-0 mr-16 mt-16">
-                  <span class="font-14 font-blue-200 font-medium">{{
-                    item.date
-                  }}</span>
-                </div>
-                <img
-                  class="rounded-circle"
-                  :src="item.userImage"
-                  alt="User Image"
-                  width="96px"
-                  height="96px"
-                />
-                <p class="font-bold font-blue-200 font-20 mt-16 mb-8">
-                  {{ item.userName }}
-                </p>
-                <p class="font-14 font-grey-500 text-center">{{ item.text }}</p>
+                  Voltar</Button
+                >
+                <Button
+                  btnClass="d-flex align-items-center justify-content-center btn-infinity-primary br-8 ptb-12 w-200"
+                >
+                  Avançar
+                  <span class="material-icons-two-tone font-white ml-8"
+                    >arrow_forward</span
+                  >
+                </Button>
               </div>
             </div>
           </section>
