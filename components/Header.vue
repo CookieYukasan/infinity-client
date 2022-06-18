@@ -66,12 +66,13 @@
     </header>
     <header
       v-if="$device.isMobile"
-      class="pt-24 d-flex flex-column justify-content-between align-items-center"
+      class="pt-24 d-flex justify-content-between align-items-center"
     >
       <NuxtLink to="/" class="mb-16">
-        <Logo width="150px" height="24px" />
+        <Logo type="small-white" />
       </NuxtLink>
-      <div
+      <span class="material-icons-outlined font-white font-32">menu</span>
+      <!-- <div
         class="d-flex align-items-center justify-content-center position-relative"
       >
         <NuxtLink
@@ -85,7 +86,7 @@
         >
           {{ item.text }}
         </NuxtLink>
-      </div>
+      </div> -->
     </header>
   </div>
 </template>

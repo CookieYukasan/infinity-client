@@ -22,7 +22,7 @@
           <img
             class="gravity-animation"
             :class="{
-              'mt-24 mx-auto': $device.isMobile,
+              'mt-32 mx-auto': $device.isMobile,
             }"
             src="/img/web/landing-page/poro.png"
             :width="$device.isDesktop ? '424px' : '250px'"
@@ -634,6 +634,12 @@ export default {
   background-size: contain;
 }
 
+@media screen and (max-width: 576px) {
+  .circle-mask {
+    background-image: url('/img/web/landing-page/stars-bg-mobile.svg');
+  }
+}
+
 .gravity-animation {
   animation: gravity-animation 2s ease-in-out infinite;
 }
@@ -694,7 +700,7 @@ export default {
     );
   }
 
-  @media (max-width: 576px) {
+  @media screen and (max-width: 576px) {
     .about-img-card:nth-child(1)::before,
     .about-img-card:nth-child(2)::before,
     .about-img-card:nth-child(3)::before {
