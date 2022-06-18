@@ -30,7 +30,10 @@
           />
         </div>
       </section>
-      <section class="row mt-80 justify-content-center">
+      <section
+        class="row mt-80 justify-content-center"
+        :class="$device.isMobile ? 'flex-column' : ''"
+      >
         <div
           v-for="(item, index) in servicesCardItems"
           :key="index"
@@ -49,17 +52,29 @@
           <p class="font-14 font-grey-500" v-html="item.description"></p>
           <NuxtLink
             :to="item.url"
+            :class="$device.isMobile ? 'mt-32' : ''"
             class="btn-infinity-primary br-8 ptb-12 w-100 text-center font-white"
             >Contratar</NuxtLink
           >
         </div>
       </section>
       <section class="mtb-80">
-        <p class="font-16 font-blue-primary font-medium">
+        <p
+          class="font-16 font-blue-primary font-medium"
+          :class="$device.isMobile ? 'text-center' : ''"
+        >
           Um pouquinho sobre a Elo Infinity
         </p>
-        <h1 class="font-48 mt-8 mb-16 font-blue-200 font-bold">Quem somos?</h1>
-        <p class="font-16 font-grey-500">
+        <h1
+          class="mt-8 mb-16 font-blue-200 font-bold"
+          :class="$device.isMobile ? 'text-center font-40' : 'font-48'"
+        >
+          Quem somos?
+        </h1>
+        <p
+          class="font-16 font-grey-500"
+          :class="$device.isMobile ? 'text-center' : ''"
+        >
           A Elo Infinity tem experiência com inúmeros serviços de
           <strong class="font-blue-200"
             >Elo Boost, Duo Boost e Coach concluídos de forma rápida e
@@ -82,13 +97,18 @@
               class="object-fit-cover br-8"
               src="/img/web/landing-page/about-card-1.png"
               alt="Card Image"
+              :width="$device.isMobile ? '100px' : '280px'"
+              :height="$device.isMobile ? '100px' : '280px'"
             />
           </div>
           <div class="about-img-card position-relative">
             <img
-              class="object-fit-cover br-8 mrl-48"
+              class="object-fit-cover br-8"
+              :class="$device.isMobile ? 'mrl-16' : 'mrl-48'"
               src="/img/web/landing-page/about-card-2.png"
               alt="Card Image"
+              :width="$device.isMobile ? '100px' : '280px'"
+              :height="$device.isMobile ? '100px' : '280px'"
             />
           </div>
 
@@ -97,17 +117,22 @@
               class="object-fit-cover br-8"
               src="/img/web/landing-page/about-card-3.png"
               alt="Card Image"
+              :width="$device.isMobile ? '100px' : '280px'"
+              :height="$device.isMobile ? '100px' : '280px'"
             />
           </div>
         </div>
       </section>
       <section class="d-flex mb-80">
-        <div>
+        <div :class="$device.isMobile ? 'text-center' : ''">
           <p class="font-16 font-blue-primary font-medium">
             Elo Infinity é a sua melhor escolha!
           </p>
-          <h1 class="font-48 mt-8 mb-16 font-blue-200 font-bold">
-            Por que escolher a<br />
+          <h1
+            class="mt-8 mb-16 font-blue-200 font-bold"
+            :class="$device.isMobile ? 'font-40' : 'font-48'"
+          >
+            Por que escolher a<br v-if="$device.isDesktop" />
             Elo Job Infinity?
           </h1>
           <p class="font-16 font-grey-500">
@@ -131,16 +156,23 @@
               v-for="(item, index) in whyChooseUsItems"
               :key="index"
               class="d-flex mb-32"
+              :class="{
+                'flex-column justify-content-center': $device.isMobile,
+              }"
             >
               <span
                 class="material-icons infinity-bg-blue-200 font-white p-12 font-32 rounded-circle align-self-baseline"
+                :class="$device.isMobile ? 'mx-auto mb-16' : ''"
                 >{{ item.icon }}</span
               >
               <div class="ml-16">
                 <p class="font-20 font-bold font-blue-200">
                   {{ item.title }}
                 </p>
-                <p class="font-16 font-grey-500">
+                <p
+                  class="font-16 font-grey-500"
+                  :class="$device.isMobile ? 'mt-16' : ''"
+                >
                   {{ item.description }}
                 </p>
               </div>
@@ -151,16 +183,20 @@
           class="align-self-center"
           src="/img/web/landing-page/agent-illustration.png"
           alt="Agent"
+          v-if="$device.isDesktop"
         />
       </section>
       <section class="mb-80">
         <div class="d-flex justify-content-between">
-          <div>
+          <div :class="$device.isMobile ? 'text-center' : ''">
             <p class="font-16 font-blue-primary font-medium">
               Veja os Feedback do nossos clientes:
             </p>
-            <h1 class="font-48 mt-8 mb-16 font-blue-200 font-bold">
-              O que os clientes dizem<br />
+            <h1
+              class="mt-8 mb-16 font-blue-200 font-bold"
+              :class="$device.isMobile ? 'font-40' : 'font-48'"
+            >
+              O que os clientes dizem<br v-if="$device.isDesktop" />
               sobre a Elo Infinity?
             </h1>
             <p class="font-16 font-grey-500 font-medium">
@@ -172,6 +208,7 @@
             alt="Autronaut Illustration"
             width="220px"
             height="220px"
+            v-if="$device.isDesktop"
           />
         </div>
         <div class="mt-80">
@@ -232,13 +269,20 @@
         </div>
       </section>
       <section class="mb-80">
-        <p class="font-16 font-blue-primary font-medium">Tire suas duvidas!</p>
-        <h1 class="font-48 mt-8 mb-16 font-blue-200 font-bold">
-          Perguntas frequentes
-        </h1>
-        <p class="font-16 font-grey-500 font-medium">
-          Abaixo respondemos algumas das perguntas mais frequentes:
-        </p>
+        <div :class="$device.isMobile ? 'text-center' : ''">
+          <p class="font-16 font-blue-primary font-medium">
+            Tire suas duvidas!
+          </p>
+          <h1
+            class="mt-8 mb-16 font-blue-200 font-bold"
+            :class="$device.isMobile ? 'font-40' : 'font-48'"
+          >
+            Perguntas frequentes
+          </h1>
+          <p class="font-16 font-grey-500 font-medium">
+            Abaixo respondemos algumas das perguntas mais frequentes:
+          </p>
+        </div>
         <div class="accordion accordion-flush mt-32" id="faq">
           <div
             class="accordion-item border-0 mb-24 infinity-bg-white"
@@ -649,11 +693,30 @@ export default {
       #4b0384 100%
     );
   }
+
+  @media (max-width: 576px) {
+    .about-img-card:nth-child(1)::before,
+    .about-img-card:nth-child(2)::before,
+    .about-img-card:nth-child(3)::before {
+      width: 100px;
+      height: 100px;
+    }
+
+    .about-img-card:nth-child(2)::before {
+      width: 120px !important;
+      left: 5px;
+    }
+
+    .about-img-card:nth-child(1),
+    .about-img-card:nth-child(3) {
+      margin-top: 4px;
+    }
+  }
 }
 
 .feedback-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(416px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
   grid-gap: 16px;
   row-gap: 90px;
 

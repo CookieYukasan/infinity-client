@@ -1,15 +1,32 @@
 <template>
   <footer class="ptb-24 container-fluid">
     <div class="container-md">
-      <Logo type="full" />
-      <p class="font-16 font-grey-500 mt-24 mb-32">
+      <Logo type="full" :wrapperClass="$device.isMobile ? 'text-center' : ''" />
+      <p
+        class="font-16 font-grey-500 mt-24 mb-32"
+        :class="{
+          'text-center': $device.isMobile,
+        }"
+      >
         League of Legends é uma marca registrada da Riot Games, Inc. Nós não
         somos de nenhuma forma afiliados, associados ou endossados pela Riot
         Games, Inc. Todos os direitos autoriais, marcas, imagens e marcas de
         serviço pertencem a seus respectivos proprietários.
       </p>
-      <p class="font-16 font-semibold font-blue-200">Formas de pagamento</p>
-      <div class="mt-16 mb-32">
+      <p
+        class="font-16 font-semibold font-blue-200"
+        :class="{
+          'text-center': $device.isMobile,
+        }"
+      >
+        Formas de pagamento
+      </p>
+      <div
+        class="mt-16 mb-32"
+        :class="{
+          'text-center': $device.isMobile,
+        }"
+      >
         <img
           class="mr-16"
           v-for="item in paymentsBrands"
