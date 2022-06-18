@@ -2,292 +2,277 @@
   <div class="circle-mask">
     <div class="landing-page-gradient top-0 w-100 position-absolute"></div>
     <div class="container-md">
-      <div class="row justify-content-center">
-        <div class="col-10">
-          <Header />
-          <section class="hero mt-16 font-white">
-            <div
-              class="d-flex align-items-center justify-content-between"
-              :class="{
-                'flex-column': $device.isMobile,
-              }"
+      <Header />
+      <section class="hero mt-16 font-white">
+        <div
+          class="d-flex align-items-center justify-content-between"
+          :class="{
+            'flex-column': $device.isMobile,
+          }"
+        >
+          <p class="fw-bold" :class="$device.isDesktop ? 'font-48' : 'font-28'">
+            Na elo infinity tem:<br />
+            <span class="fw-500 animated-text mx-auto"
+              >- {{ animatedTextOptions.textValue }}</span
+            ><br />
+            <span class="font-20 fw-regular"
+              >Levamos você ao infinito e além ✨</span
             >
-              <p
-                class="fw-bold"
-                :class="$device.isDesktop ? 'font-48' : 'font-28'"
-              >
-                Na elo infinity tem:<br />
-                <span class="fw-500 animated-text mx-auto"
-                  >- {{ animatedTextOptions.textValue }}</span
-                ><br />
-                <span class="font-20 fw-regular"
-                  >Levamos você ao infinito e além ✨</span
-                >
-              </p>
-              <img
-                class="gravity-animation"
-                :class="{
-                  'mt-24 mx-auto': $device.isMobile,
-                }"
-                src="/img/web/landing-page/poro.png"
-                :width="$device.isDesktop ? '424px' : '250px'"
-                alt="Poro Illustration"
-              />
-            </div>
-          </section>
-          <section class="row mt-80 justify-content-center">
-            <div
-              v-for="(item, index) in servicesCardItems"
-              :key="index"
-              class="services-item position-relative d-flex flex-column align-items-center col infinity-bg-dark-white p-24 br-8"
-              :class="{
-                'mr-16': index !== servicesCardItems.length - 1,
-              }"
-            >
-              <img
-                :src="`/img/web/landing-page/services-cards-icons/${index}.svg`"
-                alt="Icon"
-              />
-              <h1 class="font-16 mt-16 mb-8 font-bold align-self-start">
-                {{ item.title }}
-              </h1>
-              <p class="font-14 font-grey-500" v-html="item.description"></p>
-              <NuxtLink
-                :to="item.url"
-                class="btn-infinity-primary br-8 ptb-12 w-100 text-center font-white"
-                >Contratar</NuxtLink
-              >
-            </div>
-          </section>
-          <section class="mtb-80">
-            <p class="font-16 font-blue-primary font-medium">
-              Um pouquinho sobre a Elo Infinity
-            </p>
-            <h1 class="font-48 mt-8 mb-16 font-blue-200 font-bold">
-              Quem somos?
-            </h1>
-            <p class="font-16 font-grey-500">
-              A Elo Infinity tem experiência com inúmeros serviços de
-              <strong class="font-blue-200"
-                >Elo Boost, Duo Boost e Coach concluídos de forma rápida e
-                efetiva</strong
-              >, sempre com um padrão de alta satisfação dos nossos clientes.
-              Além disso,
-              <strong class="font-blue-200"
-                >vem se tornando destaque no mercado de boosting</strong
-              >
-              devido ao grande diferencial no atendimento e suporte ao cliente,
-              assim como na excelência da entrega dos serviços. Nossa premissa é
-              oferecer um serviço de qualidade
-              <strong class="font-blue-200"
-                >pelo preço mais barato do mercado</strong
-              >.
-            </p>
-            <div class="about-cards-grid mt-32 d-flex justify-content-center">
-              <div class="about-img-card position-relative">
-                <img
-                  class="object-fit-cover br-8"
-                  src="/img/web/landing-page/about-card-1.png"
-                  alt="Card Image"
-                />
-              </div>
-              <div class="about-img-card position-relative">
-                <img
-                  class="object-fit-cover br-8 mrl-48"
-                  src="/img/web/landing-page/about-card-2.png"
-                  alt="Card Image"
-                />
-              </div>
-
-              <div class="about-img-card position-relative">
-                <img
-                  class="object-fit-cover br-8"
-                  src="/img/web/landing-page/about-card-3.png"
-                  alt="Card Image"
-                />
-              </div>
-            </div>
-          </section>
-          <section class="d-flex mb-80">
-            <div>
-              <p class="font-16 font-blue-primary font-medium">
-                Elo Infinity é a sua melhor escolha!
-              </p>
-              <h1 class="font-48 mt-8 mb-16 font-blue-200 font-bold">
-                Por que escolher a<br />
-                Elo Job Infinity?
-              </h1>
-              <p class="font-16 font-grey-500">
-                A Elo Infinity tem o cliente como prioridade e isso também
-                reflete na seleção da nossa equipe;
-                <strong class="font-blue-200"
-                  >trabalhamos somente com jogadores de nível Grão Mestre e
-                  Desafiante para que o seu pedido seja entregue com segurança,
-                  eficiência e maestria</strong
-                >. Além disso, oferecemos um
-                <strong class="font-blue-200">excelente suporte</strong> ao
-                cliente através do
-                <strong class="font-blue-200">WhatsApp</strong> e servidor do
-                <strong class="font-blue-200">Discord</strong>. Você irá
-                contratar um serviço de qualidade por um preço barato e ainda
-                poderá personaliza-lo do seu jeito escolhendo a posição do
-                flash, horários de acesso à conta, quais rotas e campeões serão
-                usados, chat offline e muito mais!
-              </p>
-              <div class="mt-32">
-                <div
-                  v-for="(item, index) in whyChooseUsItems"
-                  :key="index"
-                  class="d-flex mb-32"
-                >
-                  <span
-                    class="material-icons infinity-bg-blue-200 font-white p-12 font-32 rounded-circle align-self-baseline"
-                    >{{ item.icon }}</span
-                  >
-                  <div class="ml-16">
-                    <p class="font-20 font-bold font-blue-200">
-                      {{ item.title }}
-                    </p>
-                    <p class="font-16 font-grey-500">
-                      {{ item.description }}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          </p>
+          <img
+            class="gravity-animation"
+            :class="{
+              'mt-24 mx-auto': $device.isMobile,
+            }"
+            src="/img/web/landing-page/poro.png"
+            :width="$device.isDesktop ? '424px' : '250px'"
+            alt="Poro Illustration"
+          />
+        </div>
+      </section>
+      <section class="row mt-80 justify-content-center">
+        <div
+          v-for="(item, index) in servicesCardItems"
+          :key="index"
+          class="services-item position-relative d-flex flex-column align-items-center col infinity-bg-dark-white p-24 br-8"
+          :class="{
+            'mr-16': index !== servicesCardItems.length - 1,
+          }"
+        >
+          <img
+            :src="`/img/web/landing-page/services-cards-icons/${index}.svg`"
+            alt="Icon"
+          />
+          <h1 class="font-16 mt-16 mb-8 font-bold align-self-start">
+            {{ item.title }}
+          </h1>
+          <p class="font-14 font-grey-500" v-html="item.description"></p>
+          <NuxtLink
+            :to="item.url"
+            class="btn-infinity-primary br-8 ptb-12 w-100 text-center font-white"
+            >Contratar</NuxtLink
+          >
+        </div>
+      </section>
+      <section class="mtb-80">
+        <p class="font-16 font-blue-primary font-medium">
+          Um pouquinho sobre a Elo Infinity
+        </p>
+        <h1 class="font-48 mt-8 mb-16 font-blue-200 font-bold">Quem somos?</h1>
+        <p class="font-16 font-grey-500">
+          A Elo Infinity tem experiência com inúmeros serviços de
+          <strong class="font-blue-200"
+            >Elo Boost, Duo Boost e Coach concluídos de forma rápida e
+            efetiva</strong
+          >, sempre com um padrão de alta satisfação dos nossos clientes. Além
+          disso,
+          <strong class="font-blue-200"
+            >vem se tornando destaque no mercado de boosting</strong
+          >
+          devido ao grande diferencial no atendimento e suporte ao cliente,
+          assim como na excelência da entrega dos serviços. Nossa premissa é
+          oferecer um serviço de qualidade
+          <strong class="font-blue-200"
+            >pelo preço mais barato do mercado</strong
+          >.
+        </p>
+        <div class="about-cards-grid mt-32 d-flex justify-content-center">
+          <div class="about-img-card position-relative">
             <img
-              class="align-self-center"
-              src="/img/web/landing-page/agent-illustration.png"
-              alt="Agent"
+              class="object-fit-cover br-8"
+              src="/img/web/landing-page/about-card-1.png"
+              alt="Card Image"
             />
-          </section>
-          <section class="mb-80">
-            <div class="d-flex justify-content-between">
-              <div>
-                <p class="font-16 font-blue-primary font-medium">
-                  Veja os Feedback do nossos clientes:
+          </div>
+          <div class="about-img-card position-relative">
+            <img
+              class="object-fit-cover br-8 mrl-48"
+              src="/img/web/landing-page/about-card-2.png"
+              alt="Card Image"
+            />
+          </div>
+
+          <div class="about-img-card position-relative">
+            <img
+              class="object-fit-cover br-8"
+              src="/img/web/landing-page/about-card-3.png"
+              alt="Card Image"
+            />
+          </div>
+        </div>
+      </section>
+      <section class="d-flex mb-80">
+        <div>
+          <p class="font-16 font-blue-primary font-medium">
+            Elo Infinity é a sua melhor escolha!
+          </p>
+          <h1 class="font-48 mt-8 mb-16 font-blue-200 font-bold">
+            Por que escolher a<br />
+            Elo Job Infinity?
+          </h1>
+          <p class="font-16 font-grey-500">
+            A Elo Infinity tem o cliente como prioridade e isso também reflete
+            na seleção da nossa equipe;
+            <strong class="font-blue-200"
+              >trabalhamos somente com jogadores de nível Grão Mestre e
+              Desafiante para que o seu pedido seja entregue com segurança,
+              eficiência e maestria</strong
+            >. Além disso, oferecemos um
+            <strong class="font-blue-200">excelente suporte</strong> ao cliente
+            através do <strong class="font-blue-200">WhatsApp</strong> e
+            servidor do <strong class="font-blue-200">Discord</strong>. Você irá
+            contratar um serviço de qualidade por um preço barato e ainda poderá
+            personaliza-lo do seu jeito escolhendo a posição do flash, horários
+            de acesso à conta, quais rotas e campeões serão usados, chat offline
+            e muito mais!
+          </p>
+          <div class="mt-32">
+            <div
+              v-for="(item, index) in whyChooseUsItems"
+              :key="index"
+              class="d-flex mb-32"
+            >
+              <span
+                class="material-icons infinity-bg-blue-200 font-white p-12 font-32 rounded-circle align-self-baseline"
+                >{{ item.icon }}</span
+              >
+              <div class="ml-16">
+                <p class="font-20 font-bold font-blue-200">
+                  {{ item.title }}
                 </p>
-                <h1 class="font-48 mt-8 mb-16 font-blue-200 font-bold">
-                  O que os clientes dizem<br />
-                  sobre a Elo Infinity?
-                </h1>
-                <p class="font-16 font-grey-500 font-medium">
-                  Para nós, a satisfação do cliente vem sempre em primeiro
-                  lugar.
+                <p class="font-16 font-grey-500">
+                  {{ item.description }}
                 </p>
-              </div>
-              <img
-                src="/img/web/landing-page/astronaut-icon.svg"
-                alt="Autronaut Illustration"
-                width="220px"
-                height="220px"
-              />
-            </div>
-            <div class="mt-80">
-              <div class="mb-32 feedback-grid">
-                <div
-                  v-for="(item, index) in activeFeedbackItems"
-                  :key="index"
-                  class="d-flex position-relative flex-column align-items-center infinity-bg-white feedback-item br-8 p-16"
-                >
-                  <div class="position-absolute top-0 start-0 ml-16 mt-16">
-                    <span class="font-14 font-blue-200 font-medium"
-                      >Serviço:</span
-                    >
-                    <span class="font-14 font-blue-primary">{{
-                      item.serviceName
-                    }}</span>
-                  </div>
-                  <div class="position-absolute top-0 end-0 mr-16 mt-16">
-                    <span class="font-14 font-blue-200 font-medium">{{
-                      item.date
-                    }}</span>
-                  </div>
-                  <img
-                    class="rounded-circle"
-                    :src="item.userImage"
-                    alt="User Image"
-                    width="96px"
-                    height="96px"
-                  />
-                  <p class="font-bold font-blue-200 font-20 mt-16 mb-8">
-                    {{ item.userName }}
-                  </p>
-                  <p class="font-14 font-grey-500 text-center">
-                    {{ item.text }}
-                  </p>
-                </div>
-              </div>
-              <div class="d-flex justify-content-center align-items-center">
-                <Button
-                  :onClick="() => (feedbackPage = feedbackPage - 1)"
-                  btnClass="d-flex align-items-center justify-content-center btn-infinity-primary br-8 ptb-12 mr-16 w-200"
-                  :btnDisabled="feedbackPage <= 0"
-                >
-                  <span class="material-icons-two-tone font-white mr-8"
-                    >arrow_back</span
-                  >
-                  Voltar</Button
-                >
-                <Button
-                  :onClick="() => (feedbackPage = feedbackPage + 1)"
-                  :btnDisabled="(feedbackPage + 1) * 4 >= feedbackItems.length"
-                  btnClass="d-flex align-items-center justify-content-center btn-infinity-primary br-8 ptb-12 w-200"
-                >
-                  Avançar
-                  <span class="material-icons-two-tone font-white ml-8"
-                    >arrow_forward</span
-                  >
-                </Button>
               </div>
             </div>
-          </section>
-          <section class="mb-80">
+          </div>
+        </div>
+        <img
+          class="align-self-center"
+          src="/img/web/landing-page/agent-illustration.png"
+          alt="Agent"
+        />
+      </section>
+      <section class="mb-80">
+        <div class="d-flex justify-content-between">
+          <div>
             <p class="font-16 font-blue-primary font-medium">
-              Tire suas duvidas!
+              Veja os Feedback do nossos clientes:
             </p>
             <h1 class="font-48 mt-8 mb-16 font-blue-200 font-bold">
-              Perguntas frequentes
+              O que os clientes dizem<br />
+              sobre a Elo Infinity?
             </h1>
             <p class="font-16 font-grey-500 font-medium">
-              Abaixo respondemos algumas das perguntas mais frequentes:
+              Para nós, a satisfação do cliente vem sempre em primeiro lugar.
             </p>
-            <div class="accordion accordion-flush mt-32" id="faq">
-              <div
-                class="accordion-item border-0 mb-24 infinity-bg-white"
-                v-for="(item, index) in faqItems"
-                :key="index"
-              >
-                <h2 class="accordion-header" :id="`question` + item.key">
-                  <button
-                    class="accordion-button collapsed infinity-bg-white font-blue-200 font-bold"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    :data-bs-target="`#heading` + item.key"
-                    aria-expanded="false"
-                    :aria-controls="`heading` + item.key"
-                  >
-                    {{ item.ask }}
-                  </button>
-                </h2>
-                <div
-                  :id="`heading` + item.key"
-                  class="accordion-collapse collapse"
-                  :aria-labelledby="`question` + item.key"
-                  data-bs-parent="#faq"
-                >
-                  <div
-                    class="accordion-body infinity-bg-white font-grey-500"
-                    v-html="item.answer"
-                  ></div>
-                </div>
-              </div>
-            </div>
-          </section>
-          <Footer />
+          </div>
+          <img
+            src="/img/web/landing-page/astronaut-icon.svg"
+            alt="Autronaut Illustration"
+            width="220px"
+            height="220px"
+          />
         </div>
-      </div>
+        <div class="mt-80">
+          <div class="mb-32 feedback-grid">
+            <div
+              v-for="(item, index) in activeFeedbackItems"
+              :key="index"
+              class="d-flex position-relative flex-column align-items-center infinity-bg-white feedback-item br-8 p-16"
+            >
+              <div class="position-absolute top-0 start-0 ml-16 mt-16">
+                <span class="font-14 font-blue-200 font-medium">Serviço:</span>
+                <span class="font-14 font-blue-primary">{{
+                  item.serviceName
+                }}</span>
+              </div>
+              <div class="position-absolute top-0 end-0 mr-16 mt-16">
+                <span class="font-14 font-blue-200 font-medium">{{
+                  item.date
+                }}</span>
+              </div>
+              <img
+                class="rounded-circle"
+                :src="item.userImage"
+                alt="User Image"
+                width="96px"
+                height="96px"
+              />
+              <p class="font-bold font-blue-200 font-20 mt-16 mb-8">
+                {{ item.userName }}
+              </p>
+              <p class="font-14 font-grey-500 text-center">
+                {{ item.text }}
+              </p>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center align-items-center">
+            <Button
+              :onClick="() => (feedbackPage = feedbackPage - 1)"
+              btnClass="d-flex align-items-center justify-content-center btn-infinity-primary br-8 ptb-12 mr-16 w-200"
+              :btnDisabled="feedbackPage <= 0"
+            >
+              <span class="material-icons-two-tone font-white mr-8"
+                >arrow_back</span
+              >
+              Voltar</Button
+            >
+            <Button
+              :onClick="() => (feedbackPage = feedbackPage + 1)"
+              :btnDisabled="(feedbackPage + 1) * 4 >= feedbackItems.length"
+              btnClass="d-flex align-items-center justify-content-center btn-infinity-primary br-8 ptb-12 w-200"
+            >
+              Avançar
+              <span class="material-icons-two-tone font-white ml-8"
+                >arrow_forward</span
+              >
+            </Button>
+          </div>
+        </div>
+      </section>
+      <section class="mb-80">
+        <p class="font-16 font-blue-primary font-medium">Tire suas duvidas!</p>
+        <h1 class="font-48 mt-8 mb-16 font-blue-200 font-bold">
+          Perguntas frequentes
+        </h1>
+        <p class="font-16 font-grey-500 font-medium">
+          Abaixo respondemos algumas das perguntas mais frequentes:
+        </p>
+        <div class="accordion accordion-flush mt-32" id="faq">
+          <div
+            class="accordion-item border-0 mb-24 infinity-bg-white"
+            v-for="(item, index) in faqItems"
+            :key="index"
+          >
+            <h2 class="accordion-header" :id="`question` + item.key">
+              <button
+                class="accordion-button collapsed infinity-bg-white font-blue-200 font-bold"
+                type="button"
+                data-bs-toggle="collapse"
+                :data-bs-target="`#heading` + item.key"
+                aria-expanded="false"
+                :aria-controls="`heading` + item.key"
+              >
+                {{ item.ask }}
+              </button>
+            </h2>
+            <div
+              :id="`heading` + item.key"
+              class="accordion-collapse collapse"
+              :aria-labelledby="`question` + item.key"
+              data-bs-parent="#faq"
+            >
+              <div
+                class="accordion-body infinity-bg-white font-grey-500"
+                v-html="item.answer"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
+    <Footer />
   </div>
 </template>
 
@@ -424,6 +409,38 @@ export default {
           text: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi',
           date: '05/31/2022',
         },
+        {
+          serviceName: 'MD10',
+          userName: 'Feedback 9',
+          userImage:
+            'https://i.pinimg.com/originals/36/6e/ee/366eee2a30d455de1bc0af52f3cc4415.jpg',
+          text: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi',
+          date: '05/31/2022',
+        },
+        {
+          serviceName: 'MD10',
+          userName: 'Feedback 10',
+          userImage:
+            'https://i.pinimg.com/originals/36/6e/ee/366eee2a30d455de1bc0af52f3cc4415.jpg',
+          text: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi',
+          date: '05/31/2022',
+        },
+        {
+          serviceName: 'MD10',
+          userName: 'Feedback 11',
+          userImage:
+            'https://i.pinimg.com/originals/36/6e/ee/366eee2a30d455de1bc0af52f3cc4415.jpg',
+          text: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi',
+          date: '05/31/2022',
+        },
+        {
+          serviceName: 'MD10',
+          userName: 'Feedback 12',
+          userImage:
+            'https://i.pinimg.com/originals/36/6e/ee/366eee2a30d455de1bc0af52f3cc4415.jpg',
+          text: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi',
+          date: '05/31/2022',
+        },
       ],
       companyValuesItems: [
         {
@@ -505,8 +522,8 @@ export default {
   computed: {
     activeFeedbackItems() {
       return this.feedbackItems.slice(
-        this.feedbackPage * 4,
-        (this.feedbackPage + 1) * 4
+        this.feedbackPage * 3,
+        (this.feedbackPage + 1) * 3
       )
     },
   },
