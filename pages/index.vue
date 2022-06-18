@@ -32,7 +32,7 @@
       </section>
       <section
         class="row mt-80 justify-content-center"
-        :class="$device.isMobile ? 'flex-column' : ''"
+        :class="$device.isMobile ? 'flex-column mrl-16' : ''"
       >
         <div
           v-for="(item, index) in servicesCardItems"
